@@ -1,0 +1,232 @@
+/*** Reseteo de Propiedades ***/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;/*** Esto es para que si hay padding y border se incluya dentro del calculo (no se salga si pongo el % ajustado sin tener que tener en cuenta bordes)***/
+}
+@font-face {
+    font-family: Reklame;
+    src: url(fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff2) format('woff2'),
+    url(fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff) format('woff');
+    font-style: italic;
+    font-weight: 700;
+}
+@font-face {
+    font-family: Sarabun;
+    src: url(fonts/Sarabun/Sarabun.woff2) format('woff2'),
+    url(fonts/Sarabun/Sarabun.woff) format('woff');
+    font-style: normal;
+    font-weight: 500;
+}
+
+/************ LAYOUT  *************/
+/************************ display/position/float **********************/
+#LOGO{
+    text-align: left;
+}
+nav li{
+    float: right;
+}
+#barra{
+    clear: both;
+}
+#Portada{
+    background-image: url(images/Portada.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+.opinion{
+    display: inline-block;
+}
+.cat {
+    display: inline-block;
+}
+#Destacados article{
+    display: inline-block;
+    text-align: left;
+}
+footer article{
+    display: inline-block;
+    
+}
+
+
+
+
+/****************** height/width/padding/border/margin *******************/
+
+nav li{
+    padding: 0% 2%;
+}
+header {
+    padding: 2% 5%;
+    height: 6em;
+}
+#login{
+    max-height: 1.8em;
+}
+#barra{
+    width: 40%;
+    margin: auto;
+}
+#Portada{
+    margin: 0% 5% 2%;
+    height: 20em;
+}
+#Portada h1{
+    margin: auto;
+    padding-top: 1em;
+}
+#Quienes_somos{
+    padding-top: 1%;
+    height: 6em;
+}
+.opinion{
+    width: 33%;
+    margin: auto;
+}
+#Categorias{
+    height: 26em;
+    padding: 0% 2% 0%;
+}
+#CabeceraCat{
+    height: 5em;
+    padding: 1%;
+    margin: 2%;
+}
+.cat{
+    width: 22%;
+    margin: auto;
+    margin-inline: 1%;
+    height: 17em;
+}
+.cat h4{
+    margin: 1%;
+}
+.cat p{
+    margin: 2%;
+}
+#Destacados{
+    height: 22em;
+    padding: 2%;
+}
+#cabeceraDest{
+    padding: 2%;
+    height: 4em;
+}
+#gris{
+    padding: 3%;
+    height: 16em;
+}
+#Destacados article{
+    width: 24%;
+    height: 13.5em;
+}
+footer{
+    height: 7.5em;
+    padding: 1% 3% 2%;
+
+}
+footer article{
+    width: 24%;
+}
+
+
+
+/************************* Propiedades Generales *********************/
+a{  /*a:link, a:visited, a:active*/
+    text-decoration: none;
+    color: #555555;
+    font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Reklame;
+    font-style:italic;
+    font-weight:bold;
+  }
+ul{
+    list-style-type: none;
+}
+img, picture, video, iframe, figure{
+    max-width: 100%;
+    object-fit:cover; /* En el caso de poner altura a una imagen hace que se escale */
+}
+
+
+
+/********* BODY *********/
+body{
+    font-family:Sarabun;
+    color: #555555;
+    font-size: 1.3em;
+}
+body{
+    text-align: center;
+}
+
+
+
+/*** HEADER ***/
+header {
+    background-color: #CFE17D;
+}
+
+#LOGO{
+    font-size: 1.2em;
+}
+
+
+
+/********* NAV **********/
+nav{
+    text-align: right;
+}
+
+
+
+/*** SECTION ***/
+section #Portada {
+    background-image: url(images/Portada.jpg);
+}
+#Portada h1{
+    color: white;
+    font-size: 3.5em;
+}
+#Quienes_somos{
+    background-color: #CFE17D;
+}
+.opinion{
+    border: #555555 solid 1px;
+}
+#cat1{
+    background-color: #555555;
+    color: white;
+}
+#cat2{
+    background-color: #B0D217;
+    color: white;
+}
+#cat3{
+    background-color: #E8C3AC;
+}
+#cat4{
+    background-color: #E3F0A9;
+}
+
+#Destacados{
+    background-color: #D5D5D5;
+}
+#gris{
+    background-color: white;
+}
+
+/******** FOOTER *********/
+footer {
+    background-color: #CFE17D;
+}
+#logo{
+    font-size: 2em;
+}
+
+

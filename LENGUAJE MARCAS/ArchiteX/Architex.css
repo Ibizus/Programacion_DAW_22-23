@@ -1,0 +1,140 @@
+/*** Reseteo de Propiedades ***/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;/*** Esto es para que si hay padding y border se incluya dentro del calculo (no se salga si pongo el % ajustado sin tener que tener en cuenta bordes)***/
+}
+
+/************ LAYOUT  *************/
+/************************ display/position/float **********************/
+nav li{
+    display: inline-block;
+}
+#logo {
+    position: absolute;
+    top: 80px;
+    right: 2%;
+}
+aside, #principal {  /*Propiedades comunes a ASIDE y SECTION Principal*/
+    display: inline-block;
+}
+#principal { /*SECTION CON 2 ARTICULOS*/
+    float: right;
+}
+footer section {
+    float: left;
+}
+
+
+/****************** height/width/padding/border/margin *******************/
+
+body {
+    margin: 6px 2%;
+}
+nav {
+    height: 60px;
+    padding: 1% 0%;
+}
+nav li {
+    margin: 0px 2%;
+}
+header {
+    height: 199px;
+    margin-top: 1%;
+    padding: 3%;
+}
+header h1{
+    margin: 1%;
+}
+header p{
+    width: 65%;
+}
+aside {
+    width: 27%;
+}
+aside section{
+    padding: 2%;
+}
+#parteCentral{  /*CAJA QUE ENGLOBA ASIDE Y SECTION principal*/
+    clear: both;
+    padding: 1% 2%;
+}
+#principal { /*SECTION CON 2 ARTICULOS*/
+    width: 70%;
+}
+#principal article{
+    padding: 2%;
+}
+footer {
+    clear: left; 
+    min-height: 150px;
+    padding: 2%;
+    background: #d2e1f6 ;
+}
+footer section {
+    width: 24%;
+}
+
+/************************* Propiedades Generales *********************/
+a{  /*a:link, a:visited, a:active*/
+    text-decoration: none;
+    color: #1f4677;
+    font-weight: bold;
+}
+nav ul{ /* Solo para el NAV, dejamos los demas con el punto*/
+    list-style-type: none;
+}
+h4 {
+    font-size: large;
+}
+h2 {
+    color: #1f4677;
+}
+
+
+/********* BODY *********/
+body {
+    background-color: #1f4677;
+}
+
+
+
+/********* NAV **********/
+nav{
+    text-align: center;
+    background-image: url(images/bluePrintPaper.png);
+    position: sticky;
+}  
+nav li{
+    font-size: 160%;
+}
+
+/*** HEADER ***/
+header {
+    background: #d2e1f6 ;
+}
+
+/******** CAJA CENTRAL *********/  /*Engloba ASIDE Y SECTION principal*/
+#parteCentral{  
+    background: #ffffff;
+}
+
+/*** ASIDE ***/
+aside {
+    border-right: solid 6px #1f4677 ;
+    background: #ffffff;
+}
+
+/*** SECTION ***/
+#principal { /*SECTION CON 2 ARTICULOS*/
+    background: #ffffff;
+}
+
+
+/******** FOOTER *********/
+footer {
+    background: #d2e1f6 ;
+}
+footer section {
+    text-align: left;
+}
