@@ -54,10 +54,9 @@ public class ColeccionDeDiscosPrincipal {
         System.out.println("\nLISTADO");
         System.out.println("=======");
 
-        for(Disco d : discos) {
-            if (!d.getCodigo().equals("LIBRE")) {
+        for(Disco d : discos)
+        {
             System.out.println(d);
-            }
         }
 
         break;
@@ -65,27 +64,29 @@ public class ColeccionDeDiscosPrincipal {
         case 2:
         System.out.println("\nNUEVO DISCO");
         System.out.println("===========");
-        
-        // Busca la primera posición libre del array
-        int primeraLibre = -1;
-        do {
-            primeraLibre++;
-        } while (!((discos[primeraLibre].getCodigo()).equals("LIBRE")));
-        
+
         System.out.println("Por favor, introduzca los datos del disco.");  
         System.out.print("Código: ");
         codigoIntroducido = s.nextLine();
-        System.out.print("Autor: ");
-        autorIntroducido = s.nextLine();
-        System.out.print("Título: ");
-        tituloIntroducido = s.nextLine();
-        System.out.print("Género: ");
-        generoIntroducido = s.nextLine();
-        System.out.print("Duración: ");
-        duracionIntroducida = Integer.parseInt(s.nextLine());
-        discos[primeraLibre] = new Disco(
-            codigoIntroducido, autorIntroducido, tituloIntroducido, generoIntroducido, duracionIntroducida);
-        
+
+        if (buscarDisco(discos, codigoIntroducido) < 0)
+        {
+            System.out.println("El código de ese disco ya está en uso");
+        }
+        else 
+        {
+            System.out.print("Autor: ");
+            autorIntroducido = s.nextLine();
+            System.out.print("Título: ");
+            tituloIntroducido = s.nextLine();
+            System.out.print("Género: ");
+            generoIntroducido = s.nextLine();
+            System.out.print("Duración: ");
+            duracionIntroducida = Integer.parseInt(s.nextLine());
+            
+            Disco discoNuevo = new Disco(codigoIntroducido, autorIntroducido, tituloIntroducido, generoIntroducido, duracionIntroducida);
+            discos = insertarDiscos(discos, discoNuevo);
+        }        
         break;
         
         case 3:
@@ -95,48 +96,57 @@ public class ColeccionDeDiscosPrincipal {
         System.out.print("Por favor, introduzca el código del disco cuyos datos desea cambiar: ");
         codigoIntroducido = s.nextLine();
     
-        int i = -1;
-        do {
-            i++;
-        } while (!((discos[i].getCodigo()).equals(codigoIntroducido)));
-        
-        System.out.println("Introduzca los nuevos datos del disco o INTRO para dejarlos igual.");
+        int posicionEncontrada = buscarDisco(discos, codigoIntroducido);
+
+        if(posicionEncontrada<0)
+        {
+            System.out.println("El código introducido no es correcto");
+        }
+        else 
+        {
+            System.out.println("Introduzca los nuevos datos del disco o INTRO para dejarlos igual.");
     
-        System.out.println("Código: " + discos[i].getCodigo());
-        System.out.print("Nuevo código: ");
-        codigoIntroducido = s.nextLine();
-        if (!codigoIntroducido.equals("")) {
-            discos[i].setCodigo(codigoIntroducido);
+            System.out.println("Código: " + discos[posicionEncontrada].getCodigo());
+            System.out.print("Nuevo código: ");
+            codigoIntroducido = s.nextLine();
+
+            if (buscarDisco(discos, codigoIntroducido) > -1 && !codigoIntroducido.equals(""))
+            {
+                discos[posicionEncontrada].setCodigo(codigoIntroducido);
+            }
+            else 
+            {
+                System.out.println("Código ya en uso");
+            }
+            
+            System.out.println("Autor: " + discos[posicionEncontrada].getAutor());
+            System.out.print("Nuevo autor: ");
+            autorIntroducido = s.nextLine();
+            if (!autorIntroducido.equals("")) {
+                discos[posicionEncontrada].setAutor(autorIntroducido);
+            }
+            
+            System.out.println("Título: " + discos[posicionEncontrada].getTitulo());
+            System.out.print("Nuevo título: ");
+            tituloIntroducido = s.nextLine();
+            if (!tituloIntroducido.equals("")) {
+                discos[posicionEncontrada].setTitulo(tituloIntroducido);
+            }
+            
+            System.out.println("Género: " + discos[posicionEncontrada].getGenero());
+            System.out.print("Nuevo género: ");
+            generoIntroducido = s.nextLine();
+            if (!generoIntroducido.equals("")) {
+                discos[posicionEncontrada].setGenero(generoIntroducido);
+            }
+            
+            System.out.println("Duración: " + discos[posicionEncontrada].getDuracion());
+            System.out.print("Duración: ");
+            final String duracionIntroducidaString = s.nextLine();
+            if (!duracionIntroducidaString.equals("")) {
+                discos[posicionEncontrada].setDuracion(Integer.parseInt(duracionIntroducidaString));
+            }
         }
-        
-        System.out.println("Autor: " + discos[i].getAutor());
-        System.out.print("Nuevo autor: ");
-        autorIntroducido = s.nextLine();
-        if (!autorIntroducido.equals("")) {
-            discos[i].setAutor(autorIntroducido);
-        }
-        
-        System.out.println("Título: " + discos[i].getTitulo());
-        System.out.print("Nuevo título: ");
-        tituloIntroducido = s.nextLine();
-        if (!tituloIntroducido.equals("")) {
-            discos[i].setTitulo(tituloIntroducido);
-        }
-        
-        System.out.println("Género: " + discos[i].getGenero());
-        System.out.print("Nuevo género: ");
-        generoIntroducido = s.nextLine();
-        if (!generoIntroducido.equals("")) {
-            discos[i].setGenero(generoIntroducido);
-        }
-        
-        System.out.println("Duración: " + discos[i].getDuracion());
-        System.out.print("Duración: ");
-        final String duracionIntroducidaString = s.nextLine();
-        if (!duracionIntroducidaString.equals("")) {
-            discos[i].setDuracion(Integer.parseInt(duracionIntroducidaString));
-        }
-        
         break;
         
         case 4:
@@ -145,14 +155,18 @@ public class ColeccionDeDiscosPrincipal {
         
         System.out.print("Por favor, introduzca el código del disco que desea borrar: ");
         codigoIntroducido = s.nextLine();
-    
-        i = -1;
-        do {
-            i++;
-        } while (!((discos[i].getCodigo()).equals(codigoIntroducido)));
-        discos[i].setCodigo("LIBRE");
-        System.out.println("Album borrado.");
-        
+
+        int posicion = buscarDisco(discos, codigoIntroducido);
+
+        if (posicion > -1)
+        {
+            discos = borrarDisco(discos, posicion);
+            System.out.println("Album borrado.");
+        }
+        else 
+        {
+            System.out.println("Disco no encontrado");
+        }
         break;
         
         default:
@@ -160,5 +174,78 @@ public class ColeccionDeDiscosPrincipal {
         } // switch
     } while (opcion != 5);
     }
+
+
+    /**
+     * Inserta un elemento al final del array
+     * @param array,elemento
+     * @return nuevo
+     */
+    public static Disco[] insertarDiscos(Disco[] array, Disco nuevoDisco)
+    {
+        Disco[] nuevo = new Disco[array.length+1];
+
+        for (int i = 0; i < array.length; i++)
+        {
+            nuevo[i] = array[i];
+        }
+
+        nuevo[nuevo.length-1] = nuevoDisco;
+
+        return nuevo;
+    }
+    
+    /**
+     * Busca un valor dentro del array y devuelve su posición
+     * ó -1 en caso de no aparecer ese elemento
+     * @param array,elemento
+     * @return posicion
+     */
+    public static int buscarDisco(Disco[] array, String codigo)
+    {
+        int posicion = -1;
+        int index = 0;
+
+        // Mientras no llegue al final de array y el valor de posicón no haya cambiado
+        while(index < array.length && posicion == -1)
+        {
+            // Guardo la posición en el caso de encontrar un elemnto igual a elemento
+            if(array[index].getCodigo().equalsIgnoreCase(codigo))
+            {
+                posicion = index;
+            }
+            index++;
+        }
+        return posicion;
+    }
+
+    /**
+     * Elimina la posicion indicada
+     * @param array
+     * @return nuevo
+     */
+    public static Disco[] borrarDisco(Disco[] array, int posicion)
+    {
+        Disco[] nuevo = array;
+        
+        if(array.length != 0 && posicion < array.length)
+        {
+            nuevo = new Disco[array.length-1];
+
+            for (int i = 0; i < array.length; i++)
+            {
+                if(posicion > i) // Copio la primera parte hasta la posción eliminada
+                {
+                    nuevo[i] = array[i];
+                }
+                else if(posicion < i) // Copio la segunda parte a partir de la posión eliminada
+                {
+                    nuevo[i-1] = array[i];
+                }
+            }
+        }
+        return nuevo;
+    }
+
 }
 

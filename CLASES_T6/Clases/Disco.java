@@ -23,11 +23,12 @@ public class Disco {
     @Override
     public String toString()
     {
-        return ("Código: "+this.codigo+
+        return ("\nDISCO: "+
+                "\nCódigo: "+this.codigo+
                 "\nAutor: "+this.autor+
                 "\nTítulo: "+this.titulo+
                 "\nGénero: "+this.genero+
-                "\nDuración: "+this.duracion+" minutos.");
+                "\nDuración: "+this.duracion+" minutos.\n");
     }
 
     public String getCodigo() {
