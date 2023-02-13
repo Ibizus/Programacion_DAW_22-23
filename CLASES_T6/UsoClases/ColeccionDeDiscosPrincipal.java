@@ -51,14 +51,46 @@ public class ColeccionDeDiscosPrincipal {
         
         switch (opcion) {
         case 1:
-        System.out.println("\nLISTADO");
-        System.out.println("=======");
+        System.out.println("\nOPCIONES DE LISTADO");
+        System.out.println("====================");
+        System.out.println("1 - LISTADO COMPLETO");
+        System.out.println("2 - LISTADO POR AUTOR");
+        System.out.println("3 - LISTADO POR GENERO");
+        System.out.println("4 - LISTADO POR DURACIÓN");
+        System.out.println("Indica la opción de listado que prefieres:");
+        int opcionListado = Integer.parseInt(s.nextLine());
 
-        for(Disco d : discos)
-        {
-            System.out.println(d);
-        }
+            switch(opcionListado){
+                case 1:
+                    for(Disco d : discos)
+                    {
+                        System.out.println(d);
+                    }
+                break;
 
+                case 2:
+                    System.out.println("Introduce el autor que quieres ver:");
+                    String autorBuscado = s.nextLine();
+                    imprimeAutor(discos, autorBuscado);
+                break;
+
+                case 3:
+                    System.out.println("Introduce el género que quieres ver:");
+                    String generoBuscado = s.nextLine();
+                    imprimeGenero(discos, generoBuscado);
+                break;
+
+                case 4:
+                    System.out.println("Introduce el mínimo de duración a buscar:");
+                    int min = s.nextInt();
+                    System.out.println("Y el máximo:");
+                    int max = s.nextInt();
+                    imprimeDuracion(discos, min, max);
+                break;
+
+                default:
+                    System.out.println("Opción no encontrada");
+            }
         break;
         
         case 2:
@@ -245,6 +277,54 @@ public class ColeccionDeDiscosPrincipal {
             }
         }
         return nuevo;
+    }
+
+    /**
+     * Busca coincidencias dentro del array y 
+     * las imprime
+     * @param array,autor
+     */
+    public static void imprimeAutor(Disco[] array, String autor)
+    {
+        for (Disco disco : array)
+        {
+            if(disco.getAutor().equalsIgnoreCase(autor))
+            {
+                System.out.println(disco);
+            }
+        }
+    }
+
+    /**
+     * Busca coincidencias dentro del array y 
+     * las imprime
+     * @param array,autor
+     */
+    public static void imprimeGenero(Disco[] array, String genero)
+    {
+        for (Disco disco : array)
+        {
+            if(disco.getGenero().equalsIgnoreCase(genero))
+            {
+                System.out.println(disco);
+            }
+        }
+    }
+
+    /**
+     * Busca coincidencias dentro del array y 
+     * las imprime
+     * @param array,autor
+     */
+    public static void imprimeDuracion(Disco[] array, int min, int max)
+    {
+        for (Disco disco : array)
+        {
+            if(disco.getDuracion() > min && disco.getDuracion() < max)
+            {
+                System.out.println(disco);
+            }
+        }
     }
 
 }
