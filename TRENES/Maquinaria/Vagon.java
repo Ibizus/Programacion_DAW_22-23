@@ -1,4 +1,4 @@
-package TRENES.Maquinaria;
+package Maquinaria;
 
 class Vagon {
     

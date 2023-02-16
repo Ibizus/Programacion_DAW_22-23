@@ -1,6 +1,6 @@
-package TRENES.Maquinaria;
+package Maquinaria;
 
-import TRENES.Personal.Maquinista;
+import Personal.Maquinista;
 
 public class Tren {
  
@@ -38,21 +38,20 @@ public class Tren {
         
     }
 
-    public Tren enganchaVagon(int max, int carga, String descripcion)
+    public void enganchaVagon(int max, int carga, String descripcion)
     {
         if(carga <= max)
         {
             Vagon nuevo = new Vagon(max, carga, descripcion);
 
-            this.vagones = añadeVagon(vagones, nuevo);
+            this.vagones = añadeVagon(this.vagones, nuevo);
         }
         else 
         {
             System.out.println("No se puede enganchar, supera la carga máxima");
 
         }
-        
-        return null;
+
     }
     
     /**
@@ -60,7 +59,7 @@ public class Tren {
      * @param array,nuevoVagon
      * @return nuevo
      */
-    public static Vagon[] añadeVagon(Vagon[] array, Vagon nuevoVagon)
+    public Vagon[] añadeVagon(Vagon[] array, Vagon nuevoVagon)
     {
         if(array.length < 5) // Comprobamos que se puede anganchar el vagón
         {
@@ -77,7 +76,7 @@ public class Tren {
         }
         else
         {
-            System.out.println("No se puede encganchar, ya hay 5 vagones");
+            System.out.println("No se puede enganchar, ya hay 5 vagones");
 
             return array;
         }

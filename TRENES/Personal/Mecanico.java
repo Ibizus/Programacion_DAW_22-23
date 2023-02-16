@@ -1,4 +1,4 @@
-package TRENES.Personal;
+package Personal;
 
 public class Mecanico {
     

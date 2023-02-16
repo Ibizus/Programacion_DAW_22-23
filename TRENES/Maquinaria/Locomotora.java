@@ -1,6 +1,6 @@
 package TRENES.Maquinaria;
 
-import TRENES.Personal.Mecanico;
+import Personal.Mecanico;
 
 public class Locomotora {
     

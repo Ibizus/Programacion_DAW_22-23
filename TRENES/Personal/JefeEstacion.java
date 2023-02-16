@@ -1,4 +1,4 @@
-package TRENES.Personal;
+package Personal;
 
 import java.time.LocalDate;
 
