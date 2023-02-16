@@ -56,4 +56,11 @@ public class Maquinista {
         this.rango = rango;
     }
     
+    @Override
+    public String toString()
+    {
+        String resultado = this.getNombre() + "(" + this.getRango() + ")";
+
+        return resultado;
+    }
 }

@@ -1,6 +1,6 @@
 package TRENES.Maquinaria;
 
-public class Vagon {
+class Vagon {
     
     // ATRIBUTOS:
     private int id;
@@ -34,6 +34,5 @@ public class Vagon {
     public String getTipoCarga() {
         return tipoCarga;
     }
-
 }
 

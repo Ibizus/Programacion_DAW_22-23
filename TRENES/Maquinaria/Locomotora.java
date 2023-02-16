@@ -12,13 +12,13 @@ public class Locomotora {
     private Mecanico mecanico;
 
     // CONSTRUCTOR:
-    private Locomotora(String matricula, int potencia)
+    public Locomotora(String matricula, int potencia)
     {
         this.matricula = matricula;
         this.potencia = potencia;
     }
 
-    private Locomotora(String matricula, int potencia, int año)
+    public Locomotora(String matricula, int potencia, int año)
     {
         this(matricula, potencia);
         this.año = año;
@@ -48,5 +48,12 @@ public class Locomotora {
         this.mecanico = mecanico;
     }
 
+    @Override
+    public String toString()
+    {
+        String resultado = "Locomotora: " + this.getMatricula() + "(" + this.getPotencia() + "Cv)";
+
+        return resultado;
+    }
     
 }

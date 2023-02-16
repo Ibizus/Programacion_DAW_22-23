@@ -10,11 +10,11 @@ public class Mecanico {
     private Especialidad especialidad;
 
     //CONSTRUCTOR:
-    public Mecanico(String nombre, String tlf, Especialidad especialidad)
+    public Mecanico(String nombre, String tlf, Especialidad tipo)
     {
         this.nombre = nombre;
         this.tlf = tlf;
-        this.especialidad = especialidad;
+        this.especialidad = tipo;
     }
 
     // METODOS:

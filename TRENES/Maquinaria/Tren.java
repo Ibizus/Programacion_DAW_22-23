@@ -29,10 +29,6 @@ public class Tren {
         return vagones;
     }
 
-    private void setVagones(Vagon[] vagones) {
-        this.vagones = vagones;
-    }
-
     public Maquinista getResponsable() {
         return responsable;
     }
@@ -49,7 +45,6 @@ public class Tren {
             Vagon nuevo = new Vagon(max, carga, descripcion);
 
             this.vagones = añadeVagon(vagones, nuevo);
-
         }
         else 
         {
@@ -62,7 +57,7 @@ public class Tren {
     
     /**
      * Inserta un elemento al final del array
-     * @param array,elemento
+     * @param array,nuevoVagon
      * @return nuevo
      */
     public static Vagon[] añadeVagon(Vagon[] array, Vagon nuevoVagon)
@@ -86,8 +81,33 @@ public class Tren {
 
             return array;
         }
-
-
     }
+
+    @Override
+    public String toString()
+    {
+        String resultado = this.locomotora.toString();
+
+        if(vagones.length>0)
+        {
+            int cargaTotal = 0;
+
+            for (int i = 0; i < vagones.length; i++)
+            {
+                resultado += " - [V" + (i+1) + " - " + vagones[i].getCargaActual() + "kgs de " + 
+                            vagones[i].getMaxCarga() + vagones[i].getTipoCarga() + "]";
+
+
+                cargaTotal += vagones[i].getCargaActual();
+            }
+
+            resultado += " = " + cargaTotal + "kgs de Carga total";
+        }
+
+        resultado += " - " + this.responsable.toString();
+
+        return resultado;
+    }
+
 
 }

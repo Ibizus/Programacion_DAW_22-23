@@ -10,7 +10,7 @@ public class JefeEstacion {
     private LocalDate fAntiguedad;
 
     // CONSTRUCTOR:
-    public JefeEstacion()
+    public JefeEstacion(String nombre, String dni)
     {
         this.nombre = nombre;
         this.dni = dni;
@@ -37,5 +37,11 @@ public class JefeEstacion {
         this.fAntiguedad = LocalDate.of(año, mes, dia);
     }
     
+    @Override
+    public String toString()
+    {
+        String resultado = this.getNombre() + ", con dni: " + this.getDni();
 
+        return resultado;
+    }
 }
