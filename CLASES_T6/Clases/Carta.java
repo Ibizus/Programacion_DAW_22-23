@@ -39,10 +39,15 @@ public class Carta {
 
     public boolean esMenor(Carta carta)
     {
-        
+        boolean menor = false;
+
+        if(this.getNumero() < carta.getNumero())
+        {
+            menor = true;
+        }
+
+        return menor;
     }
-
-
 
 
 }

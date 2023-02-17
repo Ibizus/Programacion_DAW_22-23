@@ -1,6 +1,6 @@
-package Maquinaria;
+package TRENES.Maquinaria;
 
-import Personal.Maquinista;
+import TRENES.Personal.Maquinista;
 
 public class Tren {
  
