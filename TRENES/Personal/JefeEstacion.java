@@ -32,6 +32,10 @@ public class JefeEstacion {
         this.dni = dni;
     }
 
+    public LocalDate getfAntiguedad() {
+        return fAntiguedad;
+    }
+
     public void modificarFechaCargo(int año, int mes, int dia)
     {
         this.fAntiguedad = LocalDate.of(año, mes, dia);
@@ -44,4 +48,5 @@ public class JefeEstacion {
 
         return resultado;
     }
+
 }

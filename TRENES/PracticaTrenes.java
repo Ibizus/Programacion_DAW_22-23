@@ -1,11 +1,7 @@
 package TRENES;
 
-import TRENES.Maquinaria.Tren;
-import TRENES.Maquinaria.Locomotora;
-import TRENES.Personal.JefeEstacion;
-import TRENES.Personal.Maquinista;
-import TRENES.Personal.Mecanico;
-import TRENES.Personal.Mecanico.Especialidad;
+import TRENES.Maquinaria.*;
+import TRENES.Personal.*;
 
 public class PracticaTrenes {
     
