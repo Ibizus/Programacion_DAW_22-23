@@ -2,6 +2,18 @@ package EXAMEN;
 
 import java.util.Scanner;
 
+/*      COMENTARIOS PROFESOR:
+ * 
+ * EJ2: Muy bien, solo un fallo, la modificacion masiva lo haces según el 
+ * precio vs media de cantidad vendida (comparas valores distintos) 
+ * y en el informe no utilizas la media para el + -
+ * 
+ *      CORRECCIÓN:
+ * 
+ * Se me pasaron esos detalles con las prisas del examen, implementados ambos 
+ * añadiéndolo al código ya realizado.
+ */
+
 public class Ejercicio2_HectorLopezT5 { 
 
     static Scanner sc = new Scanner(System.in);
@@ -45,6 +57,7 @@ public class Ejercicio2_HectorLopezT5 {
         
                 System.out.println("Introduce la cantidad vendida:");
                 double cantidad = sc.nextDouble();
+                sc.nextLine();
         
                 sumaEnPosicion(cantidadVendida, posicion, cantidad);
                 break;
@@ -58,6 +71,7 @@ public class Ejercicio2_HectorLopezT5 {
         
                 System.out.println("Introduce el nuevo precio:");
                 double cantidad2 = sc.nextDouble();
+                sc.nextLine();
         
                 modificaPosicion(precios, posicion2, cantidad2);
                 break;
@@ -260,7 +274,7 @@ public class Ejercicio2_HectorLopezT5 {
         }
         System.out.println("---------------------------------------------------------------");
 
-        System.out.println("\t\t\t\t\t" + cantidadTotal + "\t-\t" + ganaciatotal);
+        System.out.println("Totales:\t\t\t\t" + cantidadTotal + " kgs\t-\t" + ganaciatotal + " €");
     }
 
     /**
