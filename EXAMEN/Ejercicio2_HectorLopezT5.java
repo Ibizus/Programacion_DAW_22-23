@@ -63,10 +63,9 @@ public class Ejercicio2_HectorLopezT5 {
                 break;
 
             case "d":
-
                 double media = calculaMedia(cantidadVendida);
 
-                incrementaPrecio(precios, media);
+                incrementaPrecio(precios, cantidadVendida, media);
                 break;
                 
             case "e":
@@ -274,7 +273,7 @@ public class Ejercicio2_HectorLopezT5 {
      * Modifica el precio segun la cantidad media vendida 
      * @param arrayPrecios,
      */
-    static void incrementaPrecio(double[] arrayPrecios, double media)
+    static void incrementaPrecio(double[] arrayPrecios, double[] arrayCantidades, double media)
     {
 
         double incremento = 0.25;
@@ -283,11 +282,11 @@ public class Ejercicio2_HectorLopezT5 {
         for (int i = 0; i < arrayPrecios.length; i++)
         {
             
-            if(arrayPrecios[i]>media) 
+            if(arrayCantidades[i]>media) 
             {
                 arrayPrecios[i] += incremento; 
             }
-            else if(arrayPrecios[i]<media)
+            else if(arrayCantidades[i]<media)
             {
                 arrayPrecios[i] += rebaja; 
 
@@ -297,6 +296,5 @@ public class Ejercicio2_HectorLopezT5 {
                 }
             }
         }
-
     }
 }
