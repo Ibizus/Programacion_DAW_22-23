@@ -231,16 +231,32 @@ public class Ejercicio2_HectorLopezT5 {
     {
         double cantidadTotal = 0;
         double ganaciatotal = 0;
+        double media = calculaMedia(cantidadVendida);
+        String signo = "";
 
         System.out.println("\nINFORME DE VENTAS:\n");
         System.out.println("\t\t\t\tPrecio \t \t Cantidad\tGanancia");
 
         for (int i = 0; i < arrayNombre.length; i++)
         {
-            System.out.println("Fruta: " + arrayNombre[i] + "\t\t-\t" + arrayPrecio[i] + "\t-\t" + cantidadVendida[i] + "\t-\t" + (arrayPrecio[i]*cantidadVendida[i]));
+            if(cantidadVendida[i] > media) // Añado el signo al final de cada fila según la media de ventas
+            {
+                signo = " (+)";
+            }
+            else if(cantidadVendida[i] < media)
+            {
+                signo = " (-)";
+            }
+            else 
+            {
+                signo = " (=)";
+            }
+
+            System.out.println("Fruta: " + arrayNombre[i] + "\t\t-\t" + arrayPrecio[i] + "\t-\t" + cantidadVendida[i] + "\t-\t" + (arrayPrecio[i]*cantidadVendida[i]) + signo);
 
             cantidadTotal = cantidadTotal + cantidadVendida[i];
             ganaciatotal = ganaciatotal + (arrayPrecio[i]*cantidadVendida[i]);
+
         }
         System.out.println("---------------------------------------------------------------");
 
