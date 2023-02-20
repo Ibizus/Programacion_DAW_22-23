@@ -15,16 +15,24 @@ public class ColaBanco {
         caja.cogerTurno(cliente2);
         Cliente cliente3 = new Cliente("Sara", AccionesBanco.RETIRAR, 1500);
         caja.cogerTurno(cliente3);
+
         caja.estadoCola();
-        caja.atender();
+
+        caja.atender();// atendemos a Andres:
         System.out.println(caja.saldo());
        
         Cliente cliente4 = new Cliente("Miguel", AccionesBanco.INGRESAR, 2000);
         caja.cogerTurno(cliente4);
-        caja.atender();
+
+        caja.atender(); // atendemos a Javier
+        System.out.println(caja.saldo());
+
+        caja.atender(); // atendemos a Sara
+        System.out.println(caja.saldo());
+
+        caja.atender(); // atendemos a Miguel
         System.out.println(caja.saldo());
         caja.estadoCola();
     }
-
  
 }

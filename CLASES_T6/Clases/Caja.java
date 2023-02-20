@@ -35,10 +35,12 @@ public class Caja {
 
         Cliente[] nuevaCola = new Cliente[this.colaClientes.length-1];
 
-        for (int i = nuevaCola.length-1; i <= 0; i--)
+        for (int i = 0; i < nuevaCola.length; i++)
         {
-            nuevaCola[i] = colaClientes[i];           
+            nuevaCola[i] = colaClientes[i+1];
         }
+
+        this.colaClientes = nuevaCola;
 
         return clienteAtendido;
     }
@@ -47,7 +49,7 @@ public class Caja {
     {
         Cliente clienteAtendido = desencolar();
 
-        System.out.println("Atendiendo a: " + clienteAtendido.getNombre());
+        System.out.println("\nAtendiendo a: " + clienteAtendido.getNombre());
 
         if(clienteAtendido.getOperacion() == AccionesBanco.INGRESAR && clienteAtendido.getImporte() > 0)
         {
