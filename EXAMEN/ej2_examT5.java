@@ -1,6 +1,7 @@
 package EXAMEN;
 
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class ej2_examT5 {
     
@@ -13,10 +14,13 @@ public class ej2_examT5 {
      *      CORRECCIÓN:
      *
      * Se me pasaron esos detalles con las prisas del examen, implementados ambos
-     * añadiéndolo al código ya realizado.
+     * añadiéndolo al código ya realizado. También he limpiado el búffer en ciertos
+     * momentos para que no de saltos el programa.
      */
 
      static Scanner sc = new Scanner(System.in);
+     static DecimalFormat df = new DecimalFormat("0.00");
+
      static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
      static final String ANSI_RESET = "\u001B[0m";
  
@@ -264,7 +268,7 @@ public class ej2_examT5 {
                  signo = " (=)";
              }
  
-             System.out.println("Fruta: " + arrayNombre[i] + "\t\t-\t" + arrayPrecio[i] + "\t-\t" + cantidadVendida[i] + "\t-\t" + (arrayPrecio[i]*cantidadVendida[i]) + signo);
+             System.out.println("Fruta: " + arrayNombre[i] + "\t\t-\t" + df.format(arrayPrecio[i]) + "\t-\t" + df.format(cantidadVendida[i]) + "\t-\t" + df.format((arrayPrecio[i]*cantidadVendida[i])) + signo);
  
              cantidadTotal = cantidadTotal + cantidadVendida[i];
              ganaciatotal = ganaciatotal + (arrayPrecio[i]*cantidadVendida[i]);
@@ -272,7 +276,7 @@ public class ej2_examT5 {
          }
          System.out.println("---------------------------------------------------------------");
  
-         System.out.println("Totales:\t\t\t\t" + cantidadTotal + " kgs\t-\t" + ganaciatotal + " €");
+         System.out.println("Totales:\t\t\t\t" + df.format(cantidadTotal) + " kgs\t-\t" + df.format(ganaciatotal) + " €");
      }
  
      /**
