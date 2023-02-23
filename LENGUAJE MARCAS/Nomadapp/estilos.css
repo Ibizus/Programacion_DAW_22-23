@@ -40,9 +40,28 @@ nav li{
 .opinion{
     display: inline-block;
 }
+#Categorias{
+    position: relative;
+    border: red solid 1px;
+}
 .cat {
     display: inline-block;
+    position: absolute;
+    top: 150px;
 }
+#cat1{
+    left: 2.5%;
+}
+#cat2{
+    left: 25.7%;
+}
+#cat3{
+    left: 49.3%;
+}
+#cat4{
+    left: 72.5%;
+}
+
 #Destacados article{
     display: inline-block;
     text-align: left;
