@@ -260,7 +260,8 @@ section #Portada {
     background-color: #CFE17D;
 }
 .opinion{
-    border: #555555 solid 1px;
+    border: #555555 solid 0.4px;
+    line-height: 1.6em;
 }
 #cat1{
     background-color: #555555;
