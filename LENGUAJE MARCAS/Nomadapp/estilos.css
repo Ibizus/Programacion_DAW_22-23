@@ -19,6 +19,7 @@
     font-weight: 500;
 }
 
+
 /************ LAYOUT  *************/
 /************************ display/position/float **********************/
 #LOGO{
@@ -183,6 +184,68 @@ nav{
     text-align: right;
 }
 
+/* Menu  */
+nav ul {
+    margin:0;
+    padding:0;
+}
+/* items del Menu */
+nav ul li {
+    position:relative;
+    float:right;
+    margin:0;
+    padding:0;
+}
+/* enlaces del Menu */
+nav ul a {
+    display:block;
+    padding:2px 12px;
+    letter-spacing:1px;
+}
+/* efecto al pasar el ratón por los items del Menu */
+nav ul li:hover {
+    border-radius: 1em;
+    background:#e4e4e4;
+}
+/* menu desplegable */
+nav ul ul {
+    opacity: .9;
+    display:none;
+    position:absolute;
+    border-radius: 1em;
+    top:100%;
+    left:0;
+    background:#E3F0A9;
+    padding:0;
+}
+/* items del menu desplegable */
+nav ul ul li {
+    float:none;
+    width:150px
+}
+/* enlaces de los items del menu desplegable */
+nav ul ul a {
+    line-height:120%;
+    padding:10px 15px;
+}
+/* items del menu desplegable al pasar el ratón */
+nav ul li:hover > ul {
+    display:block;
+}
+
+/* Barra de búsqueda */
+#barra{
+    border-radius: 1em;
+    background-color: white;
+}
+#barra p{
+    text-align: left;
+}
+#lupa{
+    float: inline-start;
+    max-height: 5%;
+    max-width: 5%;
+}
 
 
 /*** SECTION ***/
@@ -213,12 +276,18 @@ section #Portada {
 #cat4{
     background-color: #E3F0A9;
 }
+#Categorias img:hover{
+    filter:brightness(110%);
+}
 
 #Destacados{
     background-color: #D5D5D5;
 }
 #gris{
     background-color: white;
+}
+#gris a article img:hover{
+    filter:brightness(110%);
 }
 
 /******** FOOTER *********/
