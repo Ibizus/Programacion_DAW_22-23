@@ -2,6 +2,7 @@ package CLASES_T6.UsoClases;
 
 import CLASES_T6.Clases.maquinaria.*;
 import CLASES_T6.Clases.personal.*;
+import CLASES_T6.Clases.personal.Mecanico.Especialidad;
 
 public class PracticaTrenes {
     

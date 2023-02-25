@@ -1,5 +1,6 @@
 package CLASES_T6.Clases.maquinaria;
 
+import CLASES_T6.Clases.personal.Maquinista;
 
 public class Tren {
  
