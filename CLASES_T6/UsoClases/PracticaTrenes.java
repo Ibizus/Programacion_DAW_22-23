@@ -28,6 +28,7 @@ public class PracticaTrenes {
     Locomotora locomotora2 = new Locomotora("BBBB2",100);
     Locomotora locomotora3 = new Locomotora("CCCC3",150, 2020);
 
+    
     Tren tren1 = new Tren(locomotora1, maquinista1);
     tren1.enganchaVagon(100,50,"Madera");
     tren1.enganchaVagon(100,150,"Madera"); //vagon supera carga maxima, no se engancha

@@ -14,6 +14,7 @@ public class Tren {
     {
         this.locomotora = locomotora;
         this.responsable = responsable;
+        this.vagones = new Vagon[0];
     }
 
     // METODOS:
