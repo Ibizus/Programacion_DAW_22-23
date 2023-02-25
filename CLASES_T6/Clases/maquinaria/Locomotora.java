@@ -1,6 +1,5 @@
-package TRENES.Maquinaria;
+package CLASES_T6.Clases.maquinaria;
 
-import TRENES.Personal.Mecanico;
 
 public class Locomotora {
     

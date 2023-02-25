@@ -1,4 +1,4 @@
-package TRENES.Personal;
+package CLASES_T6.Clases.personal;
 
 public class Mecanico {
     

@@ -1,7 +1,7 @@
-package TRENES;
+package CLASES_T6.UsoClases;
 
-import TRENES.Maquinaria.*;
-import TRENES.Personal.*;
+import CLASES_T6.Clases.maquinaria.*;
+import CLASES_T6.Clases.personal.*;
 
 public class PracticaTrenes {
     

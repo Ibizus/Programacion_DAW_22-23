@@ -1,4 +1,5 @@
-package TRENES.Maquinaria;
+package CLASES_T6.Clases.maquinaria;
+
 
 class Vagon {
     
