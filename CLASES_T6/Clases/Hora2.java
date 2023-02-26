@@ -3,8 +3,8 @@ package CLASES_T6.Clases;
 public class Hora2 {
     
     // ATRIBUTOS:
-    protected int hora;
-    protected int minutos;
+    private int hora;
+    private int minutos;
 
 
     // CONSTRUCTORES:
@@ -34,6 +34,11 @@ public class Hora2 {
     public int getHora2()
     {
         return hora;
+    }
+
+    public int getMinutos2()
+    {
+        return minutos;
     }
 
     public void inc()
@@ -82,6 +87,23 @@ public class Hora2 {
         String horaActual = hora + ":" + minutos;
         
         return horaActual;
+    }
+
+    
+    public boolean equals(Hora2 hora)
+    {
+        boolean iguales = true;
+
+        if(!(this.hora == hora.getHora2()))
+        {
+            iguales = false;
+        }
+        else if(!(this.minutos == hora.getMinutos2()))
+        {
+            iguales = false;
+        }
+
+        return iguales;
     }
 
 }

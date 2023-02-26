@@ -3,7 +3,7 @@ package CLASES_T6.Clases;
 public class HoraExacta extends Hora2{
     
     //ATRIBUTOS:
-    protected int segundos;
+    private int segundos;
     
 
     // CONTRUCTOR:
@@ -34,30 +34,19 @@ public class HoraExacta extends Hora2{
 
         if(this.segundos>=60)
         {
-            this.minutos++;
+            this.setMinutos2(this.getMinutos2() + 1);
 
             this.segundos-=60;
         }
     }
 
-    public boolean comparaHoras(HoraExacta hora)
+
+    public boolean equals(HoraExacta hora)
     {
-        /* Tengo que poner los atributos private para que no pueda 
-        acceder desde aqui a los atributos del padre, si no que tengo
-        que llamar a la funcion equals del padre*/
-        /* Falta definir el equals de Hora2 */
 
-        boolean iguales = true;
+        boolean iguales = super.equals(hora);
 
-        if(!(this.hora == hora.hora))
-        {
-            iguales = false;
-        }
-        else if(!(this.minutos == hora.minutos))
-        {
-            iguales = false;
-        }
-        else if(!(this.segundos == hora.segundos))
+        if(!(this.segundos == hora.segundos))
         {
             iguales = false;
         }
@@ -68,6 +57,7 @@ public class HoraExacta extends Hora2{
     @Override
     public String toString()
     {
-        return super.toString() + ":" + this.minutos;
+        return super.toString() + ":" + this.segundos;
     }
+
 }

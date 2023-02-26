@@ -69,8 +69,6 @@ public class Hora_ejercicio {
         System.out.println(re3);
  
  
- 
- 
         System.out.println(re1.equals(re2));
         System.out.println(re1.equals(re3));
  
