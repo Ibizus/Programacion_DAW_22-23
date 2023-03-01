@@ -5,15 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>NomadApp</title>
 </head>
 <body>
     <header>
+        <a href="#" class="homelink">
+            <h1 class="logo">NomadApp</h1>
+        </a>
+
         <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbutton">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+
             <ul>
-                <li><a href=""><img id="login" src="images/login.png" alt="Log In"/></a></li> 
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Anuncios</a>
+                <!-- <li><a href="#"><img id="login" src="images/login.png" alt="Log In"/></a></li> -->
+
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Anuncios</a>
                                 
                 <!-- start menu desplegable -->
                 <ul>
@@ -26,13 +37,17 @@
                 </li>
 
                 <li><a href="">Contacto</a></li>
-                <li><a href="">Usuario</a></li>
+                <li><a href="#" class="user">
+                    <i class="fa-solid fa-user"></i>
+                </a></li>
             </ul>
         </nav>
 
+        <!--
         <article id="LOGO">
             <h1>NomadApp</h1>
         </article>
+        -->
 
         <article id="barra"> <!--Barra de busqueda-->
 
@@ -175,7 +190,6 @@
         </article>
 
         <article>
-            <p>645 876 954</p>
             <p>hlopdia699@g.educaand.es</p>
             <section id="redes">
                 <img src="images/redes.png" alt="Enlace a RR.SS.">
