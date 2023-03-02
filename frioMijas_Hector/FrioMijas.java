@@ -1,3 +1,5 @@
+package frioMijas_Hector;
+
 public class FrioMijas {
 
     public static void main(String[] args) {
