@@ -25,25 +25,19 @@
 
 .homelink{
     position: absolute;
-    border: #E8C3AC solid 3px;
     left: 0px;
 }
 .logo{
     position: relative;
 }
-nav{
-    border: red solid 3px;
-}
 nav ul{
     float: right;
     width: 40%;
     padding-top: 30px;
-    border: orange solid 3px;
 }
 nav ul li{
     position:relative;
     display: inline-block;
-    border: yellow solid 3px;
 }
 #barra{
     position: absolute;
@@ -61,7 +55,6 @@ nav ul li{
 }
 #Categorias{
     position: relative;
-    border: red solid 3px;
 }
 .cat {
     display: inline-block;
@@ -96,13 +89,9 @@ nav{
     height: 20px;
 }
 nav ul li{
-    /*padding: 0% 2%;*/
-    margin: 1% 1%;
-
+    margin: 1%;
 }
 header {
-    border: blue solid 3px;
-    /*padding: 2% 5%;*/
     height: 6em;
     width: 100%;
 }
@@ -111,9 +100,7 @@ header {
     padding: .5em 2em;
 }
 .logo{
-    border: black solid 3px;
     font-size: 3em;
-
 }
 .checkbutton{
     font-size: 2em;
@@ -127,9 +114,6 @@ header {
 #check{
     display: none;
 }
-/*#login{
-    max-height: 1.8em;
-}*/
 #barra{
     width: 20%;
     margin: auto;
@@ -146,9 +130,20 @@ header {
     padding-top: 1%;
     height: 6em;
 }
+#Opiniones{
+    height: 280px;
+    padding-top: 20px;
+}
 .opinion{
+    height: 80%;
     width: 33%;
+    padding: 0% 1% 1%;
     margin: auto;
+}
+.opinion p{
+    shape-margin: 1%;
+    line-height: 25px;
+    font-size: 2vw;
 }
 #Categorias{
     height: 26em;
@@ -220,7 +215,7 @@ img, picture, video, iframe, figure{
 
 /************** MEDIA QUERIES ****************/
 
-@media (max-width: 952px){ /* Tablet */
+@media (max-width: 952px){ /***** Tablet *****/
     .homelink{
         padding: 1em 2em;
     }
@@ -238,16 +233,32 @@ img, picture, video, iframe, figure{
         width: 17%;
         top: 85px;
     }
+    #Opiniones{
+        height: 450px;
+    }
+    .opinion{
+        width: 100%;
+        height: 30%;
+    }
+    .opinion p{
+        line-height: 2.5vh;
+        margin: 1%;
+    }
+    .comillas{
+        max-width: 40px;
+        max-height: 40px;
+    }
 
 }
-@media (max-width: 858px){ /* Móvil */
+@media (max-width: 858px){ /***** Móvil *****/
     .checkbutton{
         display: block;
     }
     nav ul{
         position: fixed;
-        width: 50%;
-        height: 300px;
+        width: 40%;
+        height: 200px;
+        padding: 1% 2%;
         background: #E3F0A9;
         border-radius: 1em;
         top: 4em;
@@ -257,26 +268,26 @@ img, picture, video, iframe, figure{
     }
     nav ul li{
         display: block;
-        margin: 25px 0;
-        margin-right: 30px;
+        width: 100%;
+        margin: 20px 0px;
+        margin-right: 40px;
         line-height: 20px;
     }
     nav ul li a{
         font-size: larger;
+        padding: 0 35%;
     }
-    nav ul ul{ /* para que no aparezca el submenú en version móvil */
-        right: 200%;
+    /*nav ul ul{ /* para que no aparezca el submenú en version móvil *//*
+        background: none;
         display: none;
-    }
+    }*/
     nav ul ul li{ /* para que no aparezca el submenú en version móvil */
         display: none;
+        background: none;
     }
     nav ul li:hover > ul { /* para que no aparezca el submenú en version móvil */
         display:none;
-    }
-    nav li a:hover, nav li:active{
         background: none;
-        color: white;
     }
     #check:checked ~ ul{
         right: 0;
@@ -287,6 +298,7 @@ img, picture, video, iframe, figure{
         top: 50px;
     }
 }
+
 
 
 /********* BODY *********/
