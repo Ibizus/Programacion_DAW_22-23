@@ -146,7 +146,7 @@ header {
     font-size: 2vw;
 }
 #Categorias{
-    height: 26em;
+    height: 600px;
     padding: 0% 2% 0%;
 }
 #CabeceraCat{
@@ -158,7 +158,7 @@ header {
     width: 22%;
     margin: auto;
     margin-inline: 1%;
-    height: 17em;
+    height: 400px;
 }
 .cat h4{
     margin: 1%;
@@ -248,6 +248,12 @@ img, picture, video, iframe, figure{
         max-width: 40px;
         max-height: 40px;
     }
+    #Categorias{
+        height: 500px;
+    }
+    .cat{
+        height: 300px;
+    }
 
 }
 @media (max-width: 858px){ /***** Móvil *****/
@@ -297,8 +303,36 @@ img, picture, video, iframe, figure{
         right: 20%;
         top: 50px;
     }
+    #Categorias{
+        height: 860px;
+    }
+    #CabeceraCat{
+        height: 3em;
+    }
+    .cat{
+        width: 45%;
+        height: 340px;
+    }
+    .cat {
+        display: block;
+        position: absolute;
+        top: 100px;
+    }
+    #cat1{
+        left: 3%;
+    }
+    #cat2{
+        left: 51%;
+    }
+    #cat3{
+        left: 3%;
+        top: 480px;
+    }
+    #cat4{
+        left: 51%;
+        top: 480px;
+    }
 }
-
 
 
 /********* BODY *********/
@@ -411,7 +445,6 @@ section #Portada {
 #Categorias img:hover{
     filter:brightness(110%);
 }
-
 #Destacados{
     background-color: #D5D5D5;
 }
