@@ -1,5 +1,5 @@
 /*** Reseteo de Propiedades ***/
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;/*** Esto es para que si hay padding y border se incluya dentro del calculo (no se salga si pongo el % ajustado sin tener que tener en cuenta bordes)***/
@@ -23,17 +23,27 @@
 /************ LAYOUT  *************/
 /************************ display/position/float **********************/
 
+.logo{
+    position: relative;
+}
 .homelink{
     position: absolute;
     left: 0px;
 }
-.logo{
-    position: relative;
+.checkbutton{
+    float: right;
+    display: none;
+    color: #555555;
+    margin-top: 0.8em;
+    margin-right: 1em;
+    cursor: pointer;
+    font-size: 2em;
+}
+#check{
+    display: none;
 }
 nav ul{
     float: right;
-    width: 40%;
-    padding-top: 30px;
 }
 nav ul li{
     position:relative;
@@ -44,11 +54,8 @@ nav ul li{
     right: 40%;
     top: 50px;
 }
-#Portada{
-    background-image: url(images/Portada.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    object-fit: cover;
+#lupa{
+    float: inline-start;
 }
 .opinion{
     display: inline-block;
@@ -88,6 +95,10 @@ footer article{
 nav{
     height: 20px;
 }
+nav ul{
+    width: 40%;
+    padding-top: 30px;
+}
 nav ul li{
     margin: 1%;
 }
@@ -99,24 +110,14 @@ header {
     height: 6em;
     padding: .5em 2em;
 }
-.logo{
-    font-size: 3em;
-}
-.checkbutton{
-    font-size: 2em;
-    float: right;
-    color: #555555;
-    margin-top: 0.8em;
-    margin-right: 1em;
-    cursor: pointer;
-    display: none;
-}
-#check{
-    display: none;
-}
 #barra{
     width: 20%;
     margin: auto;
+}
+#lupa{
+    margin: 5px 10px;
+    max-height: 18px;
+    max-width: 18px;
 }
 #Portada{
     margin: 0% 5% 2%;
@@ -143,7 +144,7 @@ header {
 .opinion p{
     shape-margin: 1%;
     line-height: 25px;
-    font-size: 2vw;
+    font-size: 1.8vw;  ----------------------------------
 }
 #Categorias{
     height: 600px;
@@ -185,7 +186,6 @@ header {
 footer{
     height: 7.5em;
     padding: 2% 3%;
-
 }
 footer article{
     width: 24%;
@@ -203,7 +203,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Reklame;
     font-style:italic;
     font-weight:bold;
-  }
+}
 ul{
     list-style-type: none;
 }
@@ -213,7 +213,7 @@ img, picture, video, iframe, figure{
 }
 
 
-/************** MEDIA QUERIES ****************/
+/********************* MEDIA QUERIES ***********************/
 
 @media (max-width: 952px){ /***** Tablet *****/
     .homelink{
@@ -351,14 +351,17 @@ body{
 header {
     background-color: #CFE17D;
 }
+.logo{
+    font-size: 3em;
+}
 
 
 /********* NAV **********/
 
+/****** SUBMENÚ DESPLEGABLE: ******/
 /* enlaces del Menu */
 nav ul a {
     display:inline-block;
-    /*margin: 0.5% 4%;*/
     padding:2px 12px;
     font-size: 1.2em;
     font-weight: 700;
@@ -396,6 +399,8 @@ nav ul ul a {
 nav ul li:hover > ul {
     display:block;
 }
+/*** Hasta aquí llega el submenú ***/
+
 
 /* Barra de búsqueda */
 #barra{
@@ -405,17 +410,15 @@ nav ul li:hover > ul {
 #barra p{
     text-align: left;
 }
-#lupa{
-    float: inline-start;
-    margin: 5px 10px;
-    max-height: 18px;
-    max-width: 18px;
-}
+
 
 
 /*** SECTION ***/
-section #Portada {
+#Portada{
     background-image: url(images/Portada.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    object-fit: cover;
 }
 #Portada h1{
     color: white;
@@ -455,6 +458,7 @@ section #Portada {
     filter:brightness(110%);
 }
 
+
 /******** FOOTER *********/
 footer {
     background-color: #CFE17D;
@@ -462,5 +466,4 @@ footer {
 #logo{
     font-size: 2em;
 }
-
 
