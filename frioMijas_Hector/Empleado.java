@@ -22,13 +22,40 @@ public class Empleado {
         this.edad = edad;
         this.salario = salario;
         this.dni = dni;
-        this.codigo = codigoIncremental+1;
+        codigoIncremental++;
+        this.codigo = codigoIncremental;
     }
 
 
     // METODOS:
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
     public double getSalario() {
         return salario;
     }
 
+    @Override
+    public String toString()
+    {
+        return "\nEmpleado con código " + this.getCodigo() + ": " + this.getNombre() + " " + this.getApellidos() + 
+                ", con dni: " + this.getDni() + ", edad de " + this.getEdad() + " años, y " + this.getSalario() + " € de sueldo ";
+    }
 }

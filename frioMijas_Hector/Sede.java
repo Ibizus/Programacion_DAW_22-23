@@ -2,10 +2,9 @@ package frioMijas_Hector;
 
 public class Sede {
 
-    public enum Frigorifico{MINIBAR, FRIGORIFICO, ARCON, CAMARA};
-    
-
     // ATRIBUTOS:
+    static private int cod_Incremental;
+
     private String ciudad;
     private String direccion;
     private int cp;
@@ -14,8 +13,6 @@ public class Sede {
     private Empleado[] empleados_Sede;
     private Frigorifico[] equipos_Sede;
 
-    static private int cod_Incremental;
-
 
     // CONSTRUCTORES:
     public Sede(String ciudad, String direccion, int cp)
@@ -23,7 +20,10 @@ public class Sede {
         this.ciudad = ciudad;
         this.direccion = direccion;
         this.cp = cp;
-        this.codigoSede = cod_Incremental+1;
+        cod_Incremental++;
+        this.codigoSede = cod_Incremental;
+        this.empleados_Sede = new Empleado[0];
+        this.equipos_Sede = new Frigorifico[0];
     }
 
     public Sede(String ciudad, String direccion, int cp, Jefe jefeSede)
@@ -32,7 +32,6 @@ public class Sede {
         this.jefeSede = jefeSede;
     }
     
-
 
     // METODOS:
 
@@ -58,6 +57,27 @@ public class Sede {
         this.jefeSede = jefeSede;
     }
     
-    
+    @Override
+    public String toString()
+    {
+        String resultado = "";
+
+        resultado+= "Sede con código " + this.codigoSede + ", ubicada en: " + this.direccion + ", CP:" + this.cp + " (" + this.ciudad + ") " +
+                    "\nJefe: " + this.jefeSede.toString();
+
+                    for (int i = 0; i < this.empleados_Sede.length; i++)
+                    {
+                        resultado+= this.empleados_Sede[i].toString();
+                    }
+
+                    resultado+= "\nEquipos de la sede:";
+
+                    for (int i = 0; i < equipos_Sede.length; i++)
+                    {
+                        resultado+= this.equipos_Sede[i].toString();
+                    }
+
+        return resultado;
+    }
 
 }

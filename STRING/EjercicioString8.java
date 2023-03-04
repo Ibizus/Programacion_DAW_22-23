@@ -22,9 +22,9 @@ public class EjercicioString8 { // Identificar un caracter introducido por tecla
 
         // Una vez tenemos los valores, utilizamos los mismos booleanos para
         // comparar si el valor esta dentro del rango de digito y Mayuscula, así como es igual al espacio
-        System.out.println(((caracterNumero>48)&&(caracterNumero<57)) ? caracterUsuario + " es un dígito" : caracterUsuario + " no es un dígito");
+        System.out.println(((caracterNumero>=48)&&(caracterNumero<=57)) ? caracterUsuario + " es un dígito" : caracterUsuario + " no es un dígito");
         System.out.println((caracterNumero==32) ? caracterUsuario + " es un espacio" : caracterUsuario + " no es un espacio");
-        System.out.println(((caracterNumero>65)&&(caracterNumero<90)) ? caracterUsuario + " es un caracter en mayúscula" : caracterUsuario + " no es mayúscula");
+        System.out.println(((caracterNumero>=65)&&(caracterNumero<=90)) ? caracterUsuario + " es un caracter en mayúscula" : caracterUsuario + " no es mayúscula");
 
 
         sc.close();
