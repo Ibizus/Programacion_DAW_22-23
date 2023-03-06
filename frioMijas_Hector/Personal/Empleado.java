@@ -1,4 +1,4 @@
-package frioMijas_Hector;
+package frioMijas_Hector.Personal;
 
 public class Empleado {
     

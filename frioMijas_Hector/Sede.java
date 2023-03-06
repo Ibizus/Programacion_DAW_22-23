@@ -1,5 +1,9 @@
 package frioMijas_Hector;
 
+import frioMijas_Hector.Material.Equipo;
+import frioMijas_Hector.Personal.Empleado;
+import frioMijas_Hector.Personal.Jefe;
+
 public class Sede {
 
     // ATRIBUTOS:
@@ -11,7 +15,7 @@ public class Sede {
     private int codigoSede;
     private Jefe jefeSede;
     private Empleado[] empleados_Sede;
-    private Frigorifico[] equipos_Sede;
+    private Equipo[] equipos_Sede;
 
 
     // CONSTRUCTORES:
@@ -23,7 +27,7 @@ public class Sede {
         cod_Incremental++;
         this.codigoSede = cod_Incremental;
         this.empleados_Sede = new Empleado[0];
-        this.equipos_Sede = new Frigorifico[0];
+        this.equipos_Sede = new Equipo[0];
     }
 
     public Sede(String ciudad, String direccion, int cp, Jefe jefeSede)

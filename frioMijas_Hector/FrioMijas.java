@@ -1,5 +1,8 @@
 package frioMijas_Hector;
 
+import frioMijas_Hector.Personal.Empleado;
+import frioMijas_Hector.Personal.Jefe;
+
 public class FrioMijas {
 
     public static void main(String[] args) {
