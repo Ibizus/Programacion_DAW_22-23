@@ -89,9 +89,11 @@ public class Hora2 {
         return horaActual;
     }
 
-    
-    public boolean equals(Hora2 hora)
+    @Override
+    public boolean equals(Object objeto)
     {
+        Hora2 hora = (Hora2)objeto;
+
         boolean iguales = true;
 
         if(!(this.hora == hora.getHora2()))

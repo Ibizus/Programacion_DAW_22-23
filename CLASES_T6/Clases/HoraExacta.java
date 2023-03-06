@@ -28,21 +28,31 @@ public class HoraExacta extends Hora2{
         return setSeg;
     }
 
+    // public void inc()
+    // {
+    //     this.segundos++;
+
+    //     if(this.segundos>=60)
+    //     {
+    //         this.setMinutos2(this.getMinutos2() + 1);
+
+    //         this.segundos-=60;
+    //     }
+    // }
+
     public void inc()
     {
-        this.segundos++;
-
-        if(this.segundos>=60)
+        if(!setSegundo2(this.segundos+1))
         {
-            this.setMinutos2(this.getMinutos2() + 1);
-
-            this.segundos-=60;
+            setSegundo2(0);
+            super.inc();
         }
     }
 
-
-    public boolean equals(HoraExacta hora)
+    @Override
+    public boolean equals(Object objeto)
     {
+        HoraExacta hora = (HoraExacta)objeto;
 
         boolean iguales = super.equals(hora);
 
