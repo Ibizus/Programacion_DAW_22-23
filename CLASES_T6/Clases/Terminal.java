@@ -36,11 +36,8 @@ public class Terminal {
 
     public void llama(Terminal receptor, int tiempo)
     {
-        // this.segLlamadas += tiempo;
-        // receptor.segLlamadas += tiempo; 
-
-        // Usando setters y getters:
         this.setSegLlamadas(this.getSegundos() + tiempo);
+        
         receptor.setSegLlamadas(receptor.getSegundos() + tiempo);
     }
 
