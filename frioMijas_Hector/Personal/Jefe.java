@@ -1,7 +1,5 @@
 package frioMijas_Hector.Personal;
 
-import frioMijas_Hector.Password;
-
 public class Jefe extends Empleado{
     
     // ATRIBUTOS:
