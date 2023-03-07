@@ -1,0 +1,87 @@
+/*** Reseteo de Propiedades ***/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/****** LAYOUT  ******/
+/*************** display/position/float ***************/
+
+/********** height/width/padding/border/margin **********/
+header{
+    margin: 2%;
+}
+nav{
+    float: right;
+    margin: 3%;
+    padding: 1%;
+}
+nav ul li{
+    display: inline-block;
+    margin: 0 1%;
+}
+
+#cajacentral{
+    max-width: 1280px;
+    margin: 0 10%;
+    padding: 2%;
+    border: red solid 2px;
+}
+
+
+
+
+
+/************************* Propiedades Generales *********************/
+a{  /*a:link, a:visited, a:active*/
+    text-decoration: none;
+}
+h1{
+
+}
+h2{
+
+}
+h3{
+
+}
+
+/*** BODY ***/
+body{
+    background-image: url(images/bg.png);
+    border: green solid 2px;
+}
+#cajacentral{
+    background-color: white;
+}
+
+/*** HEADER ***/
+header{
+    border: blue solid 2px;
+}
+
+/*** NAV ***/
+nav{
+    background-color: black;
+}
+nav a{
+    color: white;
+}
+
+/*** SECTION BANNER ***/
+
+
+/*** MAIN ***/
+
+
+/*** ASIDE ***/
+aside{
+}
+
+/*** FOOTER ***/
+footer{
+    background-color: black;
+    color: white;
+}
+
