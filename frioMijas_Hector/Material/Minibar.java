@@ -25,4 +25,13 @@ public class Minibar extends Equipo {
         return numBaldas;
     }
 
+    @Override
+    public String toString()
+    {
+        String resultado = "";
+
+        resultado += super.toString() + " - Minibar de " + this.getNumBaldas() + " baldas y con consumo: " + this.getConsumo();
+
+        return resultado;
+    }
 }

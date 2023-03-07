@@ -40,21 +40,57 @@ public class Sede {
     // METODOS:
 
     /**
+     * Inserta un equipo al final del array
+     * @param nuevoEquipo
+     */
+    public void addEquipo(Equipo nuevoEquipo)
+    {
+        Equipo[] nuevo = new Equipo[this.equipos_Sede.length+1];
+
+        for (int i = 0; i < this.equipos_Sede.length; i++)
+        {
+            nuevo[i] = this.equipos_Sede[i];
+        }
+
+        nuevo[nuevo.length-1] = nuevoEquipo;
+
+        this.equipos_Sede = nuevo;
+    }
+
+    /**
      * Inserta un empleado al final del array
      * @param nuevoEmpleado
      */
     public void addEmpleado(Empleado nuevoEmpleado)
     {
-        Empleado[] nuevo = new Empleado[this.empleados_Sede.length+1];
+        boolean yaEsta = false;
 
+        // Comprobamos si el empleado ya trabaja en esta sede:
         for (int i = 0; i < this.empleados_Sede.length; i++)
         {
-            nuevo[i] = this.empleados_Sede[i];
+            if(nuevoEmpleado.equals(this.empleados_Sede[i]))
+            {
+                yaEsta = true;
+            }
         }
 
-        nuevo[nuevo.length-1] = nuevoEmpleado;
+        if(!yaEsta)// En caso contrario creamos el nuevo array y añadimos al empleado
+        {
+            Empleado[] nuevo = new Empleado[this.empleados_Sede.length+1];
 
-        this.empleados_Sede = nuevo;
+            for (int i = 0; i < this.empleados_Sede.length; i++)
+            {
+                nuevo[i] = this.empleados_Sede[i];
+            }
+    
+            nuevo[nuevo.length-1] = nuevoEmpleado;
+    
+            this.empleados_Sede = nuevo;
+        }
+        else
+        {
+            System.out.println("Empleado duplicado");
+        }
     }
 
     public void setJefe(Jefe jefeSede) {
@@ -69,11 +105,13 @@ public class Sede {
         resultado+= "Sede con código " + this.codigoSede + ", ubicada en: " + this.direccion + ", CP:" + this.cp + " (" + this.ciudad + ") " +
                     "\nJefe: " + this.jefeSede.toString();
 
+                    // Imprimimos a cada empleado:
                     for (int i = 0; i < this.empleados_Sede.length; i++)
                     {
                         resultado+= this.empleados_Sede[i].toString();
                     }
 
+                    // Imprimimos los equipos frigorificos de la sede:
                     resultado+= "\nEquipos de la sede:";
 
                     for (int i = 0; i < equipos_Sede.length; i++)
@@ -84,4 +122,9 @@ public class Sede {
         return resultado;
     }
 
+    public Empleado[] getEmpleados_Sede() {
+        return this.empleados_Sede;
+    }
+
+    
 }

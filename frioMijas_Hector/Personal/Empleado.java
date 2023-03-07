@@ -58,4 +58,18 @@ public class Empleado {
         return "\nEmpleado con código " + this.getCodigo() + ": " + this.getNombre() + " " + this.getApellidos() + 
                 ", con dni: " + this.getDni() + ", edad de " + this.getEdad() + " años, y " + this.getSalario() + " € de sueldo ";
     }
+
+    @Override
+    public boolean equals(Object objeto)
+    {
+        Empleado persona = (Empleado)objeto;
+        boolean iguales = false;
+
+        if(this.dni.equals(persona.getDni()))
+        {
+            iguales = true;
+        }
+
+        return iguales;
+    }
 }

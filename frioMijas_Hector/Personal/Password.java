@@ -8,7 +8,8 @@ class Password {
     private String contraseña;
 
 
-    // CONSTRUCTORES:
+    // CONSTRUCTORES:   "Como no es visible no necesito constructor"
+
     public Password()
     {
         this.longitud = 8;
@@ -25,40 +26,30 @@ class Password {
     // METODOS:
     public void generaPassword()
     {
-        boolean passOk = false;
         int longitud = this.getLongitud();
 
-        String newPass = "";
-        do
+        this.contraseña = "";
+
+        for (int i = 0; i < longitud; i++)
         {
-            // newPass = ""; // reseteo contraseña para volver a crearla
+            int tipo = (int)(Math.random()*3+1);
 
-            for (int i = 0; i < longitud-1; i++)
+            switch(tipo)
             {
-                int tipo = (int)(Math.random()*3+1);
+                case 1:
+                    this.contraseña += addCapital();
+                    break;
+                
+                case 2:
+                    this.contraseña += addNumber();
+                    break;
 
-                switch(tipo)
-                {
-                    case 1:
-                        newPass += addCapital();
-                        break;
-                    
-                    case 2:
-                        newPass += addNumber();
-                        break;
-
-                    case 3:
-                        newPass += addLower();
-                        break;
-                    default:
-                }
+                case 3:
+                    this.contraseña += addLower();
+                    break;
+                default:
             }
-
-            passOk = esFuerte(newPass);
-
-        }while(!passOk);
-
-        this.contraseña = newPass;
+        }
     }
 
     private String addCapital()
@@ -84,18 +75,18 @@ class Password {
         return add;
     }
 
-    public boolean esFuerte(String contraseña)
+    public boolean esFuerte()
     {
         int capitalCount = 0;
         int lowerCount = 0;
         int numberCount = 0;
         boolean fuerte = false;
 
-        longitud = contraseña.length();
+        longitud = this.contraseña.length();
 
         for (int i = 0; i < longitud-1; i++)
         {
-            int valorAscii = Integer.valueOf(contraseña.charAt(i));
+            int valorAscii = Integer.valueOf(this.contraseña.charAt(i));
 
 
             if((valorAscii>=48)&&(valorAscii<=57))
@@ -129,7 +120,7 @@ class Password {
 
     private int getLongitud()
     {
-        return longitud;
+        return this.longitud;
     }
 
     private void setLongitud(int longitud)
@@ -139,7 +130,7 @@ class Password {
 
     public String getContraseña()
     {
-        return contraseña;
+        return this.contraseña;
     }
 
 }

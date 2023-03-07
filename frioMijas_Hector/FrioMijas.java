@@ -1,7 +1,12 @@
 package frioMijas_Hector;
 
+import frioMijas_Hector.Material.Arcon;
+import frioMijas_Hector.Material.Camara;
+import frioMijas_Hector.Material.Frigorifico;
+import frioMijas_Hector.Material.Minibar;
 import frioMijas_Hector.Personal.Empleado;
 import frioMijas_Hector.Personal.Jefe;
+
 
 public class FrioMijas {
 
@@ -52,27 +57,65 @@ public class FrioMijas {
         System.out.println(sede2);
 
         /*
-         * HACER *
+         * HACER:
          * Mostrar si la contraseña de los jefes es no Fuerte
          */
+        
+        //  boolean fuerte = esFuerte(jefe1.getClave());
+        // System.out.println(fuerte);
+        
+        // fuerte = esFuerte(jefe2.getClave());
+        // System.out.println(fuerte);
+
 
          /*
-          * HACER
+          * HACER:
           * Generar contraseña de 10 elementos que sea fuerte para cada uno de los jefes
           */
+        
+        // boolean passOk = false;
+        // do
+        // {
+        //     jefe1.generaPassword(10);
+
+        //     passOk = jefe1.getClave().esFuerte();
+
+        // }while(!passOk);
+
+
 
          /*
-         * HACER *
+         * HACER:
          * Empleados de la sede2 con sueldo entre 500 y 1500 
          */
+        System.out.println("Empleados de la sede 2 con sueldos entre 500€ y 1.500€");
+        for (int i = 0; i < sede2.getEmpleados_Sede().length; i++)
+        {
+            if(sede2.getEmpleados_Sede()[i].getSalario() >= 500 && sede2.getEmpleados_Sede()[i].getSalario() <= 1500)
+            {
+                System.out.println(sede2.getEmpleados_Sede()[i].toString());
+            }
+        }
+
+
 
         /*
-         * HACER *
+         * HACER:
          * Crea 5 equipos frigorificos diferentes y asignalos a la 2º sede y muéstralos a continuación   
          */
+        Frigorifico frigo = new Frigorifico(185, 60, 60, 500, "Balay");
+        Camara refrigerador = new Camara(200, 200, 100, 2500, "Frost", -30, 10);
+        Arcon congelador = new Arcon(80, 1500, 60, 1000, "Hisense", "frontal");
+        Minibar mini = new Minibar(70, 45, 50, 300, "Bosch", 2);
+        Frigorifico frigoAmericano = new Frigorifico(200, 100, 60, 1000, "Samsung");
 
-         
+        sede2.addEquipo(frigo);
+        sede2.addEquipo(refrigerador);
+        sede2.addEquipo(congelador);
+        sede2.addEquipo(mini);
+        sede2.addEquipo(frigoAmericano);
 
+        System.out.println(sede2);
 
 
 

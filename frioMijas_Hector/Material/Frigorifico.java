@@ -14,13 +14,26 @@ public class Frigorifico extends Equipo {
 
     
     // METODOS:
-    public double getVolumen()
-    {
-        return (super.getAlto()*super.getAncho()*super.getProfundidad());
-    }
+
+    /*****      este metodo lo tengo en la clase padre   *****/
+    // public double getVolumen()
+    // {
+    //     return (super.getAlto()*super.getAncho()*super.getProfundidad());
+    // }
 
     public double getConsumo()
     {
         return super.getFrigorias()*3;
     }
+
+    @Override
+    public String toString()
+    {
+        String resultado = "";
+
+        resultado += super.toString() + " - Frigorífico con consumo: " + this.getConsumo();
+
+        return resultado;
+    }
+
 }

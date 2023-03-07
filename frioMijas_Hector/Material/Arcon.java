@@ -25,7 +25,14 @@ public class Arcon extends Equipo{
     {
         return super.getFrigorias()*2;
     }
-
     
+    @Override
+    public String toString()
+    {
+        String resultado = "";
 
+        resultado += super.toString() + " - Arcon con apertura " + this.getApertura() + " y consumo: " + this.getConsumo();
+
+        return resultado;
+    }
 }

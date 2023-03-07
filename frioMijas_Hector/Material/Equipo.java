@@ -1,6 +1,6 @@
 package frioMijas_Hector.Material;
 
-public class Equipo {
+public abstract class Equipo {
 
 
     // ATRIBUTOS:
@@ -45,6 +45,11 @@ public class Equipo {
 
     public String getMarca() {
         return marca;
+    }
+
+    public double getVolumen()
+    {
+        return (this.getAlto()*this.getAncho()*this.getProfundidad());
     }
 
     @Override

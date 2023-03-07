@@ -34,5 +34,13 @@ public class Camara extends Equipo{
         return tempMax;
     }
 
+    @Override
+    public String toString()
+    {
+        String resultado = "";
 
+        resultado += super.toString() + " - Cámara con temperatura mínima " + this.getTempMin() + "º y máxima de " + this.getTempMax() + "º, consumo: " + this.getConsumo();
+
+        return resultado;
+    }
 }
