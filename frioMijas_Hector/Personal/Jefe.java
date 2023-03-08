@@ -26,14 +26,14 @@ public class Jefe extends Empleado{
         this.clave.generaPassword(i);
     }
 
-    
-    public Password getClave() {
-        return this.clave;
+    public boolean esFuerte()
+    {
+        return this.clave.esFuerte();
     }
-
-    // public String getClave() {
-    //     return this.clave.getContraseña();
-    // }
+ 
+    public String getContraseña() {
+        return this.clave.getContraseña();
+    }
 
 
     @Override

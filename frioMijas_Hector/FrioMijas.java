@@ -61,11 +61,14 @@ public class FrioMijas {
          * Mostrar si la contraseña de los jefes es no Fuerte
          */
         
-        //  boolean fuerte = esFuerte(jefe1.getClave());
-        // System.out.println(fuerte);
+        boolean fuerte = jefe1.esFuerte();
+        String resultado = (fuerte)?" SÍ ":" NO ";
+        System.out.println("La contraseña de " + jefe1.getNombre() + resultado + "es fuerte");
         
-        // fuerte = esFuerte(jefe2.getClave());
-        // System.out.println(fuerte);
+        fuerte = jefe2.esFuerte();
+        resultado = (fuerte)?" SÍ ":" NO ";
+        System.out.println("La contraseña de " + jefe2.getNombre() + resultado + "es fuerte");
+
 
 
          /*
@@ -73,14 +76,17 @@ public class FrioMijas {
           * Generar contraseña de 10 elementos que sea fuerte para cada uno de los jefes
           */
         
-        // boolean passOk = false;
-        // do
-        // {
-        //     jefe1.generaPassword(10);
+        boolean passOk = false;
+        do
+        {
+            jefe1.generaPassword(10);
 
-        //     passOk = jefe1.getClave().esFuerte();
+            passOk = jefe1.esFuerte();
 
-        // }while(!passOk);
+        }while(!passOk);
+
+        System.out.println("Nueva contraseña segura de Jefe 1: " + jefe1.getContraseña());
+
 
 
 
@@ -88,7 +94,7 @@ public class FrioMijas {
          * HACER:
          * Empleados de la sede2 con sueldo entre 500 y 1500 
          */
-        System.out.println("Empleados de la sede 2 con sueldos entre 500€ y 1.500€");
+        System.out.println("\nEmpleados de la sede 2 con sueldos entre 500€ y 1.500€");
         for (int i = 0; i < sede2.getEmpleados_Sede().length; i++)
         {
             if(sede2.getEmpleados_Sede()[i].getSalario() >= 500 && sede2.getEmpleados_Sede()[i].getSalario() <= 1500)
@@ -118,10 +124,6 @@ public class FrioMijas {
         System.out.println(sede2);
 
 
-
-
-        
-        
     }
     
 }
