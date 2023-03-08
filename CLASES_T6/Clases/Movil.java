@@ -47,6 +47,8 @@ public class Movil extends Terminal{
             case BISONTE: 
                 coste = (this.tiempoTarificado*0.3)/60;
                 break;
+            default:
+                break;
         }
         return coste;
     }
