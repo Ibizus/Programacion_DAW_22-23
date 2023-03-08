@@ -84,9 +84,19 @@ public class FrioMijas {
             passOk = jefe1.esFuerte();
 
         }while(!passOk);
-
         System.out.println("Nueva contraseña segura de Jefe 1: " + jefe1.getContraseña());
 
+        
+        passOk = false;
+        do
+        {
+            jefe2.generaPassword(10);
+
+            passOk = jefe2.esFuerte();
+
+        }while(!passOk);
+
+        System.out.println("Nueva contraseña segura de Jefe 2: " + jefe2.getContraseña());
 
 
 

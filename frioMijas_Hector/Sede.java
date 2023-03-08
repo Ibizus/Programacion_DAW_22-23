@@ -102,10 +102,11 @@ public class Sede {
     {
         String resultado = "";
 
-        resultado+= "Sede con código " + this.codigoSede + ", ubicada en: " + this.direccion + ", CP:" + this.cp + " (" + this.ciudad + ") " +
+        resultado+= "\nSede con código " + this.codigoSede + ", ubicada en: " + this.direccion + ", CP:" + this.cp + " (" + this.ciudad + ") " +
                     "\nJefe: " + this.jefeSede.toString();
 
                     // Imprimimos a cada empleado:
+                    resultado+= "\nEmpleados de la sede:";
                     for (int i = 0; i < this.empleados_Sede.length; i++)
                     {
                         resultado+= this.empleados_Sede[i].toString();

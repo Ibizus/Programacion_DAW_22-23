@@ -55,7 +55,7 @@ public abstract class Equipo {
     @Override
     public String toString()
     {
-        return "Equipo " + this.getMarca() + " de " + this.getFrigorias() + " frigorías, con una superficie de " +
+        return "\nEquipo marca " + this.getMarca() + " de " + this.getFrigorias() + " frigorías, con una superficie de " +
         this.getProfundidad() + " x " + this.getAncho() + " y una altura de " + this.getAlto();
     }
     
