@@ -6,24 +6,15 @@ public class ProfesorTitular extends Profesor{
     private int antiguedad;
 
     // CONSTRUCTOR:
-    public
-
-    public ProfesorTitular(double salario, String materia)
+    public ProfesorTitular(String nombre, double salario, String materia, boolean tutor, int antiguedad)
     {
-        this.salarioBase = salario;
-        this.materia = materia;
-        this.esTutor = false;
+        super(nombre, salario, materia, tutor);
+        this.antiguedad = antiguedad;
     }
 
-    public ProfesorTitular(double salario, String materia, boolean tutor)
+    public ProfesorTitular(String nombre, String tlf, String mail, double salario, String materia, boolean tutor, int antiguedad)
     {
-        this(salario, materia);
-        this.esTutor = tutor;
-    }
-
-    public ProfesorTitular(double salario, String materia, boolean tutor, int antiguedad)
-    {
-        this(salario, materia, tutor);
+        super(nombre, tlf, mail, salario, materia, tutor);
         this.antiguedad = antiguedad;
     }
 

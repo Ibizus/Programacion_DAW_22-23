@@ -4,17 +4,14 @@ public class ProfesorInterino extends Profesor{
     
 
     // CONSTRUCTOR:
-    public ProfesorInterino(double salario, String materia)
+    public ProfesorInterino(String nombre, double salario, String materia, boolean tutor)
     {
-        this.salarioBase = salario;
-        this.materia = materia;
-        this.esTutor = false;
+        super(nombre, salario, materia, tutor);
     }
 
-    public ProfesorInterino(double salario, String materia, boolean tutor)
+    public ProfesorInterino(String nombre, String tlf, String mail, double salario, String materia, boolean tutor)
     {
-        this(salario, materia);
-        this.esTutor = tutor;
+        super(nombre, tlf, mail, salario, materia, tutor);
     }
 
     @Override

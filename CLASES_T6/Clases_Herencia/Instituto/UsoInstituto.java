@@ -6,7 +6,7 @@ public class UsoInstituto {
 
         Persona[] asistentes = new Persona[0];
 
-        ProfesorTitular pT1 = new ProfesorTitular(0, null, false, 0)
+        ProfesorTitular pT1 = new ProfesorTitular(null, null, null, 0, null, false, 0)
 
 
 

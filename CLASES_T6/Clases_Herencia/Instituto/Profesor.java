@@ -9,13 +9,19 @@ public abstract class Profesor extends Persona{
     protected boolean esTutor;
     
     // CONSTRUCTORES:
-    public Profesor(String nombre)
+    public Profesor(String nombre, double salario, String materia, boolean tutor)
     {
         super(nombre);
+        this.salarioBase = salario;
+        this.materia = materia;
+        this.esTutor = tutor;
     }
-    public Profesor(String nombre, String tlf, String mail)
+    public Profesor(String nombre, String tlf, String mail, double salario, String materia, boolean tutor)
     {
         super(nombre, tlf, mail);
+        this.salarioBase = salario;
+        this.materia = materia;
+        this.esTutor = tutor;  
     }
 
     // METODOS:
