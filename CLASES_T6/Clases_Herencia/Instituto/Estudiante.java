@@ -12,6 +12,7 @@ public class Estudiante extends Persona{
     {
         super(nombre, tlf, mail);
     }
+    
     public Estudiante(String nombre, String tlf, String mail, int num, int media)
     {
         this(nombre, tlf, mail);
