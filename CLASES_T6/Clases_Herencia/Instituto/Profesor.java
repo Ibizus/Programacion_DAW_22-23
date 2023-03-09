@@ -25,6 +25,6 @@ public abstract class Profesor extends Persona{
     }
 
     // METODOS:
-    abstract double getSalario();
+    public abstract double getSalario();
 
 }

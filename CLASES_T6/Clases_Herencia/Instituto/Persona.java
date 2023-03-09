@@ -41,4 +41,14 @@ public class Persona {
         return "\nNombre: " + this.getNombre() + ", teléfono: " + this.getTelefono() + ", email: " + this.getEmail();
     }
 
+    @Override
+    public boolean equals(Object objeto)
+    {
+        boolean iguales = false;
+
+        Persona persona = (Persona)objeto;
+
+        return this.nombre.equals(persona.getNombre()) && this.email.equals(persona.getEmail());
+    }
+
 }

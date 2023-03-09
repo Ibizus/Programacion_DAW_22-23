@@ -15,12 +15,25 @@ public class ProfesorInterino extends Profesor{
     }
 
     @Override
-    double getSalario()
+    public double getSalario()
     {
         int extraTutor = (this.esTutor?25:0);
 
         return (this.salarioBase + extraTutor);
     }
 
+    @Override
+    public String toString()
+    {
+        return "\nProfesor interino: " + super.toString() + ". Imparte " + this.materia;
+    }
+
+    @Override
+    public boolean equals(Object objeto)
+    {
+        ProfesorInterino profe = (ProfesorInterino)objeto;
+
+        return super.equals(objeto) && this.materia.equals(profe.materia);
+    }
 
 }

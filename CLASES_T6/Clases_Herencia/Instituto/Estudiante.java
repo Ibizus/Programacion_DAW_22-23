@@ -5,7 +5,7 @@ public class Estudiante extends Persona{
 
     // ATRIBUTOS:
     private int numCarnetEstudiante;
-    private int notaMedia;
+    private double notaMedia;
 
     // CONTRUCTOR:
     public Estudiante(String nombre, String tlf, String mail)
@@ -13,7 +13,7 @@ public class Estudiante extends Persona{
         super(nombre, tlf, mail);
     }
     
-    public Estudiante(String nombre, String tlf, String mail, int num, int media)
+    public Estudiante(String nombre, String tlf, String mail, int num, double media)
     {
         this(nombre, tlf, mail);
         this.numCarnetEstudiante = num;
@@ -26,7 +26,7 @@ public class Estudiante extends Persona{
         return numCarnetEstudiante;
     }
 
-    public int getNotaMedia() {
+    public double getNotaMedia() {
         return notaMedia;
     }
 
@@ -35,5 +35,16 @@ public class Estudiante extends Persona{
     {
         return "\nEstudiante: " + super.toString() + " con número de carnet " + this.getNumCarnetEstudiante() + " y nota media: " + this.getNotaMedia();
     }
+
+    @Override
+    public boolean equals(Object objeto)
+    {
+        boolean iguales = false;
+
+        Estudiante persona = (Estudiante)objeto;
+
+        return super.equals(objeto) && this.numCarnetEstudiante == persona.numCarnetEstudiante;
+    }
+
     
 }

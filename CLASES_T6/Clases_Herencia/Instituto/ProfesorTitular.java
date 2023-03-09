@@ -4,6 +4,7 @@ public class ProfesorTitular extends Profesor{
  
     // ATRIBUTOS:
     private int antiguedad;
+    
 
     // CONSTRUCTOR:
     public ProfesorTitular(String nombre, double salario, String materia, boolean tutor, int antiguedad)
@@ -24,6 +25,14 @@ public class ProfesorTitular extends Profesor{
         int extraTutor = (this.esTutor?30:0);
 
         return (this.salarioBase + (10*this.antiguedad) + extraTutor);
+    }
+
+    @Override
+    public boolean equals(Object objeto)
+    {
+        ProfesorTitular profe = (ProfesorTitular)objeto;
+
+        return super.equals(objeto) && this.antiguedad == profe.antiguedad;
     }
 
     @Override
