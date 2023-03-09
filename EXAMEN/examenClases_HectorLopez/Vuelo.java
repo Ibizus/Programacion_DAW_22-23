@@ -6,6 +6,7 @@ import EXAMEN.examenClases_HectorLopez.material.Avion;
 import EXAMEN.examenClases_HectorLopez.material.Paracaidas;
 import EXAMEN.examenClases_HectorLopez.personal.Cliente;
 import EXAMEN.examenClases_HectorLopez.personal.Piloto;
+import EXAMEN.examenClases_HectorLopez.personal.Saltador;
 
 public class Vuelo {
     
@@ -15,7 +16,6 @@ public class Vuelo {
     static private int contadorSaltos;
 
     private Cliente[] saltadores;
-    private Paracaidas[] asignados;
     private Piloto piloto;
     private Avion avion;
     private LocalDate fechaSalto;
@@ -27,8 +27,7 @@ public class Vuelo {
         this.avion = avion;
         this.piloto = piloto;
         this.saltadores = new Cliente[0];
-        this.asignados = new Paracaidas[0];
-        LocalDate fechaSalto = LocalDate.now();
+        this.fechaSalto = LocalDate.now();
 
         this.numeroSalto = contadorSaltos+1;
         contadorSaltos++;
@@ -41,7 +40,12 @@ public class Vuelo {
         // Comprobamos si caben mas saltadores:
         if(this.saltadores.length >= this.avion.getCapacidad())
         {
-            System.out.println("No caben mas saltadores dentor del avion");
+            System.out.println("No caben más saltadores en el avion");
+
+        } // Comprobamos que la altura de salto del cliente no supera la altura maxima del avión:
+        else if(this.avion.getAlturaMax() < cliente.getAlturaSalto())
+        {
+            System.out.println("La altura de salto del cliente es superior a la altura máxima del avión");
         }
         else
         {
@@ -68,32 +72,13 @@ public class Vuelo {
                 {
                     nuevo[i] = this.saltadores[i];
                 }
-        
-                nuevo[nuevo.length-1] = cliente;
+
+                // Añadimos al saltador en la posición nueva creada:
+                nuevo[nuevo.length-1] = new Saltador(cliente, para1, para2);
         
                 this.saltadores = nuevo;
-
-                // Una vez asignado el cliente asignamos los dos paracaidas usados:
-                addParacaidas(para1);
-                addParacaidas(para2);
             }
         }
-
-
-    }
-
-    public void addParacaidas(Paracaidas para)
-    {
-        Paracaidas[] nuevo = new Paracaidas[this.asignados.length+1];
-
-        for (int i = 0; i < this.asignados.length; i++)
-        {
-            nuevo[i] = this.asignados[i];
-        }
-
-        nuevo[nuevo.length-1] = para;
-
-        this.asignados = nuevo;
     }
 
 
@@ -128,22 +113,16 @@ public class Vuelo {
 
         for (int i = 0; i < saltadores.length; i++)
         {
-            resultado += saltadores[i].informacion();
+            resultado += saltadores[i].informacion() + "\n";
         }
         return resultado;
     }
 
     public String informacionVuelo()
     {
-        String resultado = "\n\n----- Vuelo -------\n";
-
-        resultado += "Codigo: " + this.numeroSalto + this.piloto + this.avion + "\nFecha del vuelo: " +
-         this.fechaSalto + "\nSaltadores: " + this.saltadores.length + 
-         "\n-------------------------------------------------\n";
-
-        resultado+= saltadores();
-
-        return resultado;
+        return "\n\n----- Vuelo -------\n" + "Codigo: " + this.numeroSalto + this.piloto.informacion() + 
+        this.avion + "\nFecha del vuelo: " + this.fechaSalto + "\nSaltadores: " + 
+        this.saltadores.length + "\n-------------------------------------------------\n" + saltadores();
     }
 
     public String ordenSalto()

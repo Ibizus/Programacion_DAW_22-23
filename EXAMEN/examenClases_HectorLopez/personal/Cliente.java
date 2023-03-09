@@ -25,16 +25,11 @@ public class Cliente extends Persona{
     }
 
 
-
     // METODOS:
-
-    // GET ALTURA
-
     public String informacion()
     {
-        return super.getNombre() + " " + super.getApellidos() + " --> " + this.alturaSalto + " metros\n";
+        return super.getNombre() + " " + super.getApellidos() + " --> " + this.alturaSalto + " metros";
     }
-
 
     @Override
     public boolean equals(Object objeto)
@@ -48,5 +43,12 @@ public class Cliente extends Persona{
         return alturaSalto;
     }
 
+    public String getTlf() {
+        return tlf;
+    }
 
+    public boolean isSeguro() {
+        return seguro;
+    }
+    
 }

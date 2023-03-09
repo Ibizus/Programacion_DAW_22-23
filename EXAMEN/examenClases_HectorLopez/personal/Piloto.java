@@ -18,7 +18,7 @@ public class Piloto extends Persona{
     @Override
     public String informacion()
     {
-        return "\nPiloto: " + super.getNombre() + " " + super.getApellidos() + " Titulo: " + this.getAño() + "\n";
+        return "\nPiloto: " + super.getNombre() + " " + super.getApellidos() + " Titulo: " + this.getAño();
     }
 
     public int getAño() {

@@ -100,9 +100,8 @@ public class AcademiaVuelo {
         vuelo2.salto();
         
                 
-
     }
-    /* SALIDAVQUE DEBE DE DARSE
+    /* SALIDA QUE DEBE DE DARSE:
 
     XXXXXXXXX  Añadimos saltadores a Vuelo1 XXXXXXXXXXXXXXXX
 
