@@ -22,8 +22,8 @@ public class Paracaidas {
         this.marca = marca;
         this.encargado = encargado;
 
-        this.codigo = contadorCodigo+1;
         contadorCodigo++;
+        this.codigo = contadorCodigo;
     }
 
     // METODOS:

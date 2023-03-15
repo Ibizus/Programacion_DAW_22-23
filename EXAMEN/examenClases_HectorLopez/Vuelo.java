@@ -29,8 +29,8 @@ public class Vuelo {
         this.saltadores = new Cliente[0];
         this.fechaSalto = LocalDate.now();
 
-        this.numeroSalto = contadorSaltos+1;
         contadorSaltos++;
+        this.numeroSalto = contadorSaltos;
     }
 
     // METODOS:
