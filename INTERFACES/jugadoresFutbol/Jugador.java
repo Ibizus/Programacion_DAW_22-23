@@ -1,6 +1,6 @@
 package INTERFACES.jugadoresFutbol;
 
-public class Jugador implements Jugar_I{
+public class Jugador implements Jugar_I, Comparable{
     
 
     // ATRIBUTOS:
@@ -39,6 +39,7 @@ public class Jugador implements Jugar_I{
         this.numGoles + " - Faltas " + this.numFaltas;
     }
 
+    
     @Override
     public boolean equals(Object objeto)
     {
@@ -54,6 +55,7 @@ public class Jugador implements Jugar_I{
         return iguales;
     }
 
+
     @Override
     public void hacerGol()
     {
@@ -61,11 +63,44 @@ public class Jugador implements Jugar_I{
         System.out.println("Gooooooooool de " + this.apodo + "!!");
     }
 
+
     @Override
     public void cometerFalta()
     {
         this.numFaltas++;
         System.out.println("Terrible falta de " + this.apodo + "!");
+    }
+
+
+    @Override
+    public int compareTo(Object o)
+    {
+        Jugador nuevo = (Jugador)o;
+        
+        int diferencia = this.licencia - nuevo.licencia;
+        
+        return diferencia;
+    }
+
+
+    public String getNombre() {
+        return nombreCompleto;
+    }
+
+    public String getApodo() {
+        return apodo;
+    }
+
+    public int getLicencia() {
+        return licencia;
+    }
+
+    public int getGoles() {
+        return numGoles;
+    }
+
+    public int getFaltas() {
+        return numFaltas;
     }
 
 }
