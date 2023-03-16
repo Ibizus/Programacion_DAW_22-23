@@ -9,12 +9,12 @@
 /*************** display/position/float ***************/
 
 /********** height/width/padding/border/margin **********/
-header{
-
+#logo img{
+    max-width: 25%;
 }
 nav{
     float: right;
-    width: 45%;
+    width: 50%;
     margin: 2%;
     padding: 1%;
 }
@@ -22,42 +22,63 @@ nav ul li{
     display: inline-block;
     padding: 0 1%;
 }
-
 #cajacentral{
+    height: 1600px;
     max-width: 1280px;
+    min-width: 600px;
     margin: 0 10%;
     padding: 2%;
-    border: red solid 2px;
 }
 #textoPortada{
-    position: relative;
-    top: 11em;
-    left: 2em;
-    border: orange solid 1px;
-    width: 50%;
-
+    position: absolute;
+    top: 25%;
+    left: 18%;
+    width: 30%;
+    z-index: 50;
+}
+#readP{
+    padding: 2% 10%;
 }
 #banner{
+    position: relative;
+    top: 1em;
     width: 100%;
+    margin-bottom: 5%;
 }
-
-
-
+main{
+    float: left;
+    width: 63%;
+}
+section article img{
+    float: left;
+    border: #e1e1e1 1px solid;
+    padding: 2%;
+}
+main p, aside p{
+    margin: 1% 0;
+}
+aside{
+    float: right;
+    width: 33%;
+}
+aside img{
+    width: 100%;
+    padding: 3%;
+}
+footer{
+    height: 80px;
+    clear: both;
+}
 
 
 /************************* Propiedades Generales *********************/
 a{  /*a:link, a:visited, a:active*/
     text-decoration: none;
 }
-h1{
-
+h1, h2{
+    border-bottom: 1px black dashed;
 }
-h2{
 
-}
-h3{
-
-}
 
 /*** BODY ***/
 body{
@@ -66,9 +87,10 @@ body{
 }
 #cajacentral{
     background-color: white;
+    border: red solid 2px;
 }
 
-/*** HEADER ***/
+/************** HEADER *******************/
 header{
     border: blue solid 2px;
 }
@@ -83,19 +105,37 @@ nav a{
 
 /*** SECTION BANNER ***/
 #banner{
-    border: grey solid 6px;
+    border: #eaeaea solid 6px;
+}
+#textoPortada{
+    line-height: 180%;
+    border: orange solid 1px;
 }
 #textoPortada h1{
     text-align: center;
-    border-bottom: 1px black dashed;
+    font-size: x-large;
+}
+#readP{
+    background-color: black;
+    color: white;
+    font-size: smaller;
 }
 
 
 /*** MAIN ***/
-
+section article{
+    border: red 1px solid;
+}
 
 /*** ASIDE ***/
-aside{
+aside article{
+    border-bottom: 1px black dashed;
+}
+aside img{
+    border: #e1e1e1 1px solid;
+}
+aside time{
+    background-color: yellow;
 }
 
 /*** FOOTER ***/
