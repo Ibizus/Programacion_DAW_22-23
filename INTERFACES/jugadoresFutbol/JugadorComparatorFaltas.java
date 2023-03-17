@@ -2,14 +2,12 @@ package INTERFACES.jugadoresFutbol;
 
 import java.util.Comparator;
 
-public class JugadorComparatorFaltas implements Comparator{
+public class JugadorComparatorFaltas implements Comparator<Jugador>{
     
 
     @Override
-    public int compare(Object arg0, Object arg1)
+    public int compare(Jugador j1, Jugador j2)
     {
-        Jugador j1 = (Jugador)arg0;
-        Jugador j2 = (Jugador)arg1;
 
         int dif = 0;
 

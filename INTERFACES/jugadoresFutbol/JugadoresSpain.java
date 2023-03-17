@@ -1,5 +1,6 @@
 package INTERFACES.jugadoresFutbol;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class JugadoresSpain {
@@ -25,7 +26,7 @@ public class JugadoresSpain {
         {
             Jugador jugadorAl = UtilesJugadores.generaJugadorAleatorio();
 
-
+            // Mientras no se pueda insertar al jugador genera otro aleatorio y lo inserta:
             while(!insertaJugador(jugadoresSpain, jugadorAl))
             {
                 jugadorAl = UtilesJugadores.generaJugadorAleatorio();
@@ -33,6 +34,23 @@ public class JugadoresSpain {
                 insertaJugador(jugadoresSpain, jugadorAl);
             }
         }
+
+
+
+
+        jugadoresSpain[0].compareTo(jugadoresSpain[1]);
+
+        JugadorComparatorGoles comparatorGoles = new JugadorComparatorGoles();
+
+        comparatorGoles.compare(jugadoresSpain[0], jugadoresSpain[1]);
+
+        Arrays.sort(jugadoresSpain, comparatorGoles);
+
+        System.out.println(jugadoresSpain);
+
+        Arrays.sort(jugadoresSpain, (j1,j2)->j1.getGoles()-j2.getGoles());
+
+
 
         sc.close();
     }
@@ -49,7 +67,7 @@ public class JugadoresSpain {
     {
         boolean insertado = false;
 
-        if(!compruebaJugador(array, player))
+        if(!compruebaJugador(array, player)) // llama a la función comprueba jugador
         {
             Jugador[] nuevo = new Jugador[array.length+1];
 

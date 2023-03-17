@@ -1,6 +1,6 @@
 package INTERFACES.jugadoresFutbol;
 
-public class Jugador implements Jugar_I, Comparable{
+public class Jugador implements Jugar_I, Comparable<Jugador>{
     
 
     // ATRIBUTOS:
@@ -73,16 +73,15 @@ public class Jugador implements Jugar_I, Comparable{
 
 
     @Override
-    public int compareTo(Object o)
+    public int compareTo(Jugador j)
     {
-        Jugador nuevo = (Jugador)o;
         
-        int diferencia = this.licencia - nuevo.licencia;
+        int diferencia = this.licencia - j.licencia;
         
         return diferencia;
     }
 
-
+    // GETTERS:
     public String getNombre() {
         return nombreCompleto;
     }
