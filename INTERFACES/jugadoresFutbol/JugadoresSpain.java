@@ -3,38 +3,27 @@ package INTERFACES.jugadoresFutbol;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import INTERFACES.jugadoresFutbol.Comparator.JugadorComparatorGoles;
+
 public class JugadoresSpain {
         
     public static void main(String[] args) {
-        
-        Jugador[] jugadoresSpain = new Jugador[0];
-        Scanner sc = new Scanner(System.in);
 
-        // PEDIMOS NUMERO DE JUGADORES A CREAR:
-        System.out.println("¿Cuantos jugadores quieres crear? (Introduce un número mayor o igual a 5)");
-        int numJugadores = sc.nextInt();
+        // Instancio el array plantilla para cada coleccion Equipo:
+        Jugador[] plantillaJugadoresB = new Jugador[0];
+        Jugador[] plantillaJugadoresM = new Jugador[0];
 
-        // COMPROBAMOS LA CANTIDAD DE JUGADORES:
-        while(numJugadores<5)
-        {
-            System.out.println("Cantidad incorrecta, introduce otra");
-            numJugadores = sc.nextInt();
-        }
+        // Declaramos los equipos:
+        Equipo<Jugador> betis = new Equipo<Jugador>("Real Betis Balompie Sala", plantillaJugadoresB);
+        Equipo<Jugador> malaga = new Equipo<Jugador>("Málaga Club de Futbol Sala", plantillaJugadoresM);
 
+
+        // Vamos a convocar a 5 jugadores de cada equipo para el partido
         // LOS CREAMOS E INTRODUCIMOS EN EL ARRAY COMPROBANDO QUE NO ESTÁN YA:
-        for (int i = 0; i < numJugadores; i++)
+        for (int i = 0; i <= 5; i++)
         {
-            Jugador jugadorAl = UtilesJugadores.generaJugadorAleatorio();
 
-            // Mientras no se pueda insertar al jugador genera otro aleatorio y lo inserta:
-            while(!insertaJugador(jugadoresSpain, jugadorAl))
-            {
-                jugadorAl = UtilesJugadores.generaJugadorAleatorio();
-
-                insertaJugador(jugadoresSpain, jugadorAl);
-            }
         }
-
 
 
 
@@ -57,6 +46,29 @@ public class JugadoresSpain {
 
     // METODOS:
     
+    /**
+     * Crea un jugador aleatorio, comprueba si está para insertarlo en el array, 
+     * o crea uno nuevo si está repetido hasta que pueda insertarlo
+     * @param array
+     * @param player
+     * @return
+     */
+    static void fichaJugador(Jugador[] array)
+    {
+        Jugador jugadorAl = UtilesJugadores.generaJugadorAleatorio();
+
+        // Mientras no se pueda insertar al jugador genera otro aleatorio y lo inserta:
+        while(!insertaJugador(array, jugadorAl))
+        {
+            jugadorAl = UtilesJugadores.generaJugadorAleatorio();
+
+            insertaJugador(array, jugadorAl);
+        }
+
+    }
+
+
+
     /**
      * Inserta un Jugador en el array comprobando que no esté ya anteriormente
      * @param array

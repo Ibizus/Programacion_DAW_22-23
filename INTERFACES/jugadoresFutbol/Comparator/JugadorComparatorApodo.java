@@ -1,6 +1,8 @@
-package INTERFACES.jugadoresFutbol;
+package INTERFACES.jugadoresFutbol.Comparator;
 
 import java.util.Comparator;
+
+import INTERFACES.jugadoresFutbol.Jugador;
 
 public class JugadorComparatorApodo implements Comparator<Jugador>{
     

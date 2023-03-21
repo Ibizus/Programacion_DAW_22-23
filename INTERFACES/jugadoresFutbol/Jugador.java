@@ -4,11 +4,11 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
     
 
     // ATRIBUTOS:
-    private String nombreCompleto;
-    private String apodo;
-    private int licencia;
-    private int numGoles;
-    private int numFaltas;
+    protected String nombreCompleto;
+    protected String apodo;
+    protected int licencia;
+    protected int numGoles;
+    protected int numFaltas;
 
     static private int contadorLicencia;
 
@@ -35,7 +35,7 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
     @Override
     public String toString()
     {
-        return this.nombreCompleto + " (" + this.apodo + ") - Goles " +
+        return "\n" + this.nombreCompleto + " (" + this.apodo + ") - Goles " +
         this.numGoles + " - Faltas " + this.numFaltas;
     }
 
