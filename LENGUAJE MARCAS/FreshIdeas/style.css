@@ -4,6 +4,12 @@
     margin: 0;
     box-sizing: border-box;
 }
+@font-face {
+    font-family: Venturis;
+    src: url(fonts/VenturisADFStyle-Regular.woff) format('woff');
+    font-style: normal;
+    font-weight: 500;
+}
 
 /****** LAYOUT  ******/
 /*************** display/position/float ***************/
@@ -16,40 +22,43 @@ nav{
     float: right;
     width: 50%;
     margin: 2%;
-    padding: 1%;
+    padding: 0 2%;
 }
 nav ul li{
     display: inline-block;
-    padding: 0 1%;
+    padding: 2% 1%;
 }
+
 #cajacentral{
-    height: 1600px;
+    height: 1550px;
     max-width: 1280px;
     min-width: 600px;
     margin: 0 10%;
     padding: 2%;
 }
+#portada{
+    position: relative;
+    top: 1em;
+    margin-bottom: 5%;
+}
 #textoPortada{
     position: absolute;
-    top: 25%;
-    left: 18%;
-    width: 30%;
+    top: 70px;
+    left: 10%;
+    width: 35%;
     z-index: 50;
 }
 #readP{
     padding: 2% 10%;
 }
 #banner{
-    position: relative;
-    top: 1em;
     width: 100%;
-    margin-bottom: 5%;
 }
 main{
     float: left;
     width: 63%;
 }
-section article img{
+section article img, #about{
     float: left;
     border: #e1e1e1 1px solid;
     padding: 2%;
@@ -77,6 +86,8 @@ a{  /*a:link, a:visited, a:active*/
 }
 h1, h2{
     border-bottom: 1px black dashed;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
 }
 
 
@@ -91,9 +102,7 @@ body{
 }
 
 /************** HEADER *******************/
-header{
-    border: blue solid 2px;
-}
+
 
 /*** NAV ***/
 nav{
@@ -101,6 +110,9 @@ nav{
 }
 nav a{
     color: white;
+}
+nav ul :hover{
+    background-color: #ffcc33;
 }
 
 /*** SECTION BANNER ***/
@@ -123,19 +135,25 @@ nav a{
 
 
 /*** MAIN ***/
+main section{
+    margin-bottom: 5%;
+}
 section article{
     border: red 1px solid;
+    margin-bottom: 2%;
 }
 
 /*** ASIDE ***/
 aside article{
     border-bottom: 1px black dashed;
+    margin-bottom: 3%;
+    padding-bottom: 3%;
 }
 aside img{
     border: #e1e1e1 1px solid;
 }
 aside time{
-    background-color: yellow;
+    background-color: #ffcc33;
 }
 
 /*** FOOTER ***/
