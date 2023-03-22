@@ -2,35 +2,128 @@ package INTERFACES.jugadoresFutbol;
 
 import java.util.Arrays;
 
-public class Equipo<T extends Comparable<Jugador> >{
+public class Equipo{
     
 
     // ATRIBUTOS:
     private String nombre;
-    private T[] jugadores;
+    private Jugador[] jugadores;
     private int goles;
     private int faltas;
 
     
 
     // CONSTRUCTOR:
-    public Equipo(String nombre, T[] entrada)
+    public Equipo(String nombre)
     {
         this.nombre = nombre;
-        jugadores = entrada;
+        jugadores = new Jugador[0];
     }
+
 
 
     // METODOS:
-    public void añadeJugador(T nuevo)
+    
+    /**
+     * Crea un jugador aleatorio, comprueba si está para insertarlo en el array, 
+     * o crea uno nuevo si está repetido hasta que pueda insertarlo
+     * @param array
+     * @param player
+     * @return
+     */
+    public void convocaJugador()
     {
-        T[] listaNueva = Arrays.copyOf(jugadores, jugadores.length+1);
+        Jugador jugadorAl = UtilesJugadores.generaJugadorAleatorio();
 
-        listaNueva[listaNueva.length-1] = nuevo;
+        // Mientras no se pueda insertar al jugador genera otro aleatorio y lo inserta:
+        while(!this.insertaJugador(jugadorAl))
+        {
+            jugadorAl = UtilesJugadores.generaJugadorAleatorio();
 
-        jugadores = listaNueva;
+            this.insertaJugador(jugadorAl);
+        }
+
     }
 
+    /**
+     * Convoca el número de jugadores que le pasemos a la función, 
+     * haciendo todas las comprobaciones de los métodos anteriores
+     * @param array
+     * @param player
+     * @return
+     */
+    public void convocaJugador(int numeroDeJugadores)
+    {
+        for (int i = 0; i < numeroDeJugadores; i++)
+        {
+            this.convocaJugador();
+        }
+    }
+
+
+
+    /**
+     * Inserta un Jugador en el array comprobando que no esté ya anteriormente
+     * @param array
+     * @param player
+     * @return insertado
+     */
+    public boolean insertaJugador(Jugador player)
+    {
+        boolean insertado = false;
+
+        if(this.jugadores.length == 0)
+        {
+            Jugador[] nuevo = new Jugador[1];
+            nuevo[0] = player;
+            this.jugadores = nuevo;
+            insertado = true;
+        }
+        else
+        {
+            if(this.compruebaJugador(player)) // llama a la función comprueba jugador
+            {
+                Jugador[] nuevo = new Jugador[this.jugadores.length+1];
+    
+                for (int i = 0; i < this.jugadores.length; i++)
+                {
+                    nuevo[i] = this.jugadores[i];
+                }
+                nuevo[nuevo.length-1] = player;
+    
+                this.jugadores = nuevo;
+    
+                insertado = true;
+            }
+            else 
+            {
+                System.out.println("Este jugador ya está convocado");
+            }
+        }
+
+        return insertado;
+    }
+
+
+    /**
+     * Comprueba si el jugador está en el array por su nombre completo
+     * @param array
+     * @param player
+     * @return yaEsta
+     */
+    public boolean compruebaJugador(Jugador player)
+    {
+        boolean yaEsta = false;
+
+        for (int i = 0; i < this.jugadores.length; i++)
+        {
+            if(this.jugadores[i].getNombre().equals(player.getNombre()))
+            {
+                yaEsta = true;
+            }
+        }
+        return yaEsta;
+    }
 
 
 
@@ -64,6 +157,30 @@ public class Equipo<T extends Comparable<Jugador> >{
         }
         
         this.faltas = totalFaltas;
+    }
+
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+
+
+    public Jugador[] getJugadores() {
+        return jugadores;
+    }
+
+
+
+    public int getGoles() {
+        return goles;
+    }
+
+
+
+    public int getFaltas() {
+        return faltas;
     }
 
 
