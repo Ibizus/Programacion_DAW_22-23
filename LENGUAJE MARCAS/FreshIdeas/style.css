@@ -28,12 +28,11 @@ nav ul li{
     display: inline-block;
     padding: 2% 1%;
 }
-
 #cajacentral{
-    height: 1550px;
-    max-width: 1280px;
-    min-width: 600px;
-    margin: 0 10%;
+    height: 1600px;
+    max-width: 1240px;
+    min-width: 800px;
+    margin: auto;
     padding: 2%;
 }
 #portada{
@@ -70,18 +69,48 @@ aside{
     float: right;
     width: 33%;
 }
+aside article{
+    margin-top: 6%;
+    padding-bottom: 3%;
+}
+aside h2{
+    padding-bottom: 4%;
+}
+aside article h3{
+    float: left;
+    margin-right: 16%;
+    margin-bottom: 3%;
+}
+aside time{
+    padding: 1%;
+}
+aside p{
+    clear: both;
+}
 aside img{
     width: 100%;
+    margin-top: 5%;
     padding: 3%;
 }
 footer{
+    position: relative;
     height: 80px;
     clear: both;
+}
+#footer1{
+    position: absolute;
+    top: 30px;
+    left: 16%;
+}
+#footer2{
+    position: absolute;
+    top: 30px;
+    right: 16%;
 }
 
 
 /************************* Propiedades Generales *********************/
-a{  /*a:link, a:visited, a:active*/
+a:link, a:visited, a:active{  /*a:link, a:visited, a:active*/
     text-decoration: none;
 }
 h1, h2{
@@ -89,16 +118,18 @@ h1, h2{
     padding-bottom: 2%;
     margin-bottom: 2%;
 }
+.read{
+    color: black;
+    font-weight: bold;
+}
 
 
 /*** BODY ***/
 body{
     background-image: url(images/bg.png);
-    border: green solid 2px;
 }
 #cajacentral{
     background-color: white;
-    border: red solid 2px;
 }
 
 /************** HEADER *******************/
@@ -121,16 +152,19 @@ nav ul :hover{
 }
 #textoPortada{
     line-height: 180%;
-    border: orange solid 1px;
 }
 #textoPortada h1{
     text-align: center;
     font-size: x-large;
 }
+#textoPortada p{
+    font-size: large;
+}
 #readP{
     background-color: black;
     color: white;
-    font-size: smaller;
+    text-align: center;
+    padding: 3%;
 }
 
 
@@ -138,22 +172,21 @@ nav ul :hover{
 main section{
     margin-bottom: 5%;
 }
-section article{
-    border: red 1px solid;
+.services article{
     margin-bottom: 2%;
+    height: 135px;
 }
 
 /*** ASIDE ***/
 aside article{
     border-bottom: 1px black dashed;
-    margin-bottom: 3%;
-    padding-bottom: 3%;
 }
 aside img{
     border: #e1e1e1 1px solid;
 }
 aside time{
     background-color: #ffcc33;
+    font-weight: bold;
 }
 
 /*** FOOTER ***/
