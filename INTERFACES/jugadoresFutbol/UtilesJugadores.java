@@ -16,11 +16,11 @@ public class UtilesJugadores {
      */
     public static Jugador generaJugadorAleatorio()
     {
-        String nombre = nombres[(int)Math.random()*(nombres.length)];
-        String apellido = apellidos[(int)Math.random()*(apellidos.length)];
+        String nombre = nombres[(int)(Math.random()*(nombres.length))];
+        String apellido = apellidos[(int)(Math.random()*(apellidos.length))];
 
-        String apodoAl1 = apodo1[(int)Math.random()*(apodo1.length)];
-        String apodoAl2 = apodo2[(int)Math.random()*(apodo2.length)];
+        String apodoAl1 = apodo1[(int)(Math.random()*(apodo1.length))];
+        String apodoAl2 = apodo2[(int)(Math.random()*(apodo2.length))];
 
         return new Jugador(nombre+" "+apellido, apodoAl1+" "+apodoAl2);
     }

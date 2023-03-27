@@ -64,6 +64,9 @@ public class EjemploMapa {
         claustro.put(1, p1);
 
         ProfesorTitular pt = claustro.get(1);
+        System.out.println(pt.getSalario());
+
+        
 
         
 

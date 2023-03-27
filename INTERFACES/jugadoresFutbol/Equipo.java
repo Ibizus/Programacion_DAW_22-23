@@ -40,7 +40,6 @@ public class Equipo{
         {
             jugadorAl = UtilesJugadores.generaJugadorAleatorio();
 
-            this.insertaJugador(jugadorAl);
         }
 
     }
@@ -81,7 +80,7 @@ public class Equipo{
         }
         else
         {
-            if(this.compruebaJugador(player)) // llama a la función comprueba jugador
+            if(!this.compruebaJugador(player)) // llama a la función comprueba jugador
             {
                 Jugador[] nuevo = new Jugador[this.jugadores.length+1];
     
@@ -106,7 +105,8 @@ public class Equipo{
 
 
     /**
-     * Comprueba si el jugador está en el array por su nombre completo
+     * Comprueba si el jugador está en el array por su nombre completo,
+     * devuelve true si está y false si no lo encuentra
      * @param array
      * @param player
      * @return yaEsta
@@ -119,6 +119,7 @@ public class Equipo{
         {
             if(this.jugadores[i].getNombre().equals(player.getNombre()))
             {
+                System.out.print(this.jugadores[i].getNombre() + " - " + player.getNombre());
                 yaEsta = true;
             }
         }
