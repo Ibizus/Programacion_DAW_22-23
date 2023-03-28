@@ -26,12 +26,13 @@ nav{
 }
 nav ul li{
     display: inline-block;
-    padding: 2% 1%;
+    margin-left: 1.5%;
+    padding: 2% 1.2%;
 }
 #cajacentral{
-    height: 1600px;
+    overflow: hidden; /* esto es para que el Div central quede por debajo de las dos cajas flotadas main y aside */
     max-width: 1240px;
-    min-width: 800px;
+    min-width: 892px;
     margin: auto;
     padding: 2%;
 }
@@ -59,7 +60,6 @@ main{
 }
 section article img, #about{
     float: left;
-    border: #e1e1e1 1px solid;
     padding: 2%;
 }
 main p, aside p{
@@ -100,12 +100,12 @@ footer{
 #footer1{
     position: absolute;
     top: 30px;
-    left: 16%;
+    left: 20%;
 }
 #footer2{
     position: absolute;
     top: 30px;
-    right: 16%;
+    right: 20%;
 }
 
 
@@ -152,19 +152,19 @@ nav ul :hover{
 }
 #textoPortada{
     line-height: 180%;
+    font-size: large;
 }
 #textoPortada h1{
     text-align: center;
-    font-size: x-large;
-}
-#textoPortada p{
-    font-size: large;
 }
 #readP{
     background-color: black;
     color: white;
     text-align: center;
     padding: 3%;
+}
+section article img, #about{
+    border: #e1e1e1 1px solid;
 }
 
 
@@ -195,3 +195,54 @@ footer{
     color: white;
 }
 
+/********************* MEDIA QUERIES ***********************/
+
+@media (max-width: 1450px){ /***** PC no wide *****/
+
+    #footer1{
+        left: 18%;
+    }
+    #footer2{
+        right: 18%;
+    }
+}
+@media (max-width: 1170px){
+
+    nav{
+        margin-top: 3%;
+    }
+    nav ul li{
+        margin-left: 1.6%;
+        padding: 2% 0.7%;
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 1000px){
+    body{
+        font-size: 0.9em;
+    }
+    #textoPortada{
+        font-size: 1em;
+    }
+    .services article{
+        margin: 2.4% 0%;
+    }
+    #footer1{
+        left: 16%;
+    }
+    #footer2{
+        right: 16%;
+    }
+
+}
+@media (max-width: 850px){
+
+    #footer1{
+        top: 20px;
+        left: 20%;
+    }
+    #footer2{
+        top: 50px;
+        left: 20%;
+    }
+}
