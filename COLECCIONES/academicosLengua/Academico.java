@@ -2,6 +2,7 @@ package COLECCIONES.academicosLengua;
 
 public class Academico implements Comparable<Academico>{
     
+
     // ATRIBUTOS:
     public String nombre;
     public int ingreso;
@@ -27,7 +28,20 @@ public class Academico implements Comparable<Academico>{
     @Override
     public int compareTo(Academico o) {
 
-        return this.nombre.compareTo(o.getNombre());
+        if(this.nombre.compareTo(o.getNombre()) == 0)
+        {
+            return (this.getIngreso() - o.getIngreso());
+        }
+        else 
+        {
+            return this.nombre.compareTo(o.getNombre());
+        }
+    }
+
+    @Override
+    public String toString(){
+
+        return this.getNombre() + " - " + this.getIngreso();
     }
 
 }
