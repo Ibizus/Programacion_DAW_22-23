@@ -3,7 +3,7 @@ package COLECCIONES;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ejercicio2 {
+public class ejemplo2 {
     
     public static void main(String[] args) {
         

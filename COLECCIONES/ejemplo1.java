@@ -3,7 +3,7 @@ package COLECCIONES;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class ejercicio1 {
+public class ejemplo1 {
     public static void main(String[] args) {
         
 
