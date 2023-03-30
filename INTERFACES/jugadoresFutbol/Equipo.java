@@ -11,7 +11,6 @@ public class Equipo{
     private int goles;
     private int faltas;
 
-    
 
     // CONSTRUCTOR:
     public Equipo(String nombre)
@@ -58,7 +57,6 @@ public class Equipo{
             this.convocaJugador();
         }
     }
-
 
 
     /**
@@ -127,12 +125,10 @@ public class Equipo{
     }
 
 
-
     public void ordenar()
     {
         Arrays.sort(jugadores);
     }
-
 
 
     public void actualizaGoles()
@@ -145,6 +141,8 @@ public class Equipo{
         }
         
         this.goles = totalGoles;
+
+        System.out.println("Otro tanto para el " + this.getNombre());
     }
 
 
@@ -160,31 +158,21 @@ public class Equipo{
         this.faltas = totalFaltas;
     }
 
-
-
     public String getNombre() {
         return nombre;
     }
-
-
 
     public Jugador[] getJugadores() {
         return jugadores;
     }
 
-
-
     public int getGoles() {
         return goles;
     }
 
-
-
     public int getFaltas() {
         return faltas;
     }
-
-
 
     public String toString()
     {

@@ -6,9 +6,10 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
     // ATRIBUTOS:
     protected String nombreCompleto;
     protected String apodo;
-    protected int licencia;
+    protected int licencia; // parámetro de ordenación por defecto (CompareTo)
     protected int numGoles;
     protected int numFaltas;
+    protected int regate;
 
     static private int contadorLicencia;
 
@@ -18,6 +19,7 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
     {
         this.nombreCompleto = nombre;
         this.apodo = apodo;
+        this.regate = generaRegate();
 
         contadorLicencia++;
         this.licencia = contadorLicencia;
@@ -32,10 +34,15 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
 
 
     // METODOS:
+    private int generaRegate()
+    {
+        return (int)(Math.random()*101);
+    }
+
     @Override
     public String toString()
     {
-        return "\n" + this.nombreCompleto + " (" + this.apodo + ") - Goles " +
+        return "\n\t" + this.nombreCompleto + " (" + this.apodo + ") - Goles " +
         this.numGoles + " - Faltas " + this.numFaltas;
     }
 
@@ -100,6 +107,10 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
 
     public int getFaltas() {
         return numFaltas;
+    }
+
+    public int getRegate() {
+        return regate;
     }
 
 }
