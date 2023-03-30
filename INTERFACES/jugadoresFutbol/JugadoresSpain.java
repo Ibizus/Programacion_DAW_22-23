@@ -1,5 +1,8 @@
 package INTERFACES.jugadoresFutbol;
 
+import java.util.Arrays;
+import INTERFACES.jugadoresFutbol.Comparator.JugadorComparatorGoles;
+
 public class JugadoresSpain {
         
     // FINALS:
@@ -36,22 +39,23 @@ public class JugadoresSpain {
         System.out.println(bienvenida());
 
         // PARTIDO:
-        int posicionPelota = 2; // Empieza el partido en el centro del campo. (posicion 3 de las 5 que tenemos)
+        final int pelotaAlCentro = 2;
+        int posicionPelota = pelotaAlCentro; // Empieza el partido en el centro del campo. (posicion 3 de las 5 que tenemos)
         int jugadas = 0;
 
         // Enfrentamiento jugadores:
-        while (jugadas<= 30) // Voy a dar 30 regates por partido para no hacerlo muy largo
+        while (jugadas<= 100) // Voy a dar 30 regates por partido para no hacerlo muy largo
         {
             // genero mi valor de enfrentamiento según la posición en la que está pelota
             int enfrentamiento = choque(malaga.getJugadores()[posicionPelota], betis.getJugadores()[posicionPelota]);
 
-            if (enfrentamiento >= 0 && enfrentamiento < 80) // gana el regate el equipo local (y no hay falta)
+            if (enfrentamiento >= 0 && enfrentamiento < 20) // gana el regate el equipo local (y no hay falta)
             {
                 if(posicionPelota == 4) // Si estamos en la portería visitante hacemos gol y sacamos del centro otra vez
                 {
                     malaga.getJugadores()[4].hacerGol();
                     malaga.actualizaGoles();
-                    posicionPelota = 2;
+                    posicionPelota = pelotaAlCentro;
                     muestraMarcador(malaga, betis);
                 }
                 else 
@@ -61,14 +65,14 @@ public class JugadoresSpain {
                 }
 
             }
-            else if (enfrentamiento < 0 && enfrentamiento > -80) // gana el regate el equipo visitante (y no hay falta)
+            else if (enfrentamiento < 0 && enfrentamiento > -20) // gana el regate el equipo visitante (y no hay falta)
             {
 
                 if(posicionPelota == 0) // Si estamos en la portería local
                 {
                     betis.getJugadores()[0].hacerGol();
                     betis.actualizaGoles();
-                    posicionPelota = 2;
+                    posicionPelota = pelotaAlCentro;
                     muestraMarcador(malaga, betis);
                 }
                 else 
@@ -78,7 +82,7 @@ public class JugadoresSpain {
                 }
 
             }
-            else if (enfrentamiento >= 80 || enfrentamiento <= -80) // HAY FALTA
+            else if (enfrentamiento >= 20 || enfrentamiento <= -20) // HAY FALTA
             {
                 System.out.println("¡¡ARBITRO!!");
 
@@ -92,37 +96,49 @@ public class JugadoresSpain {
                     betis.getJugadores()[posicionPelota].cometerFalta();
                     betis.actualizaFaltas();
                 }
+                posicionPelota = pelotaAlCentro;
             }
             jugadas++;
         }
         System.out.println(ANSI_YELLOW + "\n\t¡¡¡ FIN DEL PARTIDO !!!\n¡EL ARBITRO PITA EL FINAL Y ESTO SE ACABA SEÑORES!" + ANSI_RESET);
         muestraMarcador(malaga, betis);
 
+        System.out.println(ANSI_YELLOW + "\nPASAMOS CON LAS ESTADÍSTICAS DE LOS JUGADORES" + ANSI_RESET);
+
 
         /*** MOSTRAR JUGADORES ORDENADOS POR NUMERO DE LICENCIA: ***/
-        System.out.println();
+        System.out.println("\n - - - - - Jugadores ordenados por licencia: - - - - - \n");
 
+        System.out.println(malaga.getNombre());
+        Arrays.sort(malaga.getJugadores());
+        System.out.println(malaga);
+
+        System.out.println(betis.getNombre());
+        Arrays.sort(betis.getJugadores());
+        System.out.println(betis);
 
 
         /*** MOSTRAR JUGADORES ORDENADOS POR NUMERO DE GOLES: ***/
+        System.out.println("\n - - - - - Jugadores ordenados por goles: - - - - - \n");
+
+        JugadorComparatorGoles comparatorGoles = new JugadorComparatorGoles();
+
+        System.out.println(malaga.getNombre());
+        Arrays.sort(malaga.getJugadores(), comparatorGoles);
+        System.out.println(malaga);
 
 
+        /*** MOSTRAR JUGADORES ORDENADOS POR NUMERO DE FALTAS:  ( CON LAMBDA )  ***/  
+        System.out.println("\n - - - - - Jugadores ordenados por faltas: - - - - - \n");
 
+        System.out.println(malaga.getNombre());
+        Arrays.sort(malaga.getJugadores(), (j1,j2)->j1.getGoles()-j2.getGoles());
+        System.out.println(malaga);
 
-        /*** MOSTRAR JUGADORES ORDENADOS POR NUMERO DE FALTAS: ***/
+        System.out.println(betis.getNombre());
+        Arrays.sort(betis.getJugadores(), (j1,j2)->j1.getGoles()-j2.getGoles());
+        System.out.println(betis);
 
-
-
-
-        // jugadoresSpain[0].compareTo(jugadoresSpain[1]);
-
-        // JugadorComparatorGoles comparatorGoles = new JugadorComparatorGoles();
-
-        // comparatorGoles.compare(jugadoresSpain[0], jugadoresSpain[1]);
-
-        // Arrays.sort(jugadoresSpain, comparatorGoles);
-
-        // System.out.println(jugadoresSpain);
 
         // Arrays.sort(jugadoresSpain, (j1,j2)->j1.getGoles()-j2.getGoles());
 
