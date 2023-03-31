@@ -174,10 +174,10 @@ public class Equipo{
         return faltas;
     }
 
+    @Override
     public String toString()
     {
-        return "\tEQUIPO: " + this.nombre + "\nJugadores: " + Arrays.toString(jugadores);
+        return "\n\tEQUIPO: " + this.nombre + "\nJugadores: " + Arrays.toString(jugadores);
     } 
-
 
 }

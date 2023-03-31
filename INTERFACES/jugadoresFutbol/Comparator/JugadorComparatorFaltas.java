@@ -15,11 +15,11 @@ public class JugadorComparatorFaltas implements Comparator<Jugador>{
 
         if(j1.getFaltas() < j2.getFaltas())
         {
-            dif = -1;
+            dif = 1;
         }
         else if(j1.getFaltas() > j2.getFaltas())
         {
-            dif = 1;
+            dif = - 1;
         }
         else 
         {

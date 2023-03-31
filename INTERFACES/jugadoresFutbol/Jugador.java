@@ -34,6 +34,12 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
 
 
     // METODOS:
+
+    /**
+     * Genera un número entero aleatorio que será la 
+     * capacidad de regate mínima del Jugador
+     * @return regateAleatorio
+     */
     private int generaRegate()
     {
         return (int)(Math.random()*101);
@@ -42,8 +48,8 @@ public class Jugador implements Jugar_I, Comparable<Jugador>{
     @Override
     public String toString()
     {
-        return "\n\t" + this.nombreCompleto + " (" + this.apodo + ") - Goles " +
-        this.numGoles + " - Faltas " + this.numFaltas;
+        return "\n\t" + this.nombreCompleto + " (" + this.apodo + ")  \t  - Goles " +
+        this.numGoles + " \t - Faltas " + this.numFaltas + " \t -> \t nº LICENCIA: " + this.getLicencia();
     }
 
     

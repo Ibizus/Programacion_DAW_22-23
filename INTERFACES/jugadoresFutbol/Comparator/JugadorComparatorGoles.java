@@ -15,11 +15,11 @@ public class JugadorComparatorGoles implements Comparator<Jugador>{
 
         if(j1.getGoles() < j2.getGoles())
         {
-            dif = -1;
+            dif = 1;
         }
         else if(j1.getGoles() > j2.getGoles())
         {
-            dif = 1;
+            dif = - 1;
         }
         else 
         {
