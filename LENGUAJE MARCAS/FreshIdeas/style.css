@@ -15,9 +15,23 @@
 /*************** display/position/float ***************/
 
 /********** height/width/padding/border/margin **********/
+
+
+/********** DIV CAJA CENTRAL ***********/
+#cajacentral{
+    overflow: hidden; /* esto es para que el Div central quede por debajo de las dos cajas flotadas main y aside */
+    max-width: 1240px;
+    min-width: 892px;
+    margin: auto;
+    padding: 2%;
+}
+
+/******* HEADER *********/
 #logo img{
     max-width: 25%;
 }
+
+/******* NAV *******/
 nav{
     float: right;
     width: 50%;
@@ -29,13 +43,8 @@ nav ul li{
     margin-left: 1.5%;
     padding: 2% 1.2%;
 }
-#cajacentral{
-    overflow: hidden; /* esto es para que el Div central quede por debajo de las dos cajas flotadas main y aside */
-    max-width: 1240px;
-    min-width: 892px;
-    margin: auto;
-    padding: 2%;
-}
+
+/*** SECTION BANNER ***/
 #portada{
     position: relative;
     top: 1em;
@@ -54,6 +63,8 @@ nav ul li{
 #banner{
     width: 100%;
 }
+
+/***** MAIN ******/
 main{
     float: left;
     width: 63%;
@@ -65,6 +76,8 @@ section article img, #about{
 main p, aside p{
     margin: 1% 0;
 }
+
+/***** ASIDE *****/
 aside{
     float: right;
     width: 33%;
@@ -92,6 +105,8 @@ aside img{
     margin-top: 5%;
     padding: 3%;
 }
+
+/***** FOOTER *****/
 footer{
     position: relative;
     height: 80px;
@@ -167,7 +182,6 @@ section article img, #about{
     border: #e1e1e1 1px solid;
 }
 
-
 /*** MAIN ***/
 main section{
     margin-bottom: 5%;
@@ -194,6 +208,7 @@ footer{
     background-color: black;
     color: white;
 }
+
 
 /********************* MEDIA QUERIES ***********************/
 
