@@ -49,5 +49,11 @@ public class Carta {
         return menor;
     }
 
+    @Override
+    public boolean equals(Object obj) {
 
+        Carta carta = (Carta)obj;
+
+        return this.palo.equals(carta.palo) && (this.numero == carta.numero);
+    }
 }

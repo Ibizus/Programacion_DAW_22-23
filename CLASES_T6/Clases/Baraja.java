@@ -102,6 +102,10 @@ public class Baraja {
         return resultado;
     }
 
+    public Carta[] getMazo() {
+        return mazo;
+    }
+
 
 
 }

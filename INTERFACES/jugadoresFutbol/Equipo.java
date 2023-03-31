@@ -38,7 +38,7 @@ public class Equipo{
         while(!this.insertaJugador(jugadorAl))
         {
             jugadorAl = UtilesJugadores.generaJugadorAleatorio();
-
+            
         }
 
     }
