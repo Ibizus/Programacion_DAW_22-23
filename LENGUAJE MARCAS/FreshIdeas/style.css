@@ -4,12 +4,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-@font-face {
-    font-family: Venturis;
-    src: url(fonts/VenturisADFStyle-Regular.woff) format('woff');
-    font-style: normal;
-    font-weight: 500;
-}
 
 /****** LAYOUT  ******/
 /*************** display/position/float ***************/
