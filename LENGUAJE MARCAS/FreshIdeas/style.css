@@ -76,6 +76,9 @@ section article img, #about{
 main p, aside p{
     margin: 1% 0;
 }
+#about{
+    margin-top: .5%;
+}
 
 /***** ASIDE *****/
 aside{
@@ -231,8 +234,12 @@ footer{
         padding: 2% 0.7%;
         font-size: 0.9em;
     }
+    #about{
+        margin-bottom: 3%;
+    }
 }
 @media (max-width: 1000px){
+
     body{
         font-size: 0.9em;
     }
@@ -242,13 +249,15 @@ footer{
     .services article{
         margin: 2.4% 0%;
     }
+    #about{
+        margin-bottom: 7%;
+    }
     #footer1{
         left: 16%;
     }
     #footer2{
         right: 16%;
     }
-
 }
 @media (max-width: 850px){
 
