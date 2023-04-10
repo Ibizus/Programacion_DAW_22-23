@@ -1,5 +1,7 @@
 package COLECCIONES.carritoTienda;
 
+import java.text.DecimalFormat;
+
 public class Elemento {
     
     // ATRIBUTOS:
@@ -19,7 +21,13 @@ public class Elemento {
     @Override
     public String toString()
     {
-        return this.nombre + " PVP: " + this.precio + " Unidades: " + this.cantidad + " Subtotal: " + (this.precio*this.cantidad);
+        // con almohadillas me pone hasta 3 decimales si hacen falta, pero si no, no los pone
+        DecimalFormat df = new DecimalFormat("#.###");
+
+        // con 00 me pone siempre dos posiciones para decimales, sean numeros o no:
+        DecimalFormat df2 = new DecimalFormat("#.00");
+
+        return this.nombre + " PVP: " + this.precio + " Unidades: " + this.cantidad + " Subtotal: " + df2.format(this.precio*this.cantidad);
     }
 
     @Override
