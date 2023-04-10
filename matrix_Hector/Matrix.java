@@ -8,4 +8,12 @@ public class Matrix {
 
         
     }
+
+    // METODOS:
+    public static void factoriaDePersonas(int cantidad)
+    {
+        
+    }
+
+
 }

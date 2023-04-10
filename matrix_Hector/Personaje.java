@@ -2,7 +2,7 @@ package matrix_Hector;
 
 import java.time.LocalDateTime;
 
-public abstract class Persona {
+public abstract class Personaje {
     
     // ATRIBUTOS:
     protected int id;
@@ -14,19 +14,36 @@ public abstract class Persona {
 
 
     // CONSTRUCTOR:
-    protected Persona(String nombre, String ciudad)
+    protected Personaje()
     {
         personajesCreados++;
         this.id = personajesCreados;
 
-        this.nombre = nombre;
-        this.ciudad = ciudad;
+        this.nombre = nombreAleatorio();
+        this.ciudad = ciudadAleatoria();
 
         this.creacion = LocalDateTime.now();
     }
 
     public abstract void mostrarInformacion();
 
+    public String ciudadAleatoria()
+    {
+        String[] ciudades = {"Madrid", "New York", "Pekin", "Leganés", "Londres", "Paris", "Fuengirola", "Dublin", "Bagdad", "Texas", "Caracas"};
+
+        int aleatorio = (int)(Math.random()*ciudades.length);
+
+        return ciudades[aleatorio];
+    }
+
+    public String nombreAleatorio()
+    {
+        String[] nombres = {"Juan", "Pedro", "María", "Ana", "Luis", "Carlos", "Sofía", "Lucía", "Elena", "Miguel", "Pablo", "David", "Miriam", "Jesús", "Carmen", "Alicia", "Antonio"};
+
+        int aleatorio = (int)(Math.random()*nombres.length);
+
+        return nombres[aleatorio];
+    }
     
     // GETTERS:
     public int getId() {
@@ -48,6 +65,5 @@ public abstract class Persona {
     public static int getCreados() {
         return personajesCreados;
     }
-
 
 }

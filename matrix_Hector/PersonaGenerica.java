@@ -1,6 +1,6 @@
 package matrix_Hector;
 
-public class PersonaGenerica extends Persona{
+public class PersonaGenerica extends Personaje{
 
 
     // ATRIBUTOS:
@@ -8,9 +8,9 @@ public class PersonaGenerica extends Persona{
 
 
     // CONTRUCTOR:
-    protected PersonaGenerica(String nombre, String ciudad)
+    protected PersonaGenerica()
     {
-        super(nombre, ciudad);
+        super();
         probabilidadMuerte = (int)(Math.random()*100)+1;
     }
 
@@ -18,14 +18,11 @@ public class PersonaGenerica extends Persona{
     @Override
     public void mostrarInformacion()
     {
-       
+        System.out.println("id: " + super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad());
     }
 
     public int getProbabilidadMuerte() {
         return probabilidadMuerte;
     }
 
-    
-
-    
 }
