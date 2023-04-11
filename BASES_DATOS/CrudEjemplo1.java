@@ -1,3 +1,5 @@
+package BASES_DATOS;
+
 import java.sql.*;
 import java.util.Scanner;
 public class CrudEjemplo1 {

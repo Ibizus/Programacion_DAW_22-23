@@ -1,22 +1,37 @@
 package matrix_Hector;
 
 import java.util.ArrayList;
-import java.util.Collection;
+
 
 public class Matrix {
     public static void main(String[] args) {
         
 
+    // Creamos una colección de 200 personas genéricas:
+    ArrayList<Personaje> listadoPersonas = new ArrayList<>();
+
+    // La rellenamos:
+    listadoPersonas = factoriaDePersonas(200);
+    System.out.println(listadoPersonas);
+
+
     // Inicializamos el mundo de MATRIX:
     ArrayList<Personaje> matrix = new ArrayList<>(25);
 
+    // Compruebo tamaño arrayList
+    int tamaño = matrix.size();
+    System.out.println(tamaño);
 
     // Introduzco en posiciones aleatorias a Neo y un Smith:
     matrix.add((int)(Math.random()*matrix.size()), new Neo());
     matrix.add((int)(Math.random()*matrix.size()), new Smith());
 
-    // Rellenamos el resto de posiciones con Personas genéricas de la lista:
     
+    // Compruebo tamaño arrayList    
+    int tamaño2 = matrix.size();
+    System.out.println(tamaño2);
+    
+    // Rellenamos el resto de posiciones con Personas genéricas de la lista:
 
     
     // Mostramos el contenido de Matrix:
@@ -29,9 +44,9 @@ public class Matrix {
 
     // METODOS:
     
-    public static Collection<Personaje> factoriaDePersonas(int cantidad)
+    public static ArrayList<Personaje> factoriaDePersonas(int cantidad)
     {
-        Collection<Personaje> nuevaColeccion = new ArrayList<>();
+        ArrayList<Personaje> nuevaColeccion = new ArrayList<>();
 
         for (int i = 0; i < cantidad; i++)
         {
@@ -61,7 +76,7 @@ public class Matrix {
             {
                 letra = "S";
             }
-            else if()
+            else
             {
                 letra = " ";
             }

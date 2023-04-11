@@ -21,8 +21,17 @@ public class PersonaGenerica extends Personaje{
         System.out.println("id: " + super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad());
     }
 
+    @Override
+    public String toString()
+    {
+        mostrarInformacion();
+        return "";
+    }
+
     public int getProbabilidadMuerte() {
         return probabilidadMuerte;
     }
+
+
 
 }
