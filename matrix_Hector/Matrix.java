@@ -27,9 +27,6 @@ public class Matrix {
     matrix.add((int)(Math.random()*matrix.size()), new Neo());
     matrix.add((int)(Math.random()*matrix.size()), new Smith());
 
-    // Compruebo tamaño arrayList    
-    int tamaño2 = matrix.size();
-    System.out.println(tamaño2);
     
     // Mostramos el contenido de Matrix:
     System.out.println("\t\t\tMATRIX:");
@@ -46,19 +43,41 @@ public class Matrix {
 
         if((index%2)==0) // Smith entra en acción
         {
-            // Primero hay que buscar el Smith: (solo los creados antes de esta iteracion)
+            // Primero hay que buscar los Smith: (solo los creados antes de esta iteracion)
             for (Personaje personaje : matrix)
             {
-                if(personaje.getClass().equals(Smith.class)) // Encuentro el Smith
+                if(personaje.getClass().equals(Smith.class)) // Encuentro un Smith
                 {
                     Smith virus = (Smith)personaje;
 
                     if(virus.getIteracionDeCreaccion() < index) // Compruebo que es anterior a la iteraccion actual
                     {
+                        // Guardo su posición y su poder de infección:
                         int infeccion = virus.getInfeccion();
+                        int posicion = matrix.indexOf(virus);
 
-                        
+                        // Bucle para las posiciones siguientes a la del Smith
+                        for (int i = posicion; i <= posicion+infeccion && i < matrix.size(); i++)
+                        {
+                            if(matrix.get(i).getClass().equals(PersonaGenerica.class))
+                            {
+                                Smith nuevoSmith = (Smith)matrix.get(i);
 
+                                nuevoSmith.setIteracionDeCreaccion(index);
+
+                                int prueba = nuevoSmith.getInfeccion();
+                                System.out.println("prueba: "+ prueba);
+                            }
+                        }
+
+                        // Bucle para las posiciones anteriores a la del Smith
+                        for (int i = posicion; i >= posicion-infeccion && i > 0; i--)
+                        {
+                            if(matrix.get(i).getClass().equals(PersonaGenerica.class))
+                            {
+                                
+                            }
+                        }
                     }
                 }    
             }
@@ -92,6 +111,11 @@ public class Matrix {
 
     // METODOS:
     
+    /**
+     * 
+     * @param cantidad
+     * @return
+     */
     public static ArrayList<Personaje> factoriaDePersonas(int cantidad)
     {
         ArrayList<Personaje> nuevaColeccion = new ArrayList<>();
@@ -104,7 +128,10 @@ public class Matrix {
         return nuevaColeccion;
     }
 
-
+    /**
+     * 
+     * @param lista
+     */
     public static void estadoMatrix(ArrayList<Personaje> lista)
     {
         String resultado = "";
@@ -135,6 +162,11 @@ public class Matrix {
         System.out.println(resultado);
     }
 
+    /**
+     * 
+     * @param origen
+     * @param destino
+     */
     public static void añadePersona(ArrayList<Personaje> origen, ArrayList<Personaje> destino)
     {
         if(origen.size()>0)
@@ -157,15 +189,19 @@ public class Matrix {
      */
     public static void evaluaPersona(ArrayList<Personaje> lista, ArrayList<Personaje> matrix)
     {
-        Personaje persona = matrix.get((int)(Math.random()*matrix.size()));
+        int posicionAleatoria = (int)(Math.random()*matrix.size());
+
+        Personaje persona = matrix.get(posicionAleatoria);
 
         if(persona.getClass().equals(PersonaGenerica.class))
         {
-            if(((PersonaGenerica)persona).getProbabilidadMuerte() < 30)
+            if(((PersonaGenerica)persona).getProbabilidadMuerte() < 30) // Si es menor de 30 muere
             {
-                intercambiaPersona(persona, lista, matrix);
+                // Lo machaco con un Personaje de la lista:
+                sustituyePersona(persona, lista, matrix);
+                // NO LO USO AQUI // intercambiaPersona(persona, lista, matrix); 
             }
-            else 
+            else // En otro caso le resto 10
             {
                 ((PersonaGenerica)persona).setProbabilidadMuerte(((PersonaGenerica)persona).getProbabilidadMuerte()-10);
             }
@@ -176,6 +212,33 @@ public class Matrix {
         }
     }
 
+    /**
+     * 
+     * @param persona
+     * @param lista
+     * @param matrix
+     */
+    public static void sustituyePersona(Personaje persona, ArrayList<Personaje> lista, ArrayList<Personaje> matrix)
+    {
+        // Localizo su posición en el arrayList:
+        int posicionCambiada = matrix.indexOf(persona);
+
+        // Saco al primero de la lista:
+        PersonaGenerica nuevo = (PersonaGenerica) lista.get(0);
+
+        // Lo elimino de lista:
+        lista.remove(0);
+
+        // Machaco la posición de Matrix con el nuevo Personaje:
+        matrix.set(posicionCambiada, nuevo);
+    }
+
+    /**
+     * 
+     * @param persona
+     * @param lista
+     * @param matrix
+     */
     public static void intercambiaPersona(Personaje persona, ArrayList<Personaje> lista, ArrayList<Personaje> matrix)
     {
         // casteo y guardo la perosna a sustituir:

@@ -17,7 +17,6 @@ public class Smith extends Personaje{
     }
 
 
-
     // METODOS:
     @Override
     public String mostrarInformacion()
