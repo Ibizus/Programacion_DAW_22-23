@@ -39,23 +39,45 @@ public class Matrix {
     // EMPIEZA LA PARTIDA:
     int index = 0;
     
-    while(index < 300 && listadoPersonas.size()>0)
+    while(index < 300 && listadoPersonas.size()>0) // mientras queden personas y no llegue a 300 iteraciones
     {
         // En cada iteracion evalúo la posibilidad de morir de una Persona:
         evaluaPersona(listadoPersonas, matrix);
 
         if((index%2)==0) // Smith entra en acción
         {
+            // Primero hay que buscar el Smith: (solo los creados antes de esta iteracion)
+            for (Personaje personaje : matrix)
+            {
+                if(personaje.getClass().equals(Smith.class)) // Encuentro el Smith
+                {
+                    Smith virus = (Smith)personaje;
+
+                    if(virus.getIteracionDeCreaccion() < index) // Compruebo que es anterior a la iteraccion actual
+                    {
+                        int infeccion = virus.getInfeccion();
+
+                        
+
+                    }
+                }    
+            }
+
+
+
 
         }
+
         if((index%5)==0) // Turno de NEO
         {
 
         }
+
         if((index%10)==0) // Aparecen 5 personajes nuevos en Matrix
         {
 
         }
+
         if((index%30)==0) // Se genera un nuevo personaje en la Lista de Personas Genéricas
         {
 
@@ -171,7 +193,7 @@ public class Matrix {
         // Machaco la posición de Matrix con el nuevo Personaje:
         matrix.set(posicionCambiada, nuevo);
 
-        // Anado el sustituido a la lista de reserva:
+        // Anado el sustituído a la lista de reserva:
         lista.add(intercambiado);
     }
 }
