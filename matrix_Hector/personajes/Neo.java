@@ -1,4 +1,4 @@
-package matrix_Hector;
+package matrix_Hector.personajes;
 
 public class Neo extends Personaje{
 
@@ -8,7 +8,7 @@ public class Neo extends Personaje{
 
 
     // CONSTRUCTOR:
-    protected Neo()
+    public Neo()
     {
         super();
         super.nombre = "NEO";
@@ -19,9 +19,9 @@ public class Neo extends Personaje{
 
 
     @Override
-    public void mostrarInformacion()
+    public String mostrarInformacion()
     {
-        System.out.println("Neo-> id: " + super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad());
+        return "Neo-> id: " + super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad();
     }
     
 }

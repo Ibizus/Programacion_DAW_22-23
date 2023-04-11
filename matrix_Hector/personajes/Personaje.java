@@ -1,4 +1,4 @@
-package matrix_Hector;
+package matrix_Hector.personajes;
 
 import java.time.LocalDateTime;
 
@@ -25,7 +25,7 @@ public abstract class Personaje {
         this.creacion = LocalDateTime.now();
     }
 
-    public abstract void mostrarInformacion();
+    public abstract String mostrarInformacion();
 
     public String ciudadAleatoria()
     {

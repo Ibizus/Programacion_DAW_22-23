@@ -1,4 +1,4 @@
-package matrix_Hector;
+package matrix_Hector.personajes;
 
 public class Smith extends Personaje{
 
@@ -7,7 +7,7 @@ public class Smith extends Personaje{
     private int iteracionDeCreaccion;
 
     // CONSTRUCTOR:
-    protected Smith()
+    public Smith()
     {
         super();
         this.nombre = "SMITH";
@@ -17,9 +17,9 @@ public class Smith extends Personaje{
 
     // METODOS:
     @Override
-    public void mostrarInformacion()
+    public String mostrarInformacion()
     {
-        System.out.println("Smith-> id: " + super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad());
+        return "Smith-> id: " + super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad();
     }
 
     public int getInfeccion() {
