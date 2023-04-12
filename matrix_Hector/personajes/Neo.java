@@ -23,5 +23,20 @@ public class Neo extends Personaje{
     {
         return "Neo-> id: " + super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad();
     }
+
+
+    public boolean isElegido() {
+        return elegido;
+    }
+
+
+    public void setElegido(boolean elegido) {
+        this.elegido = elegido;
+    }
+
+
+    public int getPoder() {
+        return poder;
+    }    
     
 }

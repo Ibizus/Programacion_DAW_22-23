@@ -24,7 +24,8 @@ public class Matrix {
     }
 
     // Introduzco en posiciones aleatorias a Neo y un Smith:
-    matrix.add((int)(Math.random()*matrix.size()), new Neo());
+    Neo neo = new Neo();
+    matrix.add((int)(Math.random()*matrix.size()), neo);
     matrix.add((int)(Math.random()*matrix.size()), new Smith());
 
     
@@ -34,12 +35,12 @@ public class Matrix {
 
 
     // EMPIEZA LA PARTIDA:
-    int index = 0;
+    int index = 1;
     
-    while(index < 300 && listadoPersonas.size()>0) // mientras queden personas y no llegue a 300 iteraciones
+    while(index < 301 && listadoPersonas.size()>0) // mientras queden personas y no llegue a 300 iteraciones
     {
         // En cada iteracion evalúo la posibilidad de morir de una Persona:
-        evaluaPersona(listadoPersonas, matrix);
+        evaluaPersonas(listadoPersonas, matrix);
 
         if((index%2)==0) // Smith entra en acción
         {
@@ -75,21 +76,34 @@ public class Matrix {
                         {
                             if(matrix.get(i).getClass().equals(PersonaGenerica.class))
                             {
-                                
+                                Smith nuevoSmith = (Smith)matrix.get(i);
+
+                                nuevoSmith.setIteracionDeCreaccion(index);
                             }
                         }
                     }
-                }    
+                } 
             }
-
-
-
-
-        }
+        }// Fin aparición Smith   
 
         if((index%5)==0) // Turno de NEO
         {
+            // random para ver si NEO se lo cree o no:
+            int neoCree = (int)(Math.random()*2);
 
+            if(neoCree == 0)
+            {
+                neo.setElegido(false);
+            }
+            else 
+            {
+                neo.setElegido(true);
+            }
+
+            if(neo.isElegido())
+            {
+                
+            }
         }
 
         if((index%10)==0) // Aparecen 5 personajes nuevos en Matrix
@@ -102,9 +116,12 @@ public class Matrix {
 
         }
 
-    }
+    }// Fin bucle PARTIDA
 
 
+    // Mostramos el contenido de Matrix:
+    System.out.println("\t\t\tMATRIX:");
+    estadoMatrix(matrix);
 
     }
 
@@ -187,7 +204,7 @@ public class Matrix {
      * @param origen
      * @param destino
      */
-    public static void evaluaPersona(ArrayList<Personaje> lista, ArrayList<Personaje> matrix)
+    public static void evaluaPersonas(ArrayList<Personaje> lista, ArrayList<Personaje> matrix)
     {
         int posicionAleatoria = (int)(Math.random()*matrix.size());
 
