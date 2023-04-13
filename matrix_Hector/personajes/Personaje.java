@@ -10,7 +10,7 @@ public abstract class Personaje {
     protected String ciudad;
     protected LocalDateTime creacion;
 
-    static private int personajesCreados;
+    static protected int personajesCreados;
 
 
     // CONSTRUCTOR:

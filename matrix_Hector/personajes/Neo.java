@@ -11,7 +11,7 @@ public class Neo extends Personaje{
     public Neo()
     {
         super();
-        super.nombre = "NEO";
+        this.nombre = "NEO";
 
         elegido = true;
         poder = (int)(Math.random()*5)+1;

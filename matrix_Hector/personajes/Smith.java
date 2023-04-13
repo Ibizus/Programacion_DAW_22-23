@@ -1,5 +1,7 @@
 package matrix_Hector.personajes;
 
+import java.time.LocalDateTime;
+
 public class Smith extends Personaje implements Comparable<Smith>{
 
     // ATRIBUTOS:
@@ -15,6 +17,17 @@ public class Smith extends Personaje implements Comparable<Smith>{
         infeccion = (int)(Math.random()*3)+1;
         iteracionDeCreaccion = 0;
     }
+
+    public Smith(int id, LocalDateTime fecha, String ciudad, int index)
+    {
+        this.id = id;
+        this.iteracionDeCreaccion = index;
+        this.creacion = fecha;
+        this.nombre = "SMITH";
+        this.ciudad = ciudad;
+        Personaje.personajesCreados--;
+    }
+
 
 
     // METODOS:

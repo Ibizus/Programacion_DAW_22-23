@@ -2,10 +2,37 @@ package matrix_Hector;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import matrix_Hector.personajes.*;
 
 public class Matrix {
+
+    // CONTANTES DE ESTILO:
+    static final String ANSI_YELLOW = "\u001B[33m";
+    static final String ANSI_RED = "\u001B[31m";
+    static final String ANSI_PURPLE = "\u001B[35m";
+    static final String ANSI_GREEN = "\u001B[32m";
+    static final String ANSI_WHITE_BG = "\u001B[47m";  
+    static final String ANSI_RED_BG = "\u001B[41m";
+    static final String ANSI_RESET = "\u001B[0m";
+    static final String texto1 = ANSI_PURPLE +   
+    "######   ###  #######  #     #  #     #  #######  #     #  ###  ######   #######         #   \n" + 
+    "#     #   #   #        ##    #  #     #  #        ##    #   #   #     #  #     #        # #  \n" + 
+    "#     #   #   #        # #   #  #     #  #        # #   #   #   #     #  #     #       #   # \n" + 
+    "######    #   #####    #  #  #  #     #  #####    #  #  #   #   #     #  #     #      #     #\n" + 
+    "#     #   #   #        #   # #   #   #   #        #   # #   #   #     #  #     #      #######\n" + 
+    "#     #   #   #        #    ##    # #    #        #    ##   #   #     #  #     #      #     #\n" + 
+    "######   ###  #######  #     #     #     #######  #     #  ###  ######   #######      #     #\n" + ANSI_RESET;
+    static final String texto = ANSI_GREEN +
+    "\t::::    ::::      :::     ::::::::::: :::::::::  ::::::::::: :::    :::\n" +
+    "\t+:+:+: :+:+:+   :+: :+:       :+:     :+:    :+:     :+:     :+:    :+:\n" +
+    "\t+:+ +:+:+ +:+  +:+   +:+      +:+     +:+    +:+     +:+      +:+  +:+\n" +
+    "\t+#+  +:+  +#+ +#++:++#++:     +#+     +#++:++#:      +#+       +#++:+\n" +
+    "\t+#+       +#+ +#+     +#+     +#+     +#+    +#+     +#+      +#+  +#+\n" + 
+    "\t#+#       #+# #+#     #+#     #+#     #+#    #+#     #+#     #+#    #+#\n" +
+    "\t###       ### ###     ###     ###     ###    ### ########### ###    ###\n" +
+    ANSI_RESET;
+
+
     public static void main(String[] args) {
         
 
@@ -41,11 +68,17 @@ public class Matrix {
 
     // EMPIEZA LA PARTIDA:
     int index = 1;
+    //System.out.println(texto1);
+    //System.out.println(texto);
     
     while(index < 301 && listadoPersonas.size()>0) // mientras queden personas y no llegue a 300 iteraciones
     {
+
+        System.out.println("Iteración: " + index + ":");
+
         // En cada iteracion evalúo la posibilidad de morir de cada Persona:
         evaluaPersonas(listadoPersonas, matrix);
+
 
         /****** LOS SMITH ENTRAN EN ACCION ******/
         if((index%2)==0)
@@ -78,6 +111,7 @@ public class Matrix {
             if(neoCree == 0)
             {
                 neo.setElegido(false);
+                System.out.println("Neo está de capa caída hoy, como mustio, parace que hoy no saldrá a cazar");
             }
             else 
             {
@@ -105,13 +139,14 @@ public class Matrix {
             }
         }// Fin NEO
 
+
         /****** APARECEN 5 PERSONAJES NUEVOS EN MATRIX ******/
         if((index%10)==0)
         {
             // Array de posiciones de nulos:
             ArrayList<Integer> posicionesVacias = new ArrayList<>();
 
-            // Calculo espacios libres (NULOS)
+            // Busco espacios libres (NULOS)
             for (Personaje personaje : matrix)
             {
                 // Guardo las posiciones
@@ -128,23 +163,25 @@ public class Matrix {
                 // selecciona posicion aleatoria:
                 int aleatoria = (int)(Math.random()*posicionesVacias.size());
 
-                // Sustituye null por persona nueva lista.get(0);
-                
+                // Sustituye null por persona nueva de la lista:
+                sustituyeNull(listadoPersonas, matrix, aleatoria);
 
-                // Borra posicion:
+                // Borro la posicion usada de posicionesVacias para no volver a seleccionarla:
+                posicionesVacias.remove(aleatoria);
+
                 sustituidos++;
             }
+        } // Fin 10 iteraciones
 
-            
-
-        }
 
         /****** NUEVA PERSONA EN LA LISTA DE PERSONAS GENERICAS ******/
         if((index%30)==0)
         {
-
+            // Creo nueva PersonaGenérica y lo añado a la lista de Personas
+            listadoPersonas.add(new PersonaGenerica());
         }
 
+        index++;
     }// Fin bucle PARTIDA
 
 
@@ -209,7 +246,9 @@ public class Matrix {
     }
 
     /**
-     * 
+     * Añade una Persona a la lista de destino (matrix), borrándola 
+     * de la lista de origen (factoria) o informa en caso de
+     * que ya no queden personas disponibles en origen.
      * @param origen
      * @param destino
      */
@@ -226,6 +265,29 @@ public class Matrix {
             System.out.println("No quedan personas en la lista");
         }
     }
+
+    /**
+     * Sustituye en la lista de destino (matrix) un Null por una persona 
+     * de la lista de origen (factoriaPersonas), borrándola de origen o 
+     * informa en caso de que ya no queden personas disponibles en origen.
+     * @param origen
+     * @param destino
+     * @param posicion
+     */
+    public static void sustituyeNull(ArrayList<Personaje> origen, ArrayList<Personaje> destino, int posicion)
+    {
+        if(origen.size()>0)
+        {
+            Personaje nuevo = origen.get(0);
+            origen.remove(0);
+            destino.set(posicion, nuevo);
+        }
+        else
+        {
+            System.out.println("No quedan más personas para sustituir Nulls");
+        }
+    }
+
 
     /**
      * Evalua la probabilidad de morir de una persona para sustituirla por otra
@@ -302,14 +364,25 @@ public class Matrix {
         while (posicionInicialDeInfeccion <= posicionFinalDeInfeccion)
         {
             // Mientras que el inicio y el final no se salgan del rango de Matrix:
-            if (posicionInicialDeInfeccion>=0 && posicionFinalDeInfeccion<=matrix.size())
+            if (posicionInicialDeInfeccion>=0 && posicionFinalDeInfeccion<matrix.size())
             {
                 if(matrix.get(posicionInicialDeInfeccion) != null && matrix.get(posicionInicialDeInfeccion).getClass().equals(PersonaGenerica.class))
                 {
-                    Smith nuevoSmith = (Smith)matrix.get(posicionInicialDeInfeccion);
+                    // Saco la persona infectada para usar sus datos:
+                    Personaje infectada = matrix.get(posicionInicialDeInfeccion);
 
-                    nuevoSmith.setIteracionDeCreaccion(index);
+                    System.out.println("creados antes de infectar al Smith" + Personaje.getCreados());
 
+                    // Creo un nuevo Smith con los datos de la persona infectada:
+                    Smith nuevoSmith = new Smith(infectada.getId(), infectada.getCreacion(), infectada.getCiudad(), index);
+
+                    // compruebo el incremento del contador de personas:
+                    System.out.println("contador ID del nuevo virus creado (debería ser menor a 200)" + nuevoSmith.getId());
+
+                    // 
+                    System.out.println("creados despues de infectar al Smith" + Personaje.getCreados());
+
+                    // Le paso la infección del otro Smith:
                     nuevoSmith.setInfeccion(infeccion);
 
                     matrix.set(posicionInicialDeInfeccion, nuevoSmith);
@@ -341,9 +414,10 @@ public class Matrix {
             {
                 if(matrix.get(posicionInicialDestruccion)!= null && matrix.get(posicionInicialDestruccion).getClass().equals(Smith.class))
                 {
-
                     // Mando al Smith al cementeriio
                     cementerio.add((Smith)matrix.get(posicionInicialDestruccion));
+
+                    System.out.println("Virus aniquilado " + ((Smith)matrix.get(posicionInicialDestruccion)).mostrarInformacion());
 
                     // Pongo un NULL en su lugar
                     matrix.set(posicionInicialDestruccion, null);
