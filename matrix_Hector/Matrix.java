@@ -47,7 +47,8 @@ public class Matrix {
         // En cada iteracion evalúo la posibilidad de morir de cada Persona:
         evaluaPersonas(listadoPersonas, matrix);
 
-        if((index%2)==0) // Smith entra en acción
+        /****** LOS SMITH ENTRAN EN ACCION ******/
+        if((index%2)==0)
         {
             // Primero hay que buscar los Smith: (solo los creados antes de esta iteracion)
             for (Personaje personaje : matrix)
@@ -65,10 +66,11 @@ public class Matrix {
                     }
                 } 
             }
-        }// Fin aparición Smith   
+        }// Fin Smith   
 
 
-        if((index%5)==0) // Turno de NEO
+        /****** TURNO DE NEO ******/
+        if((index%5)==0)
         {
             // random para ver si NEO se lo cree o no:
             int neoCree = (int)(Math.random()*2);
@@ -92,7 +94,7 @@ public class Matrix {
                 destruyeVirus(matrix, index, destruccion, cementerio);
 
                 // Neo se cambia de posición;
-                neoCambiaPosicion(neo, matrix);
+                neoCambiaPosicion(neo, matrix, cementerio);
 
                 // Ordeno el cementerio:
                 Collections.sort(cementerio);
@@ -101,15 +103,44 @@ public class Matrix {
                 System.out.println("\t\t\tMATRIX:");
                 estadoMatrix(matrix);
             }
-        }// Fin acción NEO
+        }// Fin NEO
 
-
-        if((index%10)==0) // Aparecen 5 personajes nuevos en Matrix
+        /****** APARECEN 5 PERSONAJES NUEVOS EN MATRIX ******/
+        if((index%10)==0)
         {
+            // Array de posiciones de nulos:
+            ArrayList<Integer> posicionesVacias = new ArrayList<>();
+
+            // Calculo espacios libres (NULOS)
+            for (Personaje personaje : matrix)
+            {
+                // Guardo las posiciones
+                if(personaje == null)
+                {
+                    posicionesVacias.add(matrix.indexOf(personaje));
+                }    
+            }
+
+            // Bucle para sustituir 5 de esas posiciones:
+            int sustituidos = 0;
+            while (posicionesVacias.size()>0 && sustituidos<=5)
+            {
+                // selecciona posicion aleatoria:
+                int aleatoria = (int)(Math.random()*posicionesVacias.size());
+
+                // Sustituye null por persona nueva lista.get(0);
+                
+
+                // Borra posicion:
+                sustituidos++;
+            }
+
+            
 
         }
 
-        if((index%30)==0) // Se genera un nuevo personaje en la Lista de Personas Genéricas
+        /****** NUEVA PERSONA EN LA LISTA DE PERSONAS GENERICAS ******/
+        if((index%30)==0)
         {
 
         }
@@ -190,7 +221,7 @@ public class Matrix {
             origen.remove(0);
             destino.add(nuevo);
         }
-        else 
+        else
         {
             System.out.println("No quedan personas en la lista");
         }
@@ -232,17 +263,24 @@ public class Matrix {
      */
     public static void sustituyePersona(Personaje persona, ArrayList<Personaje> lista, ArrayList<Personaje> matrix)
     {
-        // Localizo su posición en el arrayList:
-        int posicionCambiada = matrix.indexOf(persona);
+        if(lista.size()>0) // Valido que me sigan quedando personas en la lista:
+        {
+            // Localizo su posición en el arrayList:
+            int posicionCambiada = matrix.indexOf(persona);
 
-        // Saco al primero de la lista:
-        PersonaGenerica nuevo = (PersonaGenerica) lista.get(0);
+            // Saco al primero de la lista:
+            PersonaGenerica nuevo = (PersonaGenerica)lista.get(0);
 
-        // Lo elimino de lista:
-        lista.remove(0);
+            // Lo elimino de lista:
+            lista.remove(0);
 
-        // Machaco la posición de Matrix con el nuevo Personaje:
-        matrix.set(posicionCambiada, nuevo);
+            // Machaco la posición de Matrix con el nuevo Personaje:
+            matrix.set(posicionCambiada, nuevo);
+        }
+        else
+        {
+            System.out.println("No quedan personas en la factoria");
+        }
     }
 
     /**
