@@ -65,9 +65,4 @@ public class Ajedrez {
         System.out.println("Puntos totales: " + puntuacionTotal + " peones.");
     }
 
-    @Override
-    public String toString()
-    {
-        return "ficha";
-    }
 }

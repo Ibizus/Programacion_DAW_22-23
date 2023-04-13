@@ -1,6 +1,6 @@
 package matrix_Hector.personajes;
 
-public class Smith extends Personaje{
+public class Smith extends Personaje implements Comparable<Smith>{
 
     // ATRIBUTOS:
     private int infeccion;
@@ -24,6 +24,13 @@ public class Smith extends Personaje{
         return super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad();
     }
 
+    @Override
+    public int compareTo(Smith o)
+    {
+        return this.creacion.compareTo(o.creacion);
+    }
+
+    // GETTERS Y SETTERS:
     public int getInfeccion() {
         return infeccion;
     }
@@ -36,5 +43,8 @@ public class Smith extends Personaje{
         this.iteracionDeCreaccion = iteracionDeCreaccion;
     }
 
-    
+    public void setInfeccion(int infeccion) {
+        this.infeccion = infeccion;
+    }
+
 }
