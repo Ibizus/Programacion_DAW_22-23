@@ -87,7 +87,7 @@ public class Ejercicio_CRUD {
      */
     static int menu()
     {
-        System.out.println("\n\t" + ANSI_GREEN_BG + "BIENVENIDO AL MENU DE CLIENES" + ANSI_RESET + "\n");
+        System.out.println("\n\t" + ANSI_GREEN_BG + "BIENVENIDO AL MENU CLIENTE DE \'EL CORTE INGLÉS\'" + ANSI_RESET + "\n");
         System.out.println("1 - Consulta de datos");
         System.out.println("2 - Alta nueva");
         System.out.println("3 - Baja de persona");
@@ -101,6 +101,10 @@ public class Ejercicio_CRUD {
         return opcion;
     }
 
+    /**
+     * 
+     * @return
+     */
     static int submenu()
     {
         System.out.println("\n\t" + ANSI_GREEN_BG + "SUBMENÚ DE EDICIÓN\nSeleccione el campo a editar:" + ANSI_RESET + "\n");
@@ -125,27 +129,35 @@ public class Ejercicio_CRUD {
         String consulta = "select nombre, apellidos, telefono from people where dni = ";
         System.out.println("Inserta el DNI de la persona:");
         String dniBuscado = sc.nextLine();
-        consulta = consulta + "'" + dniBuscado + "'";
         
-        try
-        { 
-            Statement st;
-            st=conexion.createStatement();
-            ResultSet rs;
-            rs=st.executeQuery(consulta);
-            rs.next();
-
-            String nombre = rs.getString("nombre");
-            String apellidos = rs.getString("apellidos");
-            String telefono = rs.getString("telefono");
-            System.out.println("\n\nPersona encontrada:");
-            System.out.println("nombre -> " + nombre);
-            System.out.println("apellidos -> " + apellidos);
-            System.out.println("telefono -> " + telefono);
-        }
-        catch (SQLException sqle)
+        // Compruebo que el dni es válido:
+        if(dniEsValido(dniBuscado))
         {
-        System.out.println(ANSI_RED_BG + sqle.getErrorCode() + " -> " + sqle.getMessage() + ANSI_RESET);
+            consulta = consulta + "'" + dniBuscado + "'";
+            try
+            { 
+                Statement st;
+                st=conexion.createStatement();
+                ResultSet rs;
+                rs=st.executeQuery(consulta);
+                rs.next();
+    
+                String nombre = rs.getString("nombre");
+                String apellidos = rs.getString("apellidos");
+                String telefono = rs.getString("telefono");
+                System.out.println("\n\nPersona encontrada:");
+                System.out.println("Nombre -> " + nombre);
+                System.out.println("Apellidos -> " + apellidos);
+                System.out.println("Teléfono -> " + telefono);
+            }
+            catch (SQLException sqle)
+            {
+            System.out.println(ANSI_RED_BG + sqle.getErrorCode() + " -> " + sqle.getMessage() + ANSI_RESET);
+            }
+        }
+        else 
+        {
+            System.out.println("El formato de DNI introducido no es correcto");
         }
     }
 
@@ -210,6 +222,10 @@ public class Ejercicio_CRUD {
         }
     }
 
+    /**
+     * 
+     * @param conexion
+     */
     static void modificaDatos(Connection conexion)
     {
 
@@ -266,6 +282,29 @@ public class Ejercicio_CRUD {
         }
     }
 
+    /**
+     * 
+     * @return
+     */
+    static boolean dniEsValido(String dni)
+    {
+        boolean valido = true;
+
+        if(dni.length()==8)
+        {
+            boolean isDigit = true;
+            for (int i = 0; i < dni.length(); i++)
+            {
+                isDigit = Character.isDigit(dni.charAt(i));
+
+                if(isDigit == false)
+                {
+                    valido = isDigit;
+                }
+            }
+        }
+        return valido;
+    }
 
 
 }

@@ -22,7 +22,7 @@ public class Matrix {
     "#     #   #   #        #   # #   #   #   #        #   # #   #   #     #  #     #      #######\n" + 
     "#     #   #   #        #    ##    # #    #        #    ##   #   #     #  #     #      #     #\n" + 
     "######   ###  #######  #     #     #     #######  #     #  ###  ######   #######      #     #\n" + ANSI_RESET;
-    static final String texto = ANSI_GREEN +
+    static final String texto2 = ANSI_GREEN +
     "\t::::    ::::      :::     ::::::::::: :::::::::  ::::::::::: :::    :::\n" +
     "\t+:+:+: :+:+:+   :+: :+:       :+:     :+:    :+:     :+:     :+:    :+:\n" +
     "\t+:+ +:+:+ +:+  +:+   +:+      +:+     +:+    +:+     +:+      +:+  +:+\n" +
@@ -30,6 +30,15 @@ public class Matrix {
     "\t+#+       +#+ +#+     +#+     +#+     +#+    +#+     +#+      +#+  +#+\n" + 
     "\t#+#       #+# #+#     #+#     #+#     #+#    #+#     #+#     #+#    #+#\n" +
     "\t###       ### ###     ###     ###     ###    ### ########### ###    ###\n" +
+    ANSI_RESET;
+    static final String texto3 = ANSI_RED +
+    "\t #####     #    #     # #######      ####### #     # ####### ###### \n" + 
+    "\t#     #   # #   ##   ## #            #     # #     # #       #     #\n" + 
+    "\t#        #   #  # # # # #            #     # #     # #       #     #\n" + 
+    "\t#  #### #     # #  #  # #####        #     # #     # #####   ###### \n" + 
+    "\t#     # ####### #     # #            #     #  #   #  #       #   #  \n" + 
+    "\t#     # #     # #     # #            #     #   # #   #       #    # \n" + 
+    "\t #####  #     # #     # #######      #######    #    ####### #     #\n" + 
     ANSI_RESET;
 
 
@@ -73,12 +82,10 @@ public class Matrix {
     
     while(index < 301 && listadoPersonas.size()>0) // mientras queden personas y no llegue a 300 iteraciones
     {
-
         System.out.println("Iteración: " + index + ":");
 
         // En cada iteracion evalúo la posibilidad de morir de cada Persona:
         evaluaPersonas(listadoPersonas, matrix);
-
 
         /****** LOS SMITH ENTRAN EN ACCION ******/
         if((index%2)==0)
@@ -94,8 +101,8 @@ public class Matrix {
                     // Compruebo que es anterior a la iteraccion actual para que pueda infectar
                     if(virus.getIteracionDeCreaccion() < index) 
                     {
+                        System.out.println("Los Smith están causando estragos");
                         infectaPersonas(virus, matrix, index);
-                        System.out.println("LOS SMITH ESTÁN INFECTANDO PERSONAS");
                     }
                 } 
             }
@@ -120,7 +127,7 @@ public class Matrix {
 
             if(neo.isElegido())
             {
-                System.out.println("NEO ENTRA EN ACCIÓN");
+                System.out.println("¡¡NEO ENTRA EN ACCIÓN!!");
 
                 // Genera capacidad de destrucción:
                 int destruccion = (int)(Math.random()*neo.getPoder())+1;
@@ -164,7 +171,7 @@ public class Matrix {
                 int aleatoria = (int)(Math.random()*posicionesVacias.size());
 
                 // Sustituye null por persona nueva de la lista:
-                sustituyeNull(listadoPersonas, matrix, aleatoria);
+                sustituyeNull(listadoPersonas, matrix, posicionesVacias.get(aleatoria));
 
                 // Borro la posicion usada de posicionesVacias para no volver a seleccionarla:
                 posicionesVacias.remove(aleatoria);
@@ -182,9 +189,16 @@ public class Matrix {
         }
 
         index++;
+
+        // Mostramos el contenido de Matrix:
+        System.out.println("Estado despues de la iteracion");
+        System.out.println("\t\t\tMATRIX:");
+        estadoMatrix(matrix);
+
+
     }// Fin bucle PARTIDA
 
-
+    System.out.println(" G A M E   O V E R ");
     // Mostramos el contenido de Matrix:
     System.out.println("\t\t\tMATRIX:");
     estadoMatrix(matrix);
@@ -338,6 +352,7 @@ public class Matrix {
 
             // Machaco la posición de Matrix con el nuevo Personaje:
             matrix.set(posicionCambiada, nuevo);
+            System.out.println("Muere un ciudadao y se le sutituye");
         }
         else
         {
@@ -370,17 +385,10 @@ public class Matrix {
                 {
                     // Saco la persona infectada para usar sus datos:
                     Personaje infectada = matrix.get(posicionInicialDeInfeccion);
-
-                    System.out.println("creados antes de infectar al Smith" + Personaje.getCreados());
+                    System.out.println("Persona infectada:" + infectada);
 
                     // Creo un nuevo Smith con los datos de la persona infectada:
                     Smith nuevoSmith = new Smith(infectada.getId(), infectada.getCreacion(), infectada.getCiudad(), index);
-
-                    // compruebo el incremento del contador de personas:
-                    System.out.println("contador ID del nuevo virus creado (debería ser menor a 200)" + nuevoSmith.getId());
-
-                    // 
-                    System.out.println("creados despues de infectar al Smith" + Personaje.getCreados());
 
                     // Le paso la infección del otro Smith:
                     nuevoSmith.setInfeccion(infeccion);

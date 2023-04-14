@@ -28,8 +28,7 @@ public class Smith extends Personaje implements Comparable<Smith>{
         Personaje.personajesCreados--;
     }
 
-
-
+    
     // METODOS:
     @Override
     public String mostrarInformacion()
