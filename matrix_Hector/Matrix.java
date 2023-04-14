@@ -44,12 +44,12 @@ public class Matrix {
 
     public static void main(String[] args) {
         
-
     // Creamos una colección de 200 personas genéricas:
     ArrayList<Personaje> listadoPersonas = new ArrayList<>();
 
     // La rellenamos:
     listadoPersonas = factoriaDePersonas(200);
+    System.out.println(ANSI_YELLOW + "LA RESERVA DE PERSONAS GENÉRICAS ESTÁ LISTA:" + ANSI_RESET);
     System.out.println(listadoPersonas);
 
     // Inicializamos el mundo de MATRIX:
@@ -69,16 +69,14 @@ public class Matrix {
     matrix.add((int)(Math.random()*matrix.size()), neo);
     matrix.add((int)(Math.random()*matrix.size()), new Smith());
 
-    
     // Mostramos el contenido de Matrix:
-    System.out.println("\t\t\tMATRIX:");
+    System.out.println(texto1);
+    System.out.println(texto2);
+    System.out.println("\t\t\tMUNDO MATRIX ESTÁ LISTO:");
     estadoMatrix(matrix);
-
 
     // EMPIEZA LA PARTIDA:
     int index = 1;
-    //System.out.println(texto1);
-    //System.out.println(texto);
     
     while(index < 301 && listadoPersonas.size()>0) // mientras queden personas y no llegue a 300 iteraciones
     {
