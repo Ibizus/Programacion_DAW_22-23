@@ -15,7 +15,7 @@ public class Smith extends Personaje implements Comparable<Smith>{
         super();
         this.nombre = "SMITH";
 
-        infeccion = (int)(Math.random()*3)+1;
+        infeccion = (int)(Math.random()*2)+1;
         iteracionDeCreaccion = 0;
     }
 
