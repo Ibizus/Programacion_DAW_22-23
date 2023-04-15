@@ -6,41 +6,15 @@ import matrix_Hector.personajes.*;
 
 public class Matrix {
 
-    // CONTANTES DE ESTILO:
+    // CONSTANTES DE ESTILO:
     static final String ANSI_YELLOW = "\u001B[33m";
     static final String ANSI_RED = "\u001B[31m";
     static final String ANSI_PURPLE = "\u001B[35m";
     static final String ANSI_GREEN = "\u001B[32m";
-    static final String ANSI_WHITE_BG = "\u001B[47m";  
+    static final String ANSI_WHITE_BG = "\u001B[47m";
+    static final String ANSI_GREEN_BG = "\u001B[42m"; 
     static final String ANSI_RED_BG = "\u001B[41m";
     static final String ANSI_RESET = "\u001B[0m";
-    static final String texto1 = ANSI_PURPLE +   
-    "######   ###  #######  #     #  #     #  #######  #     #  ###  ######   #######         #   \n" + 
-    "#     #   #   #        ##    #  #     #  #        ##    #   #   #     #  #     #        # #  \n" + 
-    "#     #   #   #        # #   #  #     #  #        # #   #   #   #     #  #     #       #   # \n" + 
-    "######    #   #####    #  #  #  #     #  #####    #  #  #   #   #     #  #     #      #     #\n" + 
-    "#     #   #   #        #   # #   #   #   #        #   # #   #   #     #  #     #      #######\n" + 
-    "#     #   #   #        #    ##    # #    #        #    ##   #   #     #  #     #      #     #\n" + 
-    "######   ###  #######  #     #     #     #######  #     #  ###  ######   #######      #     #\n" + ANSI_RESET;
-    static final String texto2 = ANSI_GREEN +
-    "\t::::    ::::      :::     ::::::::::: :::::::::  ::::::::::: :::    :::\n" +
-    "\t+:+:+: :+:+:+   :+: :+:       :+:     :+:    :+:     :+:     :+:    :+:\n" +
-    "\t+:+ +:+:+ +:+  +:+   +:+      +:+     +:+    +:+     +:+      +:+  +:+\n" +
-    "\t+#+  +:+  +#+ +#++:++#++:     +#+     +#++:++#:      +#+       +#++:+\n" +
-    "\t+#+       +#+ +#+     +#+     +#+     +#+    +#+     +#+      +#+  +#+\n" + 
-    "\t#+#       #+# #+#     #+#     #+#     #+#    #+#     #+#     #+#    #+#\n" +
-    "\t###       ### ###     ###     ###     ###    ### ########### ###    ###\n" +
-    ANSI_RESET;
-    static final String texto3 = ANSI_RED +
-    "\t #####     #    #     # #######      ####### #     # ####### ###### \n" + 
-    "\t#     #   # #   ##   ## #            #     # #     # #       #     #\n" + 
-    "\t#        #   #  # # # # #            #     # #     # #       #     #\n" + 
-    "\t#  #### #     # #  #  # #####        #     # #     # #####   ###### \n" + 
-    "\t#     # ####### #     # #            #     #  #   #  #       #   #  \n" + 
-    "\t#     # #     # #     # #            #     #   # #   #       #    # \n" + 
-    "\t #####  #     # #     # #######      #######    #    ####### #     #\n" + 
-    ANSI_RESET;
-
 
     public static void main(String[] args) {
         
@@ -70,17 +44,18 @@ public class Matrix {
     matrix.add((int)(Math.random()*matrix.size()), new Smith());
 
     // Mostramos el contenido de Matrix:
-    System.out.println(texto1);
-    System.out.println(texto2);
+    System.out.println(mensajeBienvenida());
+    System.out.println(mensajeMatrix());
     System.out.println("\t\t\tMUNDO MATRIX ESTÁ LISTO:");
     estadoMatrix(matrix);
 
     // EMPIEZA LA PARTIDA:
+    boolean hayPersonasSanas = true;
     int index = 1;
     
-    while(index < 301 && listadoPersonas.size()>0) // mientras queden personas y no llegue a 300 iteraciones
+    while(index < 301 && hayPersonasSanas) // mientras queden personas y no llegue a 300 iteraciones
     {
-        System.out.println("Iteración: " + index + ":");
+        System.out.println(ANSI_YELLOW + "Iteración: " + index + ":" + ANSI_RESET);
 
         // En cada iteracion evalúo la posibilidad de morir de cada Persona:
         evaluaPersonas(listadoPersonas, matrix);
@@ -88,6 +63,8 @@ public class Matrix {
         /****** LOS SMITH ENTRAN EN ACCION ******/
         if((index%2)==0)
         {
+            System.out.println(ANSI_RED_BG + "Los Smith están causando estragos" + ANSI_RESET);
+
             // Primero hay que buscar los Smith: (solo los creados antes de esta iteracion)
             for (Personaje personaje : matrix)
             {
@@ -99,7 +76,6 @@ public class Matrix {
                     // Compruebo que es anterior a la iteraccion actual para que pueda infectar
                     if(virus.getIteracionDeCreaccion() < index) 
                     {
-                        System.out.println("Los Smith están causando estragos");
                         infectaPersonas(virus, matrix, index);
                     }
                 } 
@@ -116,7 +92,7 @@ public class Matrix {
             if(neoCree == 0)
             {
                 neo.setElegido(false);
-                System.out.println("Neo está de capa caída hoy, como mustio, parace que hoy no saldrá a cazar");
+                System.out.println(ANSI_WHITE_BG + "Neo está de capa caída hoy, como mustio, parace que no saldrá a cazar" + ANSI_RESET);
             }
             else 
             {
@@ -125,7 +101,7 @@ public class Matrix {
 
             if(neo.isElegido())
             {
-                System.out.println("¡¡NEO ENTRA EN ACCIÓN!!");
+                System.out.println(ANSI_GREEN_BG + "¡¡NEO ENTRA EN ACCIÓN!!" + ANSI_RESET);
 
                 // Genera capacidad de destrucción:
                 int destruccion = (int)(Math.random()*neo.getPoder())+1;
@@ -139,10 +115,11 @@ public class Matrix {
                 Collections.sort(cementerio);
 
                 // Mostramos el contenido de Matrix:
-                System.out.println("\t\t\tMATRIX:");
+                System.out.println(ANSI_YELLOW + "\t\t\tMATRIX:" + ANSI_RESET);
                 estadoMatrix(matrix);
             }
         }// Fin NEO
+
 
 
         /****** APARECEN 5 PERSONAJES NUEVOS EN MATRIX ******/
@@ -163,7 +140,7 @@ public class Matrix {
 
             // Bucle para sustituir 5 de esas posiciones:
             int sustituidos = 0;
-            while (posicionesVacias.size()>0 && sustituidos<=5)
+            while (posicionesVacias.size()>0 && sustituidos<5)
             {
                 // selecciona posicion aleatoria:
                 int aleatoria = (int)(Math.random()*posicionesVacias.size());
@@ -184,21 +161,24 @@ public class Matrix {
         {
             // Creo nueva PersonaGenérica y lo añado a la lista de Personas
             listadoPersonas.add(new PersonaGenerica());
-        }
+        }// Fin 30 iteraciones
 
+
+        //Actualizo condiciones Bucle:
+        hayPersonasSanas = quedanPersonas(matrix);
         index++;
-
-        // Mostramos el contenido de Matrix:
-        System.out.println("Estado despues de la iteracion");
-        System.out.println("\t\t\tMATRIX:");
-        estadoMatrix(matrix);
-
-
     }// Fin bucle PARTIDA
 
-    System.out.println(" G A M E   O V E R ");
+
+    System.out.println(mensajeGameOver());
+
+    // Mostramos el listado de Virus muertos:
+    Collections.sort(cementerio);
+    System.out.println(ANSI_YELLOW + "\t\t\tCEMENTERIO:" + ANSI_RESET);
+    System.out.println(cementerio);
+
     // Mostramos el contenido de Matrix:
-    System.out.println("\t\t\tMATRIX:");
+    System.out.println(ANSI_YELLOW + "\t\t\tMATRIX:" + ANSI_RESET);
     estadoMatrix(matrix);
 
     }
@@ -240,22 +220,22 @@ public class Matrix {
             }
             else if(personaje.getClass().equals(PersonaGenerica.class))
             {
-                letra = "P";
+                letra = ANSI_PURPLE + "P" + ANSI_RESET;
             }
             else if (personaje.getClass().equals(Neo.class))
             {
-                letra = "N";
+                letra = ANSI_GREEN_BG + "N" + ANSI_RESET;
             }
             else if(personaje.getClass().equals(Smith.class))
             {
-                letra = "S";
+                letra = ANSI_RED_BG + "S" + ANSI_RESET;
             }
 
             resultado+= "[" + letra + "]";
         }
-
         System.out.println(resultado);
     }
+
 
     /**
      * Añade una Persona a la lista de destino (matrix), borrándola 
@@ -274,7 +254,7 @@ public class Matrix {
         }
         else
         {
-            System.out.println("No quedan personas en la lista");
+            System.out.println("No quedan personas en la lista de reserva");
         }
     }
 
@@ -348,14 +328,13 @@ public class Matrix {
             // Lo elimino de lista:
             lista.remove(0);
 
+            // Muestro la persona que muere:
+            System.out.println(ANSI_PURPLE + "Muere el ciudadano" + ANSI_RESET + " " + persona + " y será sutituído:");
+
             // Machaco la posición de Matrix con el nuevo Personaje:
             matrix.set(posicionCambiada, nuevo);
-            System.out.println("Muere un ciudadao y se le sutituye");
         }
-        else
-        {
-            System.out.println("No quedan personas en la factoria");
-        }
+
     }
 
     /**
@@ -383,7 +362,7 @@ public class Matrix {
                 {
                     // Saco la persona infectada para usar sus datos:
                     Personaje infectada = matrix.get(posicionInicialDeInfeccion);
-                    System.out.println("Persona infectada:" + infectada);
+                    System.out.println(ANSI_PURPLE + "Persona infectada:" + ANSI_RESET + " " + infectada);
 
                     // Creo un nuevo Smith con los datos de la persona infectada:
                     Smith nuevoSmith = new Smith(infectada.getId(), infectada.getCreacion(), infectada.getCiudad(), index);
@@ -404,7 +383,6 @@ public class Matrix {
      * @param virus
      * @param matrix
      * @param index
-     * @return Smith
      */
     public static void destruyeVirus(ArrayList<Personaje> matrix, int index, int destruccion, ArrayList<Smith> cementerio)
     {
@@ -423,7 +401,7 @@ public class Matrix {
                     // Mando al Smith al cementeriio
                     cementerio.add((Smith)matrix.get(posicionInicialDestruccion));
 
-                    System.out.println("Virus aniquilado " + ((Smith)matrix.get(posicionInicialDestruccion)).mostrarInformacion());
+                    System.out.println(ANSI_RED_BG + "Virus aniquilado" + ANSI_RESET + " " + ((Smith)matrix.get(posicionInicialDestruccion)).mostrarInformacion());
 
                     // Pongo un NULL en su lugar
                     matrix.set(posicionInicialDestruccion, null);
@@ -439,6 +417,7 @@ public class Matrix {
      * o mata a un Smith según lo que haya en esa posición
      * @param neo
      * @param matrix
+     * @param cementerio
      */
     public static void neoCambiaPosicion(Neo neo, ArrayList<Personaje> matrix, ArrayList<Smith> cementerio)
     {
@@ -464,5 +443,60 @@ public class Matrix {
             // Pongo NULL en su lugar original
             matrix.set(posicionInicial, null);
         }
+    }
+
+    public static boolean quedanPersonas(ArrayList<Personaje> matrix)
+    {
+        boolean quedanPersonas = false;
+
+        for (Personaje persona : matrix)
+        {
+            if(persona != null && persona.getClass().equals(PersonaGenerica.class))
+            {
+                quedanPersonas = true;
+            }
+        }
+        return quedanPersonas;
+    }
+
+
+
+    // MÉTODOS DE ESTILO: (DEVUELVEN MENSAJES UTILIZADOS EN EL PROGRAMA)
+    public static String mensajeBienvenida()
+    {
+        return ANSI_PURPLE +   
+        "######   ###  #######  #     #  #     #  #######  #     #  ###  ######   #######         #   \n" + 
+        "#     #   #   #        ##    #  #     #  #        ##    #   #   #     #  #     #        # #  \n" + 
+        "#     #   #   #        # #   #  #     #  #        # #   #   #   #     #  #     #       #   # \n" + 
+        "######    #   #####    #  #  #  #     #  #####    #  #  #   #   #     #  #     #      #     #\n" + 
+        "#     #   #   #        #   # #   #   #   #        #   # #   #   #     #  #     #      #######\n" + 
+        "#     #   #   #        #    ##    # #    #        #    ##   #   #     #  #     #      #     #\n" + 
+        "######   ###  #######  #     #     #     #######  #     #  ###  ######   #######      #     #\n" + ANSI_RESET;
+    }
+
+    public static String mensajeMatrix()
+    {
+        return ANSI_GREEN +
+        "\t::::    ::::      :::     ::::::::::: :::::::::  ::::::::::: :::    :::\n" +
+        "\t+:+:+: :+:+:+   :+: :+:       :+:     :+:    :+:     :+:     :+:    :+:\n" +
+        "\t+:+ +:+:+ +:+  +:+   +:+      +:+     +:+    +:+     +:+      +:+  +:+\n" +
+        "\t+#+  +:+  +#+ +#++:++#++:     +#+     +#++:++#:      +#+       +#++:+\n" +
+        "\t+#+       +#+ +#+     +#+     +#+     +#+    +#+     +#+      +#+  +#+\n" + 
+        "\t#+#       #+# #+#     #+#     #+#     #+#    #+#     #+#     #+#    #+#\n" +
+        "\t###       ### ###     ###     ###     ###    ### ########### ###    ###\n" +
+        ANSI_RESET;
+    }
+
+    public static String mensajeGameOver()
+    {
+        return ANSI_RED +
+        "\t #####     #    #     # #######      ####### #     # ####### ###### \n" + 
+        "\t#     #   # #   ##   ## #            #     # #     # #       #     #\n" + 
+        "\t#        #   #  # # # # #            #     # #     # #       #     #\n" + 
+        "\t#  #### #     # #  #  # #####        #     # #     # #####   ###### \n" + 
+        "\t#     # ####### #     # #            #     #  #   #  #       #   #  \n" + 
+        "\t#     # #     # #     # #            #     #   # #   #       #    # \n" + 
+        "\t #####  #     # #     # #######      #######    #    ####### #     #\n" + 
+        ANSI_RESET;
     }
 }

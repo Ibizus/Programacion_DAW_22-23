@@ -9,6 +9,7 @@ public abstract class Personaje {
     protected String nombre;
     protected String ciudad;
     protected LocalDateTime creacion;
+    protected int edad;
 
     static protected int personajesCreados;
 
@@ -21,8 +22,8 @@ public abstract class Personaje {
 
         this.nombre = nombreAleatorio();
         this.ciudad = ciudadAleatoria();
-
         this.creacion = LocalDateTime.now();
+        this.edad = (int)(Math.random()*100)+1; //(Edad aleatoria de 1 a 100)
     }
 
     public abstract String mostrarInformacion();

@@ -1,6 +1,7 @@
 package matrix_Hector.personajes;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Smith extends Personaje implements Comparable<Smith>{
 
@@ -33,7 +34,9 @@ public class Smith extends Personaje implements Comparable<Smith>{
     @Override
     public String mostrarInformacion()
     {
-        return super.getId() + ", nombre: " + super.getNombre() + ", ciudad: " + super.getCiudad();
+        DateTimeFormatter nanoSegundos = DateTimeFormatter.ofPattern("nnn");
+
+        return super.getNombre() + ", id: " + super.getId() + ", ciudad: " + super.getCiudad() + ", Creado en el nanosegundo: " + creacion.format(nanoSegundos) + "\n";
     }
 
     @Override
@@ -41,6 +44,13 @@ public class Smith extends Personaje implements Comparable<Smith>{
     {
         return this.creacion.compareTo(o.creacion);
     }
+
+    @Override
+    public String toString()
+    {
+        return mostrarInformacion();
+    }
+
 
     // GETTERS Y SETTERS:
     public int getInfeccion() {
