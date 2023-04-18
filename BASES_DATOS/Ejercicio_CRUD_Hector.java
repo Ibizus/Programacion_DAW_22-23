@@ -3,7 +3,7 @@ package BASES_DATOS;
 import java.sql.*;
 import java.util.Scanner;
 
-public class Ejercicio_CRUD {
+public class Ejercicio_CRUD_Hector {
 
     static Scanner sc = new Scanner(System.in);
 
