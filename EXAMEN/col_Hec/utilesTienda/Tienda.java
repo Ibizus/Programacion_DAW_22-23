@@ -1,16 +1,16 @@
-package EXAMEN.colecciones_Hec.utilesTienda;
+package EXAMEN.col_Hec.utilesTienda;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import EXAMEN.colecciones_Hec.componentesTienda.CarritoCompra;
-import EXAMEN.colecciones_Hec.componentesTienda.DescuentoPorcategoria;
-import EXAMEN.colecciones_Hec.componentesTienda.Producto;
-import EXAMEN.colecciones_Hec.componentesTienda.Producto.Categoria;
-import EXAMEN.colecciones_Hec.interfaces_tienda.ProductoPorNombre;
-import EXAMEN.colecciones_Hec.interfaces_tienda.Tienda_I;
+import EXAMEN.col_Hec.componentesTienda.CarritoCompra;
+import EXAMEN.col_Hec.componentesTienda.DescuentoPorcategoria;
+import EXAMEN.col_Hec.componentesTienda.Producto;
+import EXAMEN.col_Hec.componentesTienda.Producto.Categoria;
+import EXAMEN.col_Hec.interfaces_tienda.ProductoPorNombre;
+import EXAMEN.col_Hec.interfaces_tienda.Tienda_I;
 
 
 public class Tienda implements Tienda_I{

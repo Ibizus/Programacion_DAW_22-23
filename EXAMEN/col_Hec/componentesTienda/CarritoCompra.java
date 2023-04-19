@@ -1,9 +1,9 @@
-package EXAMEN.colecciones_Hec.componentesTienda;
+package EXAMEN.col_Hec.componentesTienda;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import EXAMEN.colecciones_Hec.interfaces_tienda.ProductoPorNombre;
+import EXAMEN.col_Hec.interfaces_tienda.ProductoPorNombre;
 
 public class CarritoCompra {
     

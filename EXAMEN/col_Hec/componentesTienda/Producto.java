@@ -1,4 +1,4 @@
-package EXAMEN.colecciones_Hec.componentesTienda;
+package EXAMEN.col_Hec.componentesTienda;
 
 public class Producto implements Comparable<Producto>{
 

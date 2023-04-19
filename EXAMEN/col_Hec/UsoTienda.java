@@ -1,8 +1,8 @@
-package EXAMEN.colecciones_Hec;
+package EXAMEN.col_Hec;
 
-import EXAMEN.colecciones_Hec.componentesTienda.CarritoCompra;
-import EXAMEN.colecciones_Hec.componentesTienda.Producto;
-import EXAMEN.colecciones_Hec.utilesTienda.Tienda;
+import EXAMEN.col_Hec.componentesTienda.CarritoCompra;
+import EXAMEN.col_Hec.componentesTienda.Producto;
+import EXAMEN.col_Hec.utilesTienda.Tienda;
 
 public class UsoTienda {
     
