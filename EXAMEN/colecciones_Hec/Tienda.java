@@ -89,7 +89,7 @@ public class Tienda implements Tienda_I{
     {
         // variables:
         double total = 0;
-        int descuentoAcumulado = 0;
+        double descuentoAcumulado = 0;
 
         // saco lista de categorias SIN REPETIR en una coleccion:
         Set<Categoria> categoriasCompradas = new HashSet<>();
@@ -108,7 +108,7 @@ public class Tienda implements Tienda_I{
         }
 
         System.out.println("Total sin descuento: " + total + "€");
-        total = total * (1-(descuentoAcumulado/100));
+        total = (1-(descuentoAcumulado/100)) * total;
         return total;
     }
 

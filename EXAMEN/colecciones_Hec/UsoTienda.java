@@ -19,7 +19,7 @@ public class UsoTienda {
         
         
         // Creamos los productos y los añadimos a la tienda
-        Producto p1 = new Producto("Televisor Samsung", "Televisor de 50 pulgadas", 500.0, "Electronica");
+        Producto p1 = new Producto(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "Televisor Samsung", "Televisor de 50 pulgadas", 500.0, "Electronica");
         tienda.insertarProducto(p1);
         
         Producto p2 = new Producto( "Zapatillas Nike", "Zapatillas deportivas para hombre", 80.0, "Deportes");
