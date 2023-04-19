@@ -1,5 +1,9 @@
 package EXAMEN.colecciones_Hec;
 
+import EXAMEN.colecciones_Hec.componentesTienda.CarritoCompra;
+import EXAMEN.colecciones_Hec.componentesTienda.Producto;
+import EXAMEN.colecciones_Hec.utilesTienda.Tienda;
+
 public class UsoTienda {
     
     public static void main(String[] args) {

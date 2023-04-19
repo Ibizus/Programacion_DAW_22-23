@@ -2,7 +2,7 @@ package EXAMEN.colecciones_Hec.interfaces_tienda;
 
 import java.util.Comparator;
 
-import EXAMEN.colecciones_Hec.Producto;
+import EXAMEN.colecciones_Hec.componentesTienda.Producto;
 
 public class ProductoPorNombre implements Comparator<Producto>{
 

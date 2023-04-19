@@ -1,4 +1,4 @@
-package EXAMEN.colecciones_Hec;
+package EXAMEN.colecciones_Hec.componentesTienda;
 
 import java.util.ArrayList;
 import java.util.Collections;

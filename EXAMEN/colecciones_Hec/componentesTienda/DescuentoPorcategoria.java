@@ -1,8 +1,9 @@
-package EXAMEN.colecciones_Hec;
+package EXAMEN.colecciones_Hec.componentesTienda;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import EXAMEN.colecciones_Hec.Producto.Categoria;
+
+import EXAMEN.colecciones_Hec.componentesTienda.Producto.Categoria;
 
 public class DescuentoPorcategoria {
     

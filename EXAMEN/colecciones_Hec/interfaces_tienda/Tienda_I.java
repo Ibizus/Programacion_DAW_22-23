@@ -1,6 +1,6 @@
 package EXAMEN.colecciones_Hec.interfaces_tienda;
 
-import EXAMEN.colecciones_Hec.Producto;
+import EXAMEN.colecciones_Hec.componentesTienda.Producto;
 
 public interface Tienda_I {
     
