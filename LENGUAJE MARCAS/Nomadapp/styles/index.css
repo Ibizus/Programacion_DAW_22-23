@@ -6,15 +6,15 @@
 }
 @font-face {
     font-family: Reklame;
-    src: url(fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff2) format('woff2'),
-    url(fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff) format('woff');
+    src: url(../fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff2) format('woff2'),
+    url(../fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff) format('woff');
     font-style: italic;
     font-weight: 700;
 }
 @font-face {
     font-family: Sarabun;
-    src: url(fonts/Sarabun/Sarabun.woff2) format('woff2'),
-    url(fonts/Sarabun/Sarabun.woff) format('woff');
+    src: url(../fonts/Sarabun/Sarabun.woff2) format('woff2'),
+    url(../fonts/Sarabun/Sarabun.woff) format('woff');
     font-style: normal;
     font-weight: 500;
 }
@@ -415,7 +415,7 @@ nav ul li:hover > ul {
 
 /*** SECTION ***/
 #Portada{
-    background-image: url(images/Portada.jpg);
+    background-image: url(../images/Portada.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     object-fit: cover;

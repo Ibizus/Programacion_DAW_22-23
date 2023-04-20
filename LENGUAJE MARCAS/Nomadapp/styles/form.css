@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: Reklame;
+    src: url(../fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff2) format('woff2'),
+    url(../fonts/Reklame_Script_Bold/Reklame_Script_Bold.woff) format('woff');
+    font-style: italic;
+    font-weight: 700;
+}
+@font-face {
+    font-family: Sarabun;
+    src: url(../fonts/Sarabun/Sarabun.woff2) format('woff2'),
+    url(../fonts/Sarabun/Sarabun.woff) format('woff');
+    font-style: normal;
+    font-weight: 500;
+}
+
+
+
+body{
+    background-color: #E3F0A9;
+}
+
+.form-login{
+    width: 400px;
+    height: 340px;
+    background: grey;
+    margin: auto;
+    margin-top: 180px;
+    box-shadow: 7px 13px 37px black;
+    padding: 20px 30px;
+    border-top: 4px solid rgb(91, 91, 240);
+    color: white;
+}
+
+.form-login h5{
+    font-family: Reklame;
+    margin: 0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+}
+
+.controls{
+    width: 100%;
+    border: 1px solid #B0D217;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #4e4e4e;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.buttons{
+    width: 100%;
+    height: 40px;
+    background: #B0D217;
+    border: none;
+    color: rgb(91, 91, 240);
+    margin-bottom: 16px;
+}
+
+.form-login p{
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.form-login a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-login a:hover{
+    text-decoration: underline;
+}
