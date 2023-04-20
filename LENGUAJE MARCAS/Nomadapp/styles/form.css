@@ -21,38 +21,50 @@
 
 
 body{
-    background-color: #E3F0A9;
+    background-color: #CFE17D;
+    font-family: Sarabun;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .form-login{
     width: 400px;
     height: 340px;
-    background: grey;
+    background: #e4e4e4;
     margin: auto;
     margin-top: 180px;
-    box-shadow: 7px 13px 37px black;
+    box-shadow: 7px 13px 37px #657c00;
     padding: 20px 30px;
-    border-top: 4px solid rgb(91, 91, 240);
-    color: white;
+    border-top: 3px solid #555555;
+    color: #555555;
 }
 
-.form-login h5{
+.form-login h6{
+    margin: 0;
+    text-align: center;
+    height: 5px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.form-login h3{
     font-family: Reklame;
     margin: 0;
     text-align: center;
     height: 40px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid white;
-    font-size: 20px;
+    margin-bottom: 20px;
+    font-size: 40px;
 }
 
 .controls{
     width: 100%;
     border: 1px solid #B0D217;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     padding: 11px 10px;
-    background: #4e4e4e;
-    font-size: 14px;
+    background: #D5D5D5;
+    font-family: Sarabun;
+    color: #555555;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -61,8 +73,8 @@ body{
     height: 40px;
     background: #B0D217;
     border: none;
-    color: rgb(91, 91, 240);
-    margin-bottom: 16px;
+    color: #555555;
+    margin-bottom: 14px;
 }
 
 .form-login p{
@@ -72,9 +84,8 @@ body{
 }
 
 .form-login a{
-    color: white;
+    color: #555555;
     text-decoration: none;
-    font-size: 14px;
 }
 
 .form-login a:hover{
