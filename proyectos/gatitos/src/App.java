@@ -11,5 +11,9 @@ public class App {
 
         Gato cria2 = macho.apareaCon(macho2);
         System.out.println(cria2);
+
+        Gato cria3 = hembra.apareaCon(macho2);
+        System.out.println(cria3);
+        
     }
 }

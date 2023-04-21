@@ -34,7 +34,7 @@ public class Gato {
                 {
                     sexoCria = "Hembra";
                 }
-                cria = new Gato("Puppi", "Mezcla", sexoCria);
+                cria = new Gato(this.nombre + " Junior", "Mezcla", sexoCria);
             }
         }
         catch (ExcepcionApareamientoImposible e)
