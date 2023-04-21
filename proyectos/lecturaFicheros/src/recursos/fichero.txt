@@ -1,0 +1,7 @@
+Este fichero es 
+
+un fichero nuevo
+
+    que es de tipo texto
+
+y se llama fichero.txt
