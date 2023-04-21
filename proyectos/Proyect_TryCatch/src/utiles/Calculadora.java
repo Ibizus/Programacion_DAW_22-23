@@ -43,5 +43,10 @@ public class Calculadora {
         return resultado;
     }
 
+    public Integer division3(int x, int y)
+    {
+        
+    }
+
 
 }
