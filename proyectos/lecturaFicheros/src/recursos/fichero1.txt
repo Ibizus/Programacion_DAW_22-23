@@ -4,4 +4,6 @@ un fichero nuevo
 
     que es de tipo texto
 
-y se llama fichero.txt
+ultima linea
+
+src/recursos/fichero1.txt
