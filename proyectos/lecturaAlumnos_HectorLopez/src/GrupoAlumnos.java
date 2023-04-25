@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
-public class GrupoAlumnos extends ArrayList<Alumno>{
+public class GrupoAlumnos extends Alumno{
     
 
     // ATRIBUTOS:
-    private ArrayList<Alumno> clase;
+    private ArrayList<Alumno> grupo;
 
     // CONSTRUCTOR:
     public GrupoAlumnos()
     {
-        this.clase = new ArrayList<>();
+        this.grupo = new ArrayList<>();
     }
 
     // METODOS:
@@ -17,24 +17,24 @@ public class GrupoAlumnos extends ArrayList<Alumno>{
     {
         double edadMedia = 0.0;
 
-        for (Alumno alumno : this.clase) {
+        for (Alumno alumno : this.grupo) {
             
             edadMedia+= alumno.getEdad();
         }
 
-        return edadMedia/this.clase.size();
+        return edadMedia/this.grupo.size();
     }
 
     public int cantidadAlumnos()
     {
-        return this.clase.size();
+        return this.grupo.size();
     }
 
     public int numeroSuspensos()
     {
         int numero = 0;
 
-        for (Alumno alumno : this.clase)
+        for (Alumno alumno : this.grupo)
         {
             if(alumno.getCalificacion().equalsIgnoreCase("suspenso"))
             {
@@ -48,7 +48,7 @@ public class GrupoAlumnos extends ArrayList<Alumno>{
     {
         int mujeres = 0;
 
-        for (Alumno alumno : this.clase)
+        for (Alumno alumno : this.grupo)
         {
             if(alumno.getSexo().equalsIgnoreCase("mujer"))
             {
@@ -62,7 +62,7 @@ public class GrupoAlumnos extends ArrayList<Alumno>{
     {
         int suspendida = 0;
 
-        for (Alumno alumno : this.clase)
+        for (Alumno alumno : this.grupo)
         {
             if(alumno.getSexo().equalsIgnoreCase("mujer") && alumno.getCalificacion().equalsIgnoreCase("suspenso"))
             {
@@ -71,4 +71,10 @@ public class GrupoAlumnos extends ArrayList<Alumno>{
         }
         return suspendida;
     }
+
+    // GETTER:
+    public ArrayList<Alumno> getGrupo() {
+        return grupo;
+    }
+    
 }

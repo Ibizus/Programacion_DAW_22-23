@@ -105,7 +105,8 @@ public class App {
                             break;
                     }
                 }
-                daw1.add(nuevo);
+                daw1.getGrupo().add(nuevo);
+                
 
                 // actualizo variables:
                 linea = br.readLine();
@@ -125,36 +126,35 @@ public class App {
         }
         // MUESTRO MI CLASE GRUPO DE ALUMNOS CON SU COLECCIÓN RELLENA A PARTIR DEL FICHERO:
         System.out.println("\nLISTADO DE ALUMNOS CREADO:");
-        System.out.println(daw1.toString());
+        System.out.println(daw1.getGrupo().toString());
 
-        System.out.println("numero alumnos = " + daw1.size());
 
         /* PRUEBO LOS MÉTODOS CREADOS: */
         System.out.println("\n - - - - - - PRUEBA DE MÉTODOS - - - - - - ");
         System.out.println("\nCOLECCIÓN ORDENADA POR EDAD:");
 
-        Collections.sort(daw1);
-        System.out.println(daw1);
+        Collections.sort(daw1.getGrupo());
+        System.out.println(daw1.getGrupo());
 
 
         double edadMedia = daw1.mediaEdades();
-        System.out.println("\n\nMEDIA DE LAS EDADES: " + edadMedia);
+        System.out.println("\nMEDIA DE LAS EDADES: " + edadMedia);
 
 
         int numAlumnos = daw1.cantidadAlumnos();
-        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + numAlumnos);
+        System.out.println("\nCANTIDAD DE ALUMNOS: " + numAlumnos);
 
 
         int numSuspensos = daw1.numeroSuspensos();
-        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + numSuspensos);
+        System.out.println("\nCANTIDAD DE SUSPENSOS: " + numSuspensos);
 
 
         int numMujeres = daw1.numeroMujeres();
-        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + numMujeres);
+        System.out.println("\nCANTIDAD DE MUJERES: " + numMujeres);
 
 
         int suspensas = daw1.numMujeresSuspensas();
-        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + suspensas);
+        System.out.println("\nCANTIDAD DE SUSPENSAS: " + suspensas);
+        
     }
-
 }
