@@ -1,14 +1,15 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Collections;
 
-import javax.print.PrintException;
 
 public class App {
     public static void main(String[] args) throws Exception {
         
+        // EMPIEZA EL PROGRAMA DECLARANDO EL GRUPO DE ALUMNOS Y CARGANDO SUS DATOS LEYENDO DESDE EL FICHERO 
+        // QUE NOS ADJUNTAN Y TENEMOS EN SRC/RECURSOS:
 
         GrupoAlumnos daw1 = new GrupoAlumnos();
-
 
         BufferedReader br = null;
         String linea = null;
@@ -24,8 +25,14 @@ public class App {
             while(linea!=null)
             {
 
-                String[] trozosLinea = linea.split(" ".trim());
-                System.out.println("tamaño array de campos: " + trozosLinea.length);
+                String[] trozosLinea = linea.split(" ");
+
+                // Le hago un trim a cada fragmento:
+                for (int index = 0; index < trozosLinea.length; index++)
+                {
+                    trozosLinea[index] = trozosLinea[index].trim();
+                }
+
                 
                 // para cada linea creo un alumnos que va a recoger cada campo de la linea:
                 Alumno nuevo = new Alumno();
@@ -58,7 +65,7 @@ public class App {
                         case 2: // ESTATURA
                             try
                             {
-                                nuevo.setAltura(Double.valueOf(trozosLinea[i]));
+                                nuevo.setAltura(Double.valueOf(trozosLinea[i].replace(",", ".")));
                             }
                             catch (Exception e2) {
                                 e2.getMessage();
@@ -116,8 +123,38 @@ public class App {
                 br.close();
             }
         }
+        // MUESTRO MI CLASE GRUPO DE ALUMNOS CON SU COLECCIÓN RELLENA A PARTIR DEL FICHERO:
+        System.out.println("\nLISTADO DE ALUMNOS CREADO:");
         System.out.println(daw1.toString());
+
+        System.out.println("numero alumnos = " + daw1.size());
+
+        /* PRUEBO LOS MÉTODOS CREADOS: */
+        System.out.println("\n - - - - - - PRUEBA DE MÉTODOS - - - - - - ");
+        System.out.println("\nCOLECCIÓN ORDENADA POR EDAD:");
+
+        Collections.sort(daw1);
+        System.out.println(daw1);
+
+
+        double edadMedia = daw1.mediaEdades();
+        System.out.println("\n\nMEDIA DE LAS EDADES: " + edadMedia);
+
+
+        int numAlumnos = daw1.cantidadAlumnos();
+        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + numAlumnos);
+
+
+        int numSuspensos = daw1.numeroSuspensos();
+        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + numSuspensos);
+
+
+        int numMujeres = daw1.numeroMujeres();
+        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + numMujeres);
+
+
+        int suspensas = daw1.numMujeresSuspensas();
+        System.out.println("\n\nCANTIDAD DE ALUMNOS: " + suspensas);
     }
 
-    
 }

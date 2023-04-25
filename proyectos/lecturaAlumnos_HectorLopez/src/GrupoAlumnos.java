@@ -15,26 +15,26 @@ public class GrupoAlumnos extends ArrayList<Alumno>{
     // METODOS:
     public double mediaEdades()
     {
-        double edadMedia = 0;
+        double edadMedia = 0.0;
 
-        for (Alumno alumno : clase)
-        {
+        for (Alumno alumno : this.clase) {
+            
             edadMedia+= alumno.getEdad();
         }
 
-        return edadMedia/clase.size();
+        return edadMedia/this.clase.size();
     }
 
     public int cantidadAlumnos()
     {
-        return clase.size();
+        return this.clase.size();
     }
 
     public int numeroSuspensos()
     {
         int numero = 0;
 
-        for (Alumno alumno : clase)
+        for (Alumno alumno : this.clase)
         {
             if(alumno.getCalificacion().equalsIgnoreCase("suspenso"))
             {
@@ -48,7 +48,7 @@ public class GrupoAlumnos extends ArrayList<Alumno>{
     {
         int mujeres = 0;
 
-        for (Alumno alumno : clase)
+        for (Alumno alumno : this.clase)
         {
             if(alumno.getSexo().equalsIgnoreCase("mujer"))
             {
@@ -62,7 +62,7 @@ public class GrupoAlumnos extends ArrayList<Alumno>{
     {
         int suspendida = 0;
 
-        for (Alumno alumno : clase)
+        for (Alumno alumno : this.clase)
         {
             if(alumno.getSexo().equalsIgnoreCase("mujer") && alumno.getCalificacion().equalsIgnoreCase("suspenso"))
             {

@@ -3,7 +3,6 @@ public class Alumno implements Comparable<Alumno>{
 
     // ATRIBUTOS:
     private String sexo;
-    private String nombre;
     private int edad;
     private double altura;
     private int nota1;
@@ -16,10 +15,9 @@ public class Alumno implements Comparable<Alumno>{
         
     }
 
-    public Alumno(String sexo, String nombre, int edad, double altura, int nota1, int nota2, String calificacion)
+    public Alumno(String sexo, int edad, double altura, int nota1, int nota2, String calificacion)
     {
         this.sexo = sexo;
-        this.nombre = nombre;
         this.edad = edad;
         this.altura = altura;
         this.nota1 = nota1;
@@ -37,16 +35,12 @@ public class Alumno implements Comparable<Alumno>{
     @Override
     public String toString()
     {
-        return "\nsexo: "+sexo+", nombre: "+nombre+", edad: "+edad+", altura: "+altura+", nota1: "+nota1+", nota2: "+nota2+", calificacion: "+calificacion;
+        return "\nsexo: "+sexo+", edad: "+edad+", altura: "+altura+", nota1: "+nota1+", nota2: "+nota2+", calificacion: "+calificacion;
     }
 
     // GETTERS:
     public String getSexo() {
         return sexo;
-    }
-
-    public String getNombre() {
-        return nombre;
     }
 
     public int getEdad() {
@@ -74,10 +68,6 @@ public class Alumno implements Comparable<Alumno>{
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public void setEdad(int edad) {
