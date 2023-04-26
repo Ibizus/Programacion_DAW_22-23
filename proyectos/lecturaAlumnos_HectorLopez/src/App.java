@@ -21,7 +21,6 @@ public class App {
             // Me salto la primera línea:
             linea = br.readLine();
 
-
             while(linea!=null)
             {
 
@@ -33,80 +32,17 @@ public class App {
                     trozosLinea[index] = trozosLinea[index].trim();
                 }
 
-                
-                // para cada linea creo un alumnos que va a recoger cada campo de la linea:
-                Alumno nuevo = new Alumno();
-                
-                for (int i = 0; i < trozosLinea.length; i++)
+                // Para cada línea creo un alumno utilizando cada parte del array de String obtenido
+                // y lo añado al grupo de alumnos
+                try
                 {
-                    // hago un swith para tratar cada campo como un atributo de alumno:
-                    switch(i)
-                    {
-                        case 0: // SEXO
-                            try
-                            {
-                                nuevo.setSexo(trozosLinea[i]);
-                            }
-                            catch (Exception e) {
-                                e.getMessage();
-                            }    
-                            break;
-
-                        case 1: // EDAD
-                            try
-                            {
-                                nuevo.setEdad(Integer.valueOf(trozosLinea[i]));
-                            }
-                            catch (Exception e1) {
-                                e1.getMessage();
-                            }  
-
-                            break;
-                        case 2: // ESTATURA
-                            try
-                            {
-                                nuevo.setAltura(Double.valueOf(trozosLinea[i].replace(",", ".")));
-                            }
-                            catch (Exception e2) {
-                                e2.getMessage();
-                            }  
-
-                            break;
-                        case 3: // NOTA 1
-                            try
-                            {
-                                nuevo.setNota1(Integer.valueOf(trozosLinea[i]));
-                            }
-                            catch (Exception e3) {
-                                e3.getMessage();
-                            }  
-
-                            break;
-                        case 4: // NOTA 2
-                            try
-                            {
-                                nuevo.setNota2(Integer.valueOf(trozosLinea[i]));
-                            }
-                            catch (Exception e4) {
-                                e4.getMessage();
-                            }  
-
-                            break;
-                        case 5: // CALIFICACION
-                            try
-                            {
-                                nuevo.setCalificacion(trozosLinea[i]);
-                            }
-                            catch (Exception e5) {
-                                e5.getMessage();
-                            }    
-                            break;
-                        default:
-                            break;
-                    }
+                    daw1.getGrupo().add(new Alumno(trozosLinea[0], Integer.valueOf(trozosLinea[1]), Double.valueOf(trozosLinea[2].replace(",", ".")), Integer.valueOf(trozosLinea[3]), Integer.valueOf(trozosLinea[4]), trozosLinea[5]));
                 }
-                daw1.getGrupo().add(nuevo);
-                
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                    System.out.println(e.getMessage());
+                }
 
                 // actualizo variables:
                 linea = br.readLine();
@@ -115,7 +51,7 @@ public class App {
         catch (Exception ex) 
         {
             ex.printStackTrace();
-            System.out.println(ex.getStackTrace());
+            System.out.println(ex.getMessage());
         }
         finally 
         {
@@ -124,6 +60,7 @@ public class App {
                 br.close();
             }
         }
+
         // MUESTRO MI CLASE GRUPO DE ALUMNOS CON SU COLECCIÓN RELLENA A PARTIR DEL FICHERO:
         System.out.println("\nLISTADO DE ALUMNOS CREADO:");
         System.out.println(daw1.getGrupo().toString());
