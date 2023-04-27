@@ -63,31 +63,4 @@ public class Alumno implements Comparable<Alumno>{
         return calificacion;
     }
 
-
-    // SETTERS:
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public void setNota1(int nota1) {
-        this.nota1 = nota1;
-    }
-
-    public void setNota2(int nota2) {
-        this.nota2 = nota2;
-    }
-
-    public void setCalificacion(String calificacion) {
-        this.calificacion = calificacion;
-    }
-
 }

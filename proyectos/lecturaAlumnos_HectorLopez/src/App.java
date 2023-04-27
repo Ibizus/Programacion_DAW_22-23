@@ -24,22 +24,23 @@ public class App {
             while(linea!=null)
             {
 
-                String[] trozosLinea = linea.split(" ");
-
-                // Le hago un trim a cada fragmento:
-                for (int index = 0; index < trozosLinea.length; index++)
-                {
-                    trozosLinea[index] = trozosLinea[index].trim();
-                }
-
-                // Para cada línea creo un alumno utilizando cada parte del array de String obtenido
-                // y lo añado al grupo de alumnos
                 try
                 {
+                    String[] trozosLinea = linea.split(" ");
+    
+                    // Le hago un trim a cada fragmento:
+                    for (int index = 0; index < trozosLinea.length; index++)
+                    {
+                        trozosLinea[index] = trozosLinea[index].trim();
+                    }
+    
+                    // Para cada línea creo un alumno utilizando cada parte del array de String obtenido
+                    // y lo añado al grupo de alumnos
                     daw1.getGrupo().add(new Alumno(trozosLinea[0], Integer.valueOf(trozosLinea[1]), Double.valueOf(trozosLinea[2].replace(",", ".")), Integer.valueOf(trozosLinea[3]), Integer.valueOf(trozosLinea[4]), trozosLinea[5]));
                 }
                 catch (Exception e)
                 {
+                    System.out.println("Error en la linea: " + linea);
                     e.printStackTrace();
                     System.out.println(e.getMessage());
                 }
@@ -55,9 +56,16 @@ public class App {
         }
         finally 
         {
-            if(br!=null)
+            try
+            {                
+                if(br!=null)
+                {
+                    br.close();
+                }
+            }
+            catch (Exception e)
             {
-                br.close();
+                
             }
         }
 
