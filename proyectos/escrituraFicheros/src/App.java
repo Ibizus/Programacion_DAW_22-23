@@ -2,6 +2,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import logCutre.Log;
+
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, Escritura!");
@@ -29,6 +31,7 @@ public class App {
 
                 if(!linea.equals("fin"))
                 {
+                    Log.nuevaEntradaALog("Se ha escrito: "+linea, Log.Tipo.INFORMACION);
                     bWriter.append(linea);
                     bWriter.newLine();
                 }
@@ -43,6 +46,7 @@ public class App {
         catch (Exception e) 
         {
             System.out.println("Algo ha fallado");
+            Log.nuevaEntradaALog(e.toString(), Log.Tipo.ERROR);
         }
         finally
         {
