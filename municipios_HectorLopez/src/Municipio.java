@@ -43,5 +43,29 @@ public class Municipio implements Comparable<Municipio>{
 
         return iguales;
     }
+
+    @Override
+    public String toString()
+    {
+        return this.nombre + " (" + this.año + ") : " + this.poblacion; 
+    }
+
+
+    // GETTERS:
+    public String getCod_postal() {
+        return cod_postal;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getAño() {
+        return año;
+    }
+
+    public int getPoblacion() {
+        return poblacion;
+    }
     
 }
