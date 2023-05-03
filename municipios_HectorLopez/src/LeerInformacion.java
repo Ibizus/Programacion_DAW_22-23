@@ -95,7 +95,7 @@ public class LeerInformacion {
             if(pueblo.getNombre().equals(nombre) && Integer.valueOf(pueblo.getAño()) == año)
             {
                 buscado = pueblo;
-            }
+            }  
         }
         return buscado;
     }
@@ -103,6 +103,7 @@ public class LeerInformacion {
 
     public HashMap<String, Integer> incrementoPoblacion(ArrayList<Municipio> coleccionMunicipios, int año1, int año2)
     {
+        HashMap<String, Integer> resultado = new HashMap<>();
         int incremento = 0;
         int poblacionAño1 = 0;
         int poblacionAño2 = 0;
@@ -112,20 +113,20 @@ public class LeerInformacion {
             if(Integer.valueOf(pueblo.getAño()) == año1)
             {
                 poblacionAño1 = pueblo.getPoblacion();
-            }
-            
-            if(Integer.valueOf(pueblo.getAño()) == año2)
-            {
-                poblacionAño2 = pueblo.getPoblacion();
+
+                for (Municipio puebloBuscado : coleccionMunicipios) 
+                {
+                    if(pueblo.getNombre().equals(puebloBuscado.getNombre()) && Integer.valueOf(puebloBuscado.getAño()) == año2)
+                    {
+                        poblacionAño2 = puebloBuscado.getPoblacion();
+
+                        incremento = poblacionAño1 - poblacionAño2;
+
+                        resultado.put(pueblo.getNombre(), incremento);
+                    }
+                }
             }
         }
-
-        incremento = poblacionAño1 - poblacionAño2;
-
-        return null;
+        return resultado;
     }
-
-
-
-
 }
