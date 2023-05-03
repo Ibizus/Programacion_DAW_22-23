@@ -47,7 +47,7 @@ public class Municipio implements Comparable<Municipio>{
     @Override
     public String toString()
     {
-        return this.nombre + " (" + this.año + ") : " + this.poblacion; 
+        return this.nombre + " (" + this.año + ") : " + this.poblacion + "\n"; 
     }
 
 

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class LeerInformacion {
-    
 
-    public ArrayList<Municipio> leerFicheroMunicipio(Integer año)
+public class LeerInformacion {
+
+    public static ArrayList<Municipio> leerFicheroMunicipio(Integer año)
     {
         String nombreFichero = "PoblacionMunicipiosMalaga.csv";
         String path = "src/resources/";
@@ -24,28 +24,6 @@ public class LeerInformacion {
                 {
                     String[] trozosLinea = linea.split(";");
 
-                    // FORMA UNO DE HACERLO:
-                    // if(año == null)
-                    // {
-                    //     if(!trozosLinea[0].equals("29 Málaga") && trozosLinea[1].equals("Total"))
-                    //     {
-                    //         String[] cpCiudad = trozosLinea[0].split(" ", 2);
-
-                    //         municipios.add(new Municipio(cpCiudad[0], cpCiudad[1], trozosLinea[2], Integer.valueOf(trozosLinea[3].replace(".", ""))));
-                    //     }
-                    // }
-                    // else 
-                    // {
-                    //     if(!trozosLinea[0].equals("29 Málaga") && trozosLinea[1].equals("Total") && trozosLinea[2].equals(año.toString()))
-                    //     {
-                    //         String[] cpCiudad = trozosLinea[0].split(" ", 2);
-
-                    //         municipios.add(new Municipio(cpCiudad[0], cpCiudad[1], trozosLinea[2], Integer.valueOf(trozosLinea[3].replace(".", ""))));
-                    //     }
-                    // }
-                    
-
-                    // FORMA DOS:
                     if(!trozosLinea[0].equals("29 Málaga") && trozosLinea[1].equals("Total"))
                     {
                         String[] cpCiudad = trozosLinea[0].split(" ", 2);
@@ -65,8 +43,8 @@ public class LeerInformacion {
                 } 
                 catch (Exception ex) 
                 {
-                    System.out.println("Dato no encontrado");
-                    System.out.println(ex.getMessage());
+                    // System.out.println("Dato no encontrado");
+                    // System.out.println(ex.getMessage());
                 }
 
                 //actualiza concidion bucle:
@@ -83,25 +61,27 @@ public class LeerInformacion {
     }
 
 
-    public Municipio buscarMunicipio(ArrayList<Municipio> coleccionMunicipios, String nombre, Integer año)
+    public static Municipio buscarMunicipio(ArrayList<Municipio> coleccionMunicipios, String nombre, Integer año)
     {
-        Collections.sort(coleccionMunicipios);
-        //Collections.binarySearch(coleccionMunicipios, "nombre");
-
         Municipio buscado = null;
+        Municipio claveBuscada = new Municipio("", nombre, año.toString(), 0);
 
-        for (Municipio pueblo : coleccionMunicipios) 
+        Collections.sort(coleccionMunicipios);
+        int posicionBuscada = Collections.binarySearch(coleccionMunicipios, claveBuscada);
+
+        if(posicionBuscada>=0)
         {
-            if(pueblo.getNombre().equals(nombre) && Integer.valueOf(pueblo.getAño()) == año)
-            {
-                buscado = pueblo;
-            }  
+            buscado = coleccionMunicipios.get(posicionBuscada);
+        }
+        else 
+        {
+            System.out.println("Municipio no encontrado");
         }
         return buscado;
     }
 
 
-    public HashMap<String, Integer> incrementoPoblacion(ArrayList<Municipio> coleccionMunicipios, int año1, int año2)
+    public static HashMap<String, Integer> incrementoPoblacion(ArrayList<Municipio> coleccionMunicipios, int año1, int año2)
     {
         HashMap<String, Integer> resultado = new HashMap<>();
         int incremento = 0;
@@ -120,7 +100,7 @@ public class LeerInformacion {
                     {
                         poblacionAño2 = puebloBuscado.getPoblacion();
 
-                        incremento = poblacionAño1 - poblacionAño2;
+                        incremento = poblacionAño2 - poblacionAño1;
 
                         resultado.put(pueblo.getNombre(), incremento);
                     }
