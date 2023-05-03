@@ -26,23 +26,28 @@ public class App {
         // Ordenar los municipios por nombre y año (ascendente ambos)
         Collections.sort(listaMunicipios);
         System.out.println(listaMunicipios);
+        EscribirInformacion.inserta(listaMunicipios.toString());
 
 
         // Información de Mijas en 2022
         Municipio mijas22 = LeerInformacion.buscarMunicipio(listaMunicipios, "Mijas", 2022);
         System.out.println("\n" + mijas22);
+        EscribirInformacion.inserta(mijas22.toString());
 
 
         // Incremento de la población de Fuengirola del año 2016 al 2022
         HashMap<String, Integer> incrementos_16_22 = LeerInformacion.incrementoPoblacion(listaMunicipios, 2016, 2022);
 
         int incrementoFuengi16_22 = buscaIncremento(incrementos_16_22, "Fuengirola");
-        System.out.println("El incremento de la población de Fuengirola del 2016 al 2022 es de: " + incrementoFuengi16_22 + " habitantes");
-
+        String salidaFuengi = "El incremento de la población de Fuengirola del 2016 al 2022 es de: " + incrementoFuengi16_22 + " habitantes";
+        System.out.println(salidaFuengi);
+        EscribirInformacion.inserta(salidaFuengi);
 
         // Incremento de la población de Mijas del año 2016 al 2022
         int incrementoMijas16_22 = buscaIncremento(incrementos_16_22, "Mijas");
-        System.out.println("\nEl incremento de la población de Mijas del 2016 al 2022 es de: " + incrementoMijas16_22 + " habitantes");
+        String salidaMijas = "El incremento de la población de Mijas del 2016 al 2022 es de: " + incrementoMijas16_22 + " habitantes";
+        System.out.println(salidaMijas);
+        EscribirInformacion.inserta(salidaMijas);
 
 
         // Municipio menos poblado en 2021
@@ -56,7 +61,9 @@ public class App {
             }
         });
 
-        System.out.println("\nMunicipio menos poblado en 2021 -> " + listaMunicipios_21.get(0));
+        String menosPoblado = "\nMunicipio menos poblado en 2021 -> " + listaMunicipios_21.get(0);
+        System.out.println(menosPoblado);
+        EscribirInformacion.inserta(menosPoblado);
     }
 
 
