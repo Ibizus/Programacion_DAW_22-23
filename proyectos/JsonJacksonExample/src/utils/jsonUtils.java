@@ -14,10 +14,91 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import modelo.Address;
+import modelo.Coche;
 import modelo.Employee;
 
 public class jsonUtils {
 
+	// METODOS PARA COCHE:
+
+	public static Coche LeerCocheFromJsonFile(String relativePathFile)
+    {
+		Coche car = null;
+		try {
+			
+			//File ficheroEmpleado = new File("src/recursos/employee.txt");
+			File ficheroCoche = new File(relativePathFile);
+			//byte[] jsonData = Files.readAllBytes(Paths.get("employee.txt"));
+			
+			//create ObjectMapper instance
+			ObjectMapper objectMapper = new ObjectMapper();
+			
+			//convert json string to object
+			try {
+				car = objectMapper.readValue(ficheroCoche, Coche.class);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			
+		}
+			
+        System.out.println("Car Object\n"+car);
+        return car;
+    }
+
+	public static List<Coche> LeerListCochesFromJsonFile(String relativePathFile)
+	{
+		File ficheroCoche = new File(relativePathFile);
+
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		List<Coche> listaCoches = null;
+		try {
+            listaCoches = objectMapper.readValue(ficheroCoche,  new TypeReference<List<Coche>>(){});
+        } catch (IOException e) {
+            
+            e.printStackTrace();
+        }
+
+		return listaCoches;
+	}
+		/**
+	 * Convierte un objeto en un Json
+	 */
+    public static void convertCarToJson(List<Coche> array)
+    {
+        try 
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            //configure Object mapper for pretty print
+            objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        
+            
+			//Puedo imprimirlo por consola 
+            //writing to console, can write to any output stream such as file
+            //StringWriter stringEmp = new StringWriter();
+            //Sacar por consola el Json
+            //objectMapper.writeValue(stringEmp, emp1);
+            //System.out.println("Employee JSON is\n"+stringEmp);
+
+			//Puedo guardarlo en un fichero
+            File fileCar1 = new File("src/recursos/coche1.json");
+            objectMapper.writeValue(fileCar1, array);
+            
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex);
+        }
+    }
+
+
+	// METODOS PARA EMPLEADOS:
 
     public static Employee LeerEmpleadoFromJsonFile(String relativePathFile)
     {
@@ -40,9 +121,6 @@ public class jsonUtils {
         
         System.out.println("Employee Object\n"+emp);
         return emp;
-		
-		
-		 
     }
 
 
