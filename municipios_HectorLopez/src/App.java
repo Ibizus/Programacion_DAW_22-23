@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,6 +21,10 @@ public class App {
         *   Vuelca toda esta información en un ficheros de texto llamado: salida.txt
         */
 
+        // ANTES DE EMPEZAR A ESCRIBIR EN EL FICHERO salida.txt TENGO QUE VER SI EXISTE Y BORRARLO PARA NO REPETIR LAS SALIDAS GUARDADAS:
+        BorrarInformacion.borraFichero("src/resources/salida.txt");
+        
+        // Extraigo del fichero el ArrayList con todos lo municipios:
         ArrayList<Municipio> listaMunicipios = LeerInformacion.leerFicheroMunicipio(null);
 
 
@@ -31,8 +36,9 @@ public class App {
 
         // Información de Mijas en 2022
         Municipio mijas22 = LeerInformacion.buscarMunicipio(listaMunicipios, "Mijas", 2022);
-        System.out.println("\n" + mijas22);
-        EscribirInformacion.inserta(mijas22.toString());
+        String salidaMijas22 = "\nInformación de Mijas en 2022 -> " + mijas22;
+        System.out.println(salidaMijas22);
+        EscribirInformacion.inserta(salidaMijas22);
 
 
         // Incremento de la población de Fuengirola del año 2016 al 2022
