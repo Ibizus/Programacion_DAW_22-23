@@ -16,6 +16,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import modelo.Address;
 import modelo.Coche;
 import modelo.Employee;
+import modelo.People;
+import modelo.Person;
 
 public class jsonUtils {
 
@@ -66,7 +68,8 @@ public class jsonUtils {
 
 		return listaCoches;
 	}
-		/**
+
+	/**
 	 * Convierte un objeto en un Json
 	 */
     public static void convertCarToJson(List<Coche> array)
@@ -87,15 +90,87 @@ public class jsonUtils {
             //System.out.println("Employee JSON is\n"+stringEmp);
 
 			//Puedo guardarlo en un fichero
-            File fileCar1 = new File("src/recursos/coche1.json");
+            File fileCar1 = new File("src/recursos/cochesTodos.json");
             objectMapper.writeValue(fileCar1, array);
-            
         }
         catch(Exception ex)
         {
             System.out.println(ex);
         }
     }
+
+	
+	// METODOS PARA DICCIONARIO DNI:
+	public static HashMap<String, Person> LeerMapaDniFromJsonFile(String relativePathFile)
+	{
+		File ficheroMapa = new File(relativePathFile);
+
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		HashMap<String, Person> mapaDniHashMap = null;
+		try {
+            mapaDniHashMap = objectMapper.readValue(ficheroMapa,  new TypeReference<HashMap<String, Person>>(){});
+        } catch (IOException e) {
+            
+            e.printStackTrace();
+        }
+
+		return mapaDniHashMap;
+	}
+
+
+
+	// METODOS PARA PERSONAS:
+	public static People LeerPeopleFromJsonFile(String relativePathFile)
+    {
+		People gentes = null;
+		try {
+			
+			//File ficheroEmpleado = new File("src/recursos/employee.txt");
+			File personasTodo = new File(relativePathFile);
+			//byte[] jsonData = Files.readAllBytes(Paths.get("employee.txt"));
+			
+			//create ObjectMapper instance
+			ObjectMapper objectMapper = new ObjectMapper();
+			
+			//convert json string to object
+			try {
+				gentes = objectMapper.readValue(personasTodo, People.class);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			
+		}
+			
+        return gentes;
+    }
+	/**
+	 * Convierte un objeto en un Json
+	 */
+    public static void convertPeopleToJson(People clasePeople)
+    {
+        try 
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            //configure Object mapper for pretty print
+            objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+
+
+			//Puedo guardarlo en un fichero
+            File filePeople = new File("src/recursos/persona24.json");
+            objectMapper.writeValue(filePeople, clasePeople);
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex);
+        }
+    }
+
 
 
 	// METODOS PARA EMPLEADOS:
