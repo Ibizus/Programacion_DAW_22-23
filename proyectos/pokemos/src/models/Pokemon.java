@@ -31,6 +31,7 @@ public class Pokemon {
                 "weaknesses: " + this.weaknesses + "\n" + "\tnext evolution: " + Arrays.toString(this.next_evolution)  + "\n";
     }
 
+
     // GETTERS & SETTERS:
     public String getId() {
         return id;

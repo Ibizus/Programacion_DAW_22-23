@@ -8,5 +8,8 @@ public class App {
         Pokedex pokedex = jsonUtils.readPokemonListFromJson("src/resources/pokemon.json");
 
         System.out.println(pokedex);
+
+        
+
     }
 }
