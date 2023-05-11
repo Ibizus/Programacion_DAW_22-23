@@ -22,7 +22,7 @@ public class Pokedex {
 
     public List<Pokemon> getTheXFromEnd(int cant)
     {
-        return this.pokemon.subList(pokemon.size()-(cant+1), pokemon.size()-1);
+        return this.pokemon.subList(pokemon.size()-(cant), pokemon.size());
     }
 
     public Pokemon findPokemonByName(String name){
@@ -115,12 +115,12 @@ public class Pokedex {
 
     public Pokemon highestPokemon(){
 
-        int maxHeight = 0;
+        double maxHeight = 0;
         Pokemon search = null;
 
         for (Pokemon item : pokemon)
         {
-            int heightPokemon = Integer.parseInt(item.getHeight().replace(" m", ""));
+            double heightPokemon = Double.parseDouble(item.getHeight().replace(" m", ""));
 
             if(heightPokemon > maxHeight)
             {
