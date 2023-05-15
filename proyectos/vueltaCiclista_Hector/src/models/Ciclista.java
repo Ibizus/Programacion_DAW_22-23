@@ -22,6 +22,12 @@ public class Ciclista {
         this.pais = pais;
     }
 
+    // METHODS:
+    public String toString(){
+
+        return this.nombre + " (" + this.codigoEquipo + ")";
+    }
+
 
     // GETTERS & SETTERS:
     public String getNombre() {

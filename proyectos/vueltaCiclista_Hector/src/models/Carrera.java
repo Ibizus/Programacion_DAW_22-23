@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -42,37 +43,154 @@ public class Carrera {
 
     public void insertarTiemposEtapa(Map<Integer, Integer> tiempos){
 
+        // Saco el array de claves (dorsales) para poder iterar sobre la coleccion:
+        ArrayList<Integer> dorsales = new ArrayList<>();
+        dorsales.addAll(tiempos.keySet());
+        
+        for (Integer dorsal : dorsales)
+        {
+            Corredor buscado = this.buscarCorredorPorDorsal(dorsal);
+
+            buscado.setTiempo(buscado.getTiempo() + tiempos.get(dorsal));
+        }
     }
 
     public void ordenarCorredoresPorTiempo(){
 
+        Collections.sort(this.corredores);
     }
 
     public Corredor buscarCorredorPorDorsal(int dorsal){
 
-        return null;
+        Corredor buscado = null;
+
+        for (Corredor corredor : this.corredores) {
+            
+            if(corredor.getDorsal() == dorsal)
+            {
+                buscado = corredor;
+            }
+        }
+
+        return buscado;
     }
 
     public Integer posicionCorredor(Corredor c){
 
-        return null;
+        this.ordenarCorredoresPorTiempo();
+
+        return this.corredores.indexOf(c);
     }
 
     public String clasificacionCompleta(){
 
-        // dorsal – NombreCiclista (codEquipo) : tiempo
+        // FORMATO: dorsal – NombreCiclista (codEquipo) : tiempo
 
-        return null;
+        // Primero ordenamos los corredores por tiempo:
+        this.ordenarCorredoresPorTiempo();
+
+        String salida = "";
+
+        for (Corredor corredor : this.corredores) {
+
+            salida += corredor.toString();
+        }
+
+        return salida;
     }
 
     public String clasificacionPorEquipos(){
 
-        return null;
+        String salida = "";
+
+        ArrayList<EquipoParticipante> listaEquiposCarrera = sumaTiemposPorEquipo();
+
+        for (EquipoParticipante equipoParticipante : listaEquiposCarrera) {
+            
+            // Controlo que el equipo tenga tiempo (haya participado):
+            if(equipoParticipante.getTiempoEquipo() != 0)
+            {
+                salida+= equipoParticipante.toString();
+            }
+        }
+
+        return salida;
+    }
+
+    private ArrayList<EquipoParticipante> sumaTiemposPorEquipo(){
+
+        ArrayList<EquipoParticipante> listaEquiposCarrera = new ArrayList<EquipoParticipante>();
+
+        for (Equipo equipo : this.equipos)
+        {
+            int tiempoEquipo = 0;
+
+            // Lista de los mejores corredores de ese equipo:
+            List<Corredor> corredoresEquipo = this.lista3MejoresPorEquipo(equipo.getCodigo());
+            
+            // itero sobre los corredores de ese equipo concreto para sacar sus tiempos:
+            for (Corredor corredor : corredoresEquipo) 
+            {
+                tiempoEquipo += corredor.getTiempo();    
+            }
+
+            EquipoParticipante nuevo = new EquipoParticipante(equipo);
+            nuevo.setTiempoEquipo(tiempoEquipo);
+            listaEquiposCarrera.add(nuevo);
+        }
+        return listaEquiposCarrera;
+    }
+
+    private List<Corredor> lista3MejoresPorEquipo(String codigoEquipo){
+
+        List<Corredor> corredoresEquipo = new ArrayList<Corredor>();
+
+        for (Corredor corredor : this.corredores)
+        {
+            if(corredor.codigoEquipo.equals(codigoEquipo))
+            {
+                corredoresEquipo.add(corredor);
+            }
+        }
+
+        // Los ordeno por tiempo:
+        Collections.sort(corredoresEquipo);
+
+        // Saco los tres primeros para devolverlos:
+        List<Corredor> mejoresPorEquipo = corredoresEquipo.subList(0, 2);
+
+        return mejoresPorEquipo;
     }
 
     public String podium(){
 
-        return null;
+        this.ordenarCorredoresPorTiempo();
+
+        String podium = "\n=========== PODIUM ====================\n";
+
+        // sacamos los 3 primeros:
+        List<Corredor> ganadores = this.corredores.subList(0, 2);
+
+        // se imprimen con el formato adecuado:
+        for (Corredor corredor : ganadores)
+        {
+            podium+= "Puesto " + ganadores.indexOf(corredor) + ": " + corredor.toString();
+        }
+
+        return podium;
+    }
+
+    // GETTERS & SETTERS:
+    public ArrayList<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public ArrayList<Corredor> getCorredores() {
+        return corredores;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
 }

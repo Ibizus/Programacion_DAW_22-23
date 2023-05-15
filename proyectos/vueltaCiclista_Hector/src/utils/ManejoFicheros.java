@@ -1,10 +1,14 @@
 package utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,16 +57,16 @@ public class ManejoFicheros {
         return listaEquipos;
     }
 
-	public static ArrayList<Ciclista> leeListaCiclistasFromJson(String relativePathFile)
+	public static List<Ciclista> leeListaCiclistasFromJson(String relativePathFile)
 	{
 		File fileCiclistas = new File(relativePathFile);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 
-		ArrayList<Ciclista> listaCiclistas = null;
+		List<Ciclista> listaCiclistas = null;
 
 		try {
-            listaCiclistas = objectMapper.readValue(fileCiclistas, new TypeReference<ArrayList<Ciclista>>(){});
+            listaCiclistas = objectMapper.readValue(fileCiclistas, new TypeReference<List<Ciclista>>(){});
         } 
         catch (IOException e) {
             
@@ -70,6 +74,25 @@ public class ManejoFicheros {
         }
 
 		return listaCiclistas;
+	}
+
+    public static Map<Integer, Integer> leeTiemposEtapaFromJson(String relativePathFile)
+	{
+		File fileTiempos = new File(relativePathFile);
+
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		Map<Integer, Integer> mapaTiempos = null;
+
+		try {
+            mapaTiempos = objectMapper.readValue(fileTiempos, new TypeReference<Map<Integer, Integer>>(){});
+        } 
+        catch (IOException e) {
+            
+            e.printStackTrace();
+        }
+
+		return mapaTiempos;
 	}
 
     public static void borraFichero(String path) throws Exception
@@ -89,4 +112,44 @@ public class ManejoFicheros {
         }
     }
 
+    public static void escribeEnFichero(String arg) throws Exception
+    {
+
+        String nombreFichero = arg + ".txt";
+        String path = "src/resources/";
+        
+        FileWriter fileWriter = null;
+        BufferedWriter bWriter = null;
+        
+        try
+        {
+            fileWriter = new FileWriter(path+nombreFichero, true);
+            bWriter = new BufferedWriter(fileWriter);
+            
+            bWriter.append(arg);
+            bWriter.newLine();
+        } 
+        catch (Exception e) 
+        {
+            //System.out.println("Algo ha fallado");
+        }
+        finally
+        {
+            try 
+            {
+                if(bWriter != null)
+                {
+                    bWriter.close();
+                }
+                if(fileWriter != null)
+                {
+                    fileWriter.close();
+                }
+            } 
+            catch (Exception e) 
+            {
+
+            }
+        }
+    }
 }

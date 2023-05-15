@@ -18,7 +18,14 @@ public class Corredor extends Ciclista implements Comparable<Corredor>{
     @Override
     public int compareTo(Corredor c)
     {
-        return (this.dorsal-c.dorsal);
+        return (this.tiempo-c.tiempo);
+    }
+
+    @Override
+    public String toString(){
+
+        // dorsal – NombreCiclista (codEquipo) : tiempo
+        return this.dorsal + " - " + super.toString() + " : " + this.tiempo + "s\n";
     }
 
     public Integer getDorsal() {
@@ -27,6 +34,10 @@ public class Corredor extends Ciclista implements Comparable<Corredor>{
 
     public Integer getTiempo() {
         return tiempo;
+    }
+
+    public void setTiempo(Integer tiempo) {
+        this.tiempo = tiempo;
     }
         
 }

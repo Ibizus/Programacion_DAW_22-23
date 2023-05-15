@@ -3,10 +3,10 @@ package models;
 public class Equipo {
     
     // ATTRIBUTES:
-    private String codigo;
-    private String nombre;
-    private String nacionalidad;
-    private int presupuesto;
+    protected String codigo;
+    protected String nombre;
+    protected String nacionalidad;
+    protected int presupuesto;
 
     // CONSTRUCTOR:
     public Equipo(String codigo, String nombre, String nacionalidad, int presupuesto){
@@ -17,4 +17,20 @@ public class Equipo {
         this.presupuesto = presupuesto;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public int getPresupuesto() {
+        return presupuesto;
+    }
+    
 }
