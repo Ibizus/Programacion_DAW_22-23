@@ -29,8 +29,17 @@ public class Carrera {
         }
     }
 
-
+    
     // METHODS:
+    private void setEquipos(ArrayList<Equipo> equipos) {
+        this.equipos = equipos;
+    }
+
+    public void añadeEquiposCarrera(ArrayList<Equipo> lista)
+    {
+        this.setEquipos(lista);
+    }
+
     public void insertarTiemposEtapa(Map<Integer, Integer> tiempos){
 
     }
