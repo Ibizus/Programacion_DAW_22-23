@@ -66,12 +66,11 @@ public class Carrera {
         // Busco todos los dorsales que no están en la lista para ponerles el tiempo del peloton:
         for (Corredor corredor : this.corredores) 
         {
-            if(!tiemposSueltos.contains(corredor.getDorsal()))   
+            if(!dorsales.contains(corredor.getDorsal()))   
             {
-                corredor.setTiempo(maxTiempo);
+                corredor.setTiempo(corredor.getTiempo() + maxTiempo);
             } 
         }
-
     }
 
     public void ordenarCorredoresPorTiempo(){
@@ -124,13 +123,23 @@ public class Carrera {
 
         ArrayList<EquipoParticipante> listaEquiposCarrera = sumaTiemposPorEquipo();
 
-        for (EquipoParticipante equipoParticipante : listaEquiposCarrera) {
+        // Elimino los equipos que no tiene tiempo acumulado (los que no han participado con ningun ciclista):
+        ArrayList<EquipoParticipante> nuevaLista = new ArrayList<>();
+
+        for (EquipoParticipante equipoP : listaEquiposCarrera) {
             
-            // Controlo que el equipo tenga tiempo (haya participado):
-            if(equipoParticipante.getTiempoEquipo() != 0)
+            if(equipoP.getTiempoEquipo() != 0)
             {
-                salida+= equipoParticipante.toString();
+                nuevaLista.add(equipoP);
             }
+        }
+
+        // Ordeno por tiempo y acumulo la clasificación de equipos:
+        Collections.sort(nuevaLista);
+        for (EquipoParticipante equipoParticipante : nuevaLista) {
+            
+            salida+= (nuevaLista.indexOf(equipoParticipante)+1) + ": " + equipoParticipante.toString();
+            
         }
 
         return salida;
@@ -180,7 +189,7 @@ public class Carrera {
 
         if(corredoresEquipo.size()>2)
         {
-            mejoresPorEquipo = corredoresEquipo.subList(0, 2);
+            mejoresPorEquipo = corredoresEquipo.subList(0, 3);
         }
         else
         {   // si es menor los añado todos:
@@ -194,15 +203,15 @@ public class Carrera {
 
         this.ordenarCorredoresPorTiempo();
 
-        String podium = "\n=========== PODIUM ====================\n";
+        String podium = "";
 
         // sacamos los 3 primeros:
-        List<Corredor> ganadores = this.corredores.subList(0, 2);
+        List<Corredor> ganadores = this.corredores.subList(0, 3);
 
         // se imprimen con el formato adecuado:
         for (Corredor corredor : ganadores)
         {
-            podium+= "Puesto " + ganadores.indexOf(corredor) + ": " + corredor.toString();
+            podium+= "Puesto " + (ganadores.indexOf(corredor)+1) + ": " + corredor.toString();
         }
 
         return podium;
