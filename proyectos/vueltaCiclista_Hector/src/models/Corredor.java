@@ -12,6 +12,7 @@ public class Corredor extends Ciclista implements Comparable<Corredor>{
 
         super(c.nombre, c.codigoEquipo, c.peso, c.pais);
         this.dorsal = dorsal;
+        this.tiempo = 0;
     }
 
     // METHODS:

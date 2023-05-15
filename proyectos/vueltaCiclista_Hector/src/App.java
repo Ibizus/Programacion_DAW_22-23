@@ -11,7 +11,7 @@ public class App {
 
         // CREO LA CARRERA LEYENDO PRIMERO LA LISTA DE INSCRITOS DEL FICHERO:
         List<Ciclista> listaInscritos = ManejoFicheros.leeListaCiclistasFromJson("src/resources/ciclistas.json");
-        String nombreCarrera = "Vuelta a Málaga";
+        String nombreCarrera = "Vuelta a Malaga";
 
         Carrera malaga = new Carrera(listaInscritos, nombreCarrera);
 
@@ -49,45 +49,34 @@ public class App {
         malaga.insertarTiemposEtapa(ManejoFicheros.leeTiemposEtapaFromJson("src/carreraMalaga/etapa2.json"));
         malaga.insertarTiemposEtapa(ManejoFicheros.leeTiemposEtapaFromJson("src/carreraMalaga/etapa3.json"));
 
-        // Hacemos la clasificación por tiempo:
-        malaga.ordenarCorredoresPorTiempo();
-
-        for (Corredor corredor : malaga.getCorredores())
-        {
-            salida3 += corredor.toString();
-        }
+        salida3 += malaga.clasificacionCompleta();
         ManejoFicheros.escribeEnFichero(salida1);
 
 
 
         // ==== PODIUM ====
         String salida4 = "\n\n==== PODIUM ====\n";
-
+        salida4 += malaga.podium();
         ManejoFicheros.escribeEnFichero(salida4);
 
 
 
+        // ==== CLASIFICACIÓN POR EQUIPOS ====
+        String salida5 = "\n\n==== CLASIFICACIÓN POR EQUIPOS ====\n";
+        salida5 += malaga.clasificacionPorEquipos();
+        ManejoFicheros.escribeEnFichero(salida5);
 
 
 
+        // ==== POSICIÓN DEL CORREDOR: Wilco Kelderman(BOHA) Dorsal: 22 ==== 
+        String salida6 = "\n\n==== POSICIÓN DEL CORREDOR: Wilco Kelderman(BOHA) Dorsal: 22 ====\n";
 
-        /*
-         *  ==== NOMBRE DE LA CARRERA ====
-            ==== CICLISTAS PARTICIPANTES EN LA CARRERA ====
-            ==== CLASIFICACIÓN FINAL ====
-            ==== PODIUM ====
-            ==== CLASIFICACIÓN POR EQUIPOS====
-            ==== POSICIÓN DEL CORREDOR: Wilco Kelderman(BOHA) Dorsal: 22 ====
-         * 
-         */
+        Corredor buscado = malaga.buscarCorredorPorDorsal(22);
+        int posicionCorredor = malaga.posicionCorredor(buscado);
 
-
-
-
-
-
-
-
+        salida6 += "Corredor con dorsal 22: " + buscado.toString();
+        salida6 += "\nPosición final del corredor: " + posicionCorredor;
+        ManejoFicheros.escribeEnFichero(salida6);
 
     }
 }

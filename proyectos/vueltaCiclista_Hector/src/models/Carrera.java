@@ -18,6 +18,8 @@ public class Carrera {
 
         int dorsal = 0;
         this.nombre = nombre;
+        this.equipos = new ArrayList<Equipo>();
+        this.corredores = new ArrayList<Corredor>();
 
         for (Ciclista ciclista : inscritos) 
         {
@@ -47,12 +49,29 @@ public class Carrera {
         ArrayList<Integer> dorsales = new ArrayList<>();
         dorsales.addAll(tiempos.keySet());
         
+        // actualizo el tiempo para todos los dorsales del archivo de tiempos:
         for (Integer dorsal : dorsales)
         {
             Corredor buscado = this.buscarCorredorPorDorsal(dorsal);
 
             buscado.setTiempo(buscado.getTiempo() + tiempos.get(dorsal));
         }
+
+        // Saco el tiempo máximo (pelotón):
+        ArrayList<Integer> tiemposSueltos = new ArrayList<>();
+        tiemposSueltos.addAll(tiempos.values());
+        Collections.sort(tiemposSueltos);
+        int maxTiempo = tiemposSueltos.get(tiemposSueltos.size()-1);
+
+        // Busco todos los dorsales que no están en la lista para ponerles el tiempo del peloton:
+        for (Corredor corredor : this.corredores) 
+        {
+            if(!tiemposSueltos.contains(corredor.getDorsal()))   
+            {
+                corredor.setTiempo(maxTiempo);
+            } 
+        }
+
     }
 
     public void ordenarCorredoresPorTiempo(){
@@ -156,8 +175,17 @@ public class Carrera {
         // Los ordeno por tiempo:
         Collections.sort(corredoresEquipo);
 
-        // Saco los tres primeros para devolverlos:
-        List<Corredor> mejoresPorEquipo = corredoresEquipo.subList(0, 2);
+        // Saco los tres primeros para devolverlos: (compruebo que tiene al menos 3)
+        List<Corredor> mejoresPorEquipo = new ArrayList<Corredor>();
+
+        if(corredoresEquipo.size()>2)
+        {
+            mejoresPorEquipo = corredoresEquipo.subList(0, 2);
+        }
+        else
+        {   // si es menor los añado todos:
+            mejoresPorEquipo.addAll(corredoresEquipo);
+        }
 
         return mejoresPorEquipo;
     }
