@@ -112,10 +112,10 @@ public class ManejoFicheros {
         }
     }
 
-    public static void escribeEnFichero(String arg) throws Exception
+    public static void escribeEnFichero(String fileName, String output) throws Exception
     {
 
-        String nombreFichero = arg + ".txt";
+        String nombreFichero = fileName + ".txt";
         String path = "src/resources/";
         
         FileWriter fileWriter = null;
@@ -126,7 +126,7 @@ public class ManejoFicheros {
             fileWriter = new FileWriter(path+nombreFichero, true);
             bWriter = new BufferedWriter(fileWriter);
             
-            bWriter.append(arg);
+            bWriter.append(output);
             bWriter.newLine();
         } 
         catch (Exception e) 

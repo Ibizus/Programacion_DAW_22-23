@@ -26,7 +26,7 @@ public class App {
 
         // ==== NOMBRE DE LA CARRERA ====
         String salida1 = "\n==== NOMBRE DE LA CARRERA ====\n\n\t" + nombreCarrera;
-        ManejoFicheros.escribeEnFichero(salida1);
+        ManejoFicheros.escribeEnFichero(nombreFicheroSalida, salida1);
 
 
 
@@ -37,7 +37,7 @@ public class App {
         {
             salida2 += ciclista.toString();
         }
-        ManejoFicheros.escribeEnFichero(salida2);
+        ManejoFicheros.escribeEnFichero(nombreFicheroSalida, salida2);
 
 
 
@@ -50,33 +50,33 @@ public class App {
         malaga.insertarTiemposEtapa(ManejoFicheros.leeTiemposEtapaFromJson("src/carreraMalaga/etapa3.json"));
 
         salida3 += malaga.clasificacionCompleta();
-        ManejoFicheros.escribeEnFichero(salida1);
+        ManejoFicheros.escribeEnFichero(nombreFicheroSalida, salida3);
 
 
 
         // ==== PODIUM ====
-        String salida4 = "\n\n==== PODIUM ====\n";
+        String salida4 = "\n\n=========== PODIUM ====================\n";
         salida4 += malaga.podium();
-        ManejoFicheros.escribeEnFichero(salida4);
+        ManejoFicheros.escribeEnFichero(nombreFicheroSalida, salida4);
 
 
 
         // ==== CLASIFICACIÓN POR EQUIPOS ====
         String salida5 = "\n\n==== CLASIFICACIÓN POR EQUIPOS ====\n";
         salida5 += malaga.clasificacionPorEquipos();
-        ManejoFicheros.escribeEnFichero(salida5);
+        ManejoFicheros.escribeEnFichero(nombreFicheroSalida, salida5);
 
 
 
         // ==== POSICIÓN DEL CORREDOR: Wilco Kelderman(BOHA) Dorsal: 22 ==== 
-        String salida6 = "\n\n==== POSICIÓN DEL CORREDOR: Wilco Kelderman(BOHA) Dorsal: 22 ====\n";
+        String salida6 = "\n\n==== POSICIÓN DEL CORREDOR: Wilco Kelderman(BOHA) Dorsal: 22 ====\n\n";
 
         Corredor buscado = malaga.buscarCorredorPorDorsal(22);
         int posicionCorredor = malaga.posicionCorredor(buscado);
 
         salida6 += "Corredor con dorsal 22: " + buscado.toString();
         salida6 += "\nPosición final del corredor: " + posicionCorredor;
-        ManejoFicheros.escribeEnFichero(salida6);
+        ManejoFicheros.escribeEnFichero(nombreFicheroSalida, salida6);
 
     }
 }

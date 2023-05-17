@@ -20,6 +20,12 @@ public class EquipoParticipante extends Equipo implements Comparable<EquipoParti
         return this.tiempoEquipo-o.tiempoEquipo;
     }
     
+    @Override
+    public String toString()
+    {
+        return super.toString() + "\t tiempo acumulado: " + this.tiempoEquipo + "s\n";
+    }
+
     // GETTERS & SETTERS:
     public int getTiempoEquipo() {
         return tiempoEquipo;

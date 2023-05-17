@@ -17,6 +17,13 @@ public class Equipo {
         this.presupuesto = presupuesto;
     }
 
+    // METHODS:
+    @Override
+    public String toString(){
+
+        return this.nombre + " (" + this.codigo + ") - país: " + this.nacionalidad + " " + this.presupuesto + "M€"; 
+    }
+
     public String getCodigo() {
         return codigo;
     }
