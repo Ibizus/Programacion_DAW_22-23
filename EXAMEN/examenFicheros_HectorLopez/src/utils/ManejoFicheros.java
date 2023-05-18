@@ -7,41 +7,51 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
+
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import models.Cliente;
+import models.Producto;
+import models.Venta;
+
 
 public class ManejoFicheros {
     
-    public static ArrayList<Equipo> leerFicheroEquipos(String nombreArchivo)
+    public static ArrayList<Producto> leerFicheroProductos(String nombreArchivo)
     {
         String nombreFichero = nombreArchivo;
         String path = "src/resources/";
         
-        ArrayList<Equipo> listaEquipos = new ArrayList<>();
-        
+        ArrayList<Producto> listaProductos = new ArrayList<>();
+        HashSet<Producto> listaSinRepetidos = new HashSet<Producto>();
+
         try (BufferedReader br = new BufferedReader(new FileReader(path+nombreFichero)))
         {
             String linea = br.readLine();
-            // saltamos primera linea:
-            linea = br.readLine();
             
             while(linea!=null)
             {
                 try
                 {
-                    String[] trozosLinea = linea.split(",");
+                    String[] trozosLinea = linea.split(";");
 
-                    listaEquipos.add(new Equipo(trozosLinea[0], trozosLinea[1], trozosLinea[2], Integer.valueOf(trozosLinea[3]))); 
+                    if(Integer.valueOf(trozosLinea[4]) == 0)
+                    {
+                        Exception e1 = new ExcepcionProductoSinStock(trozosLinea[0], Integer.valueOf(trozosLinea[4]));
+                        System.out.println(e1.toString());
+                    }
+                    else 
+                    {
+                        listaSinRepetidos.add(new Producto(Integer.valueOf(trozosLinea[0]), trozosLinea[1], trozosLinea[2], Double.valueOf(trozosLinea[3]), Integer.valueOf(trozosLinea[4]))); 
+                    }
                 } 
                 catch (Exception ex) 
                 {
-                    // System.out.println(ex.getMessage());
+                    System.out.println("ERROR en la lectura de un producto -> en la cadena: " + linea);
                 }
-
                 //actualiza concidion bucle:
                 linea = br.readLine();
             }
@@ -52,46 +62,50 @@ public class ManejoFicheros {
             System.out.println(e.getMessage());
         }
 
-        return listaEquipos;
+        listaProductos.addAll(listaSinRepetidos);
+        return listaProductos;
     }
     
-    public static String leeClaseFromJson(String relativePathFile)
-    {
-		String pokemon = null;
-		try {
-			
-            // Create File
-			File oneClassFile = new File(relativePathFile);
-			
-			//create ObjectMapper instance
-			ObjectMapper objectMapper = new ObjectMapper();
-			
-			//convert json string to object
-			try {
-				pokemon = objectMapper.readValue(oneClassFile, String.class);
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-		}
-		catch (Exception e)
-		{
-			
-		}
-        return pokemon;
-    }
 
-
-	public static List<String> leeListaClaseFromJson(String relativePathFile)
+    public static ArrayList<Cliente> leeListaClientesFromJson(String nombreArchivo)
 	{
-		File fileName = new File(relativePathFile);
-
-		ObjectMapper objectMapper = new ObjectMapper();
-
-		List<String> listaName = null;
+        String path = "src/resources/";
+        ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+        HashSet<Cliente> listaSinRepetidos = null;
 
 		try {
-            listaName = objectMapper.readValue(fileName, new TypeReference<List<String>>(){});
+            File fileClientes = new File(path+nombreArchivo);
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            listaSinRepetidos = objectMapper.readValue(fileClientes, new TypeReference<HashSet<Cliente>>(){});
+        } 
+        catch (IOException e) {
+            
+            e.printStackTrace();
+        }
+
+        if(listaSinRepetidos != null)
+        {
+            listaClientes.addAll(listaSinRepetidos);
+            return listaClientes;
+        }
+        else 
+        {
+            return null;
+        }
+
+	}
+
+	public static ArrayList<Venta> leeListaVentasFromJson(String nombreArchivo)
+	{
+        String path = "src/resources/";
+		ArrayList<Venta> listaName = null;
+
+		try {
+            File fileName = new File(path+nombreArchivo);
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            listaName = objectMapper.readValue(fileName, new TypeReference<ArrayList<Venta>>(){});
         } 
         catch (IOException e) {
             
@@ -101,25 +115,6 @@ public class ManejoFicheros {
 		return listaName;
 	}
 	
-
-    public static Map<Integer, Integer> leeTiemposEtapaFromJson(String relativePathFile)
-	{
-		File fileTiempos = new File(relativePathFile);
-
-		ObjectMapper objectMapper = new ObjectMapper();
-
-		Map<Integer, Integer> mapaTiempos = null;
-
-		try {
-            mapaTiempos = objectMapper.readValue(fileTiempos, new TypeReference<Map<Integer, Integer>>(){});
-        } 
-        catch (IOException e) {
-            
-            e.printStackTrace();
-        }
-
-		return mapaTiempos;
-	}
 
     public static void borraFichero(String path) throws Exception
     {
