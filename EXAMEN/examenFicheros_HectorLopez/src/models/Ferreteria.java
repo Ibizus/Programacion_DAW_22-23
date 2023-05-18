@@ -39,11 +39,10 @@ public class Ferreteria {
                         Producto buscado = buscaProducto(linea.getCodigoProducto());
                         double importe = buscado.getPrecio();
                         totalCliente += importe * linea.getCantidad();
-                        salida += totalCliente;
                     }
                 }
             }
-            salida += "€";    
+            salida += totalCliente + "€";    
         }
         return salida;
     }
@@ -77,26 +76,28 @@ public class Ferreteria {
                 {
                     if(producto.getCodigo() == linea.getCodigoProducto())
                     {
-                        cantidad += linea.getCantidad();
+                        cantidad += Integer.valueOf(linea.getCantidad());
                     }
-                    salida += cantidad;
                 }
             } 
-            salida += "cantidades";      
+            salida += cantidad + " cantidades";      
         }
         return salida;
     }
 
     // no me ha dado tiempo:
-    public String facturacionTotal()
+    public double facturacionTotal()
     {
+        double total = 0;
+
         for (Venta venta : this.ventas)
         {
             for (Linea linea : venta.getLineas())
             {
-
+                total += Integer.valueOf(linea.getCantidad()) * buscaProducto(linea.getCodigoProducto()).getPrecio();
             }
         } 
+        return total;
     }
 
 
@@ -105,13 +106,24 @@ public class Ferreteria {
         return clientes;
     }
 
-
     public ArrayList<Producto> getProductos() {
         return productos;
     }
 
-
     public ArrayList<Venta> getVentas() {
         return ventas;
     }
+
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
+    }
+
 }
