@@ -40,7 +40,7 @@ public class ManejoFicheros {
 
                     if(Integer.valueOf(trozosLinea[4]) == 0)
                     {
-                        Exception e1 = new ExcepcionProductoSinStock(trozosLinea[0], Integer.valueOf(trozosLinea[4]));
+                        Exception e1 = new ExcepcionProductoSinStock(trozosLinea[1], Integer.valueOf(trozosLinea[0]));
                         System.out.println(e1.toString());
                     }
                     else 

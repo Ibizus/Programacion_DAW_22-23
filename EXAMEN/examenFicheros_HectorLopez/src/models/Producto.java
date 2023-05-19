@@ -18,7 +18,6 @@ public class Producto implements Comparable<Producto>{
         this.stock = stock;
     }
 
-
     @Override
     public int compareTo(Producto p)
     {
