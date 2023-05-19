@@ -33,6 +33,12 @@ public class Cliente implements Comparable<Cliente>{
     }
 
     @Override
+    public int hashCode(){
+
+        return 0;
+    }
+
+    @Override
     public String toString(){
 
         return "\ncódigo: " + codigo + " Nombre: " + nombre + "\nDirección: " + direccion + "\nEmail: " + email + "\n";
