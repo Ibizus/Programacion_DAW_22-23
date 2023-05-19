@@ -6,9 +6,6 @@ public class App {
 
         Ferreteria nuevaFerreteria = new Ferreteria();
         
-        // actualizo el listado de ventas para que no contenga productos no referenciados:
-        nuevaFerreteria.setVentas(ManejoFicheros.comparaVentasConProductos(nuevaFerreteria.getVentas(), nuevaFerreteria.getProductos()));
-        
         
         // Muestro salida de la lectura:
         System.out.println(nuevaFerreteria.getClientes());
@@ -16,7 +13,8 @@ public class App {
         System.out.println(nuevaFerreteria.getVentas());
 
 
-        // ANTES DE EMPEZAR A ESCRIBIR EN EL FICHERO DE SALIDA TENGO QUE VER SI EXISTE Y BORRARLO PARA NO REPETIR LAS SALIDAS GUARDADAS:
+        // ANTES DE EMPEZAR A ESCRIBIR EN EL FICHERO DE SALIDA TENGO QUE VER SI EXISTE 
+        // Y BORRARLO PARA NO REPETIR LAS SALIDAS GUARDADAS:
         String nombreFichero = "FacturacionClientes.txt";
         ManejoFicheros.borraFichero("src/resources/" + nombreFichero);
         String salida1 = nuevaFerreteria.facturacionPorCliente();

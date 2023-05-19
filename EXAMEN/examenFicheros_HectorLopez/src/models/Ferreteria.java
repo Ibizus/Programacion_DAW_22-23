@@ -16,11 +16,41 @@ public class Ferreteria {
         
         this.clientes = ManejoFicheros.leeListaClientesFromJson("clientes.json");
         this.productos = ManejoFicheros.leerFicheroProductos("productos.csv");
-        this.ventas = ManejoFicheros.leeListaVentasFromJson("ventas.json");
+        // actualizo el listado de ventas leido para que no contenga productos no referenciados:
+        this.ventas = comparaVentasConProductos(ManejoFicheros.leeListaVentasFromJson("ventas.json"), this.productos);
     }
     
 
     // METHODS:
+    public static ArrayList<Venta> comparaVentasConProductos(ArrayList<Venta> ventas, ArrayList<Producto> productos)
+    {
+        ArrayList<Integer> listaCodigos = new ArrayList<>();
+        ArrayList<Venta> nuevaVentas = new ArrayList<>();
+        for (Producto producto : productos)
+        {
+            listaCodigos.add(producto.getCodigo());    
+        }
+
+        for (Venta venta : ventas)
+        {
+            Venta nueva = new Venta();
+            nueva.setCodigoCliente(venta.getCodigoCliente());
+            nueva.setFecha(venta.getFecha());
+            nueva.setLineas(new ArrayList<Linea>());
+
+            for (Linea linea : venta.getLineas())
+            {
+                if(listaCodigos.contains(linea.getCodigoProducto()))
+                {
+                    nueva.getLineas().add(linea);
+                }    
+            }
+            nuevaVentas.add(nueva);
+        }
+        return nuevaVentas;
+    }
+
+
     public String facturacionPorCliente(){
         
         String salida = "";

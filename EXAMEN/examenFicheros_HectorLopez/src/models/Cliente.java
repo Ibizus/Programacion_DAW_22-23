@@ -23,8 +23,6 @@ public class Cliente implements Comparable<Cliente>{
     public boolean equals(Object otro){
 
         boolean iguales = false;
-
-
         
         if(this.compareTo((Cliente)otro) == 0)
         {

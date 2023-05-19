@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import models.Cliente;
-import models.Linea;
 import models.Producto;
 import models.Venta;
 
@@ -114,34 +113,6 @@ public class ManejoFicheros {
 
 		return listaName;
 	}
-
-    public static ArrayList<Venta> comparaVentasConProductos(ArrayList<Venta> ventas, ArrayList<Producto> productos)
-    {
-        ArrayList<Integer> listaCodigos = new ArrayList<>();
-        ArrayList<Venta> nuevaVentas = new ArrayList<>();
-        for (Producto producto : productos)
-        {
-            listaCodigos.add(producto.getCodigo());    
-        }
-
-        for (Venta venta : ventas)
-        {
-            Venta nueva = new Venta();
-            nueva.setCodigoCliente(venta.getCodigoCliente());
-            nueva.setFecha(venta.getFecha());
-            nueva.setLineas(new ArrayList<Linea>());
-
-            for (Linea linea : venta.getLineas())
-            {
-                if(listaCodigos.contains(linea.getCodigoProducto()))
-                {
-                    nueva.getLineas().add(linea);
-                }    
-            }
-            nuevaVentas.add(nueva);
-        }
-        return nuevaVentas;
-    }
 	
 
     public static void borraFichero(String path) throws Exception
