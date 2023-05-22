@@ -35,6 +35,7 @@ public class Evento {
         return "\nid: " + id + " - Actividad: " + title + "\ngratis: " + ((free)? "SI" : "NO") + "\nCP: " + address.toString() + "\nEnlace: " + link;
     }
 
+
     // GETTERS & SETTERS:
     public String getId() {
         return id;

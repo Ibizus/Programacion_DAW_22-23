@@ -21,7 +21,6 @@ import models.Evento;
 public class ManejoFicheros {
     
 
-
     public static ArrayList<Evento> leerFicheroEventos(String nombreArchivo)
     {
         String nombreFichero = nombreArchivo;
@@ -42,7 +41,7 @@ public class ManejoFicheros {
                     String[] trozosLinea = linea.split(";");
 
                     listaEventos.add(new Evento(trozosLinea[0], trozosLinea[1], trozosLinea[3].equals("1"), 
-                                    new Direccion(new Area(trozosLinea[22])), trozosLinea[13])); 
+                                    new Direccion(new Area(trozosLinea[trozosLinea.length-7])), trozosLinea[13])); 
                 } 
                 catch (Exception ex) 
                 {
@@ -65,46 +64,24 @@ public class ManejoFicheros {
 
 
 
-	public static List<Ciclista> leeListaCiclistasFromJson(String relativePathFile)
+	public static ArrayList<Evento> leeListaEventosJson(String relativePathFile)
 	{
-		File fileCiclistas = new File(relativePathFile);
+		File fileEventos = new File("src/resources/" + relativePathFile);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 
-		List<Ciclista> listaCiclistas = null;
+		ArrayList<Evento> listaEventos = null;
 
 		try {
-            listaCiclistas = objectMapper.readValue(fileCiclistas, new TypeReference<List<Ciclista>>(){});
+            listaEventos = objectMapper.readValue(fileEventos, new TypeReference<ArrayList<Evento>>(){});
         } 
         catch (IOException e) {
             
             e.printStackTrace();
         }
 
-		return listaCiclistas;
+		return listaEventos;
 	}
-
-
-
-    public static Map<Integer, Integer> leeTiemposEtapaFromJson(String relativePathFile)
-	{
-		File fileTiempos = new File(relativePathFile);
-
-		ObjectMapper objectMapper = new ObjectMapper();
-
-		Map<Integer, Integer> mapaTiempos = null;
-
-		try {
-            mapaTiempos = objectMapper.readValue(fileTiempos, new TypeReference<Map<Integer, Integer>>(){});
-        } 
-        catch (IOException e) {
-            
-            e.printStackTrace();
-        }
-
-		return mapaTiempos;
-	}
-
 
 
     public static void borraFichero(String path) throws Exception
@@ -123,7 +100,6 @@ public class ManejoFicheros {
 
         }
     }
-
 
 
     public static void escribeEnFichero(String fileName, String output) throws Exception
