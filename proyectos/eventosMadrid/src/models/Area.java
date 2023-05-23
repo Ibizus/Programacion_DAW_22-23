@@ -24,7 +24,14 @@ public class Area {
     // METHODS:
     public String toString(){
 
-        return post_code;
+        if(post_code.equals(""))
+        {
+            return "SIN INFO";
+        }
+        else
+        {
+            return post_code;
+        }
     }
 
 
