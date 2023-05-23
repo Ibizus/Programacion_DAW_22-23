@@ -13,42 +13,44 @@ import java.util.Map;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import models.Cliente;
+import models.Producto;
+import models.Venta;
+
 public class ManejoFicheros {
     
 
-    public static ArrayList<T> leerFichero_CSV(String nombreArchivo)
+    public static ArrayList<Producto> leerFichero_CSV(String nombreArchivo)
     {
         String nombreFichero = nombreArchivo;
         String path = "src/resources/";
         
-        ArrayList<T> listaT = new ArrayList<>();
+        ArrayList<Producto> listaT = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(path+nombreFichero)))
         {
             String linea = br.readLine();
-            // saltamos primera linea:
-            linea = br.readLine();
             
             while(linea!=null)
             {
                 try
                 {
-                    String[] trozosLinea = linea.split(",");
+                    String[] trozosLinea = linea.split(";");
 
                     // se sacan las variables necesarias:
-                    int stock = Integer.valueOf(trozosLinea[3]);
+                    int stock = Integer.valueOf(trozosLinea[4]);
 
                     // lanza excepcion personalizada:
                     if (stock == 0)
                     {
-                        throw new ExcepcionNueva("para1", "param2");
+                        throw new ExcepcionProductoSinStock(trozosLinea[1], trozosLinea[0]);
                     }
                     else
                     {
-                        listaT.add(new T(trozosLinea[0], trozosLinea[1], trozosLinea[2], stock)); 
+                        listaT.add(new Producto(Integer.valueOf(trozosLinea[0]), trozosLinea[1], trozosLinea[2], Double.valueOf(trozosLinea[3]), stock)); 
                     }
                 }
-                catch (ExcepcionNueva e1) 
+                catch (ExcepcionProductoSinStock e1) 
                 {
                     System.out.println(e1.getMessage());
                 }
@@ -70,41 +72,44 @@ public class ManejoFicheros {
         return listaT;
     }
 
-	public static List<T> leeLista_Json(String relativePathFile)
+	public static ArrayList<Cliente> leeListaClientes_Json(String relativePathFile)
 	{
-		List<T> lista = null;
+		ArrayList<Cliente> lista = null;
         
 		try {
             File fileName = new File(relativePathFile);
             ObjectMapper objectMapper = new ObjectMapper();
 
-            lista = objectMapper.readValue(fileName, new TypeReference<List<T>>(){});
+            lista = objectMapper.readValue(fileName, new TypeReference<ArrayList<Cliente>>(){});
+
         } 
         catch (IOException e) {
             
+            e.printStackTrace();
+        }
+        
+		return lista;
+	}
 
+    public static ArrayList<Venta> leeListaVentas_Json(String relativePathFile)
+	{
+		ArrayList<Venta> lista = null;
+        
+		try {
+            File fileName = new File(relativePathFile);
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            lista = objectMapper.readValue(fileName, new TypeReference<ArrayList<Venta>>(){});
+
+        } 
+        catch (IOException e) {
+            
             e.printStackTrace();
         }
         
 		return lista;
 	}
     
-    public static T lee_FromJson(String relativePathFile)
-    {
-        T listaNueva = null;
-        
-        try {
-            File fileName = new File(relativePathFile);
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            listaNueva = objectMapper.readValue(fileName, new TypeReference<T>(){});
-        }
-        catch (IOException e) {
-            
-            e.printStackTrace();
-        }
-        return listaNueva;
-    }
 
     public static void borraFichero(String path) throws Exception
     {
@@ -126,7 +131,7 @@ public class ManejoFicheros {
     public static void escribeEnFichero(String fileName, String output) throws Exception
     {
         String nombreFichero = fileName + ".txt";
-        String path = "src/resources/";
+        String path = "src/output/";
         
         try(FileWriter fileWriter = new FileWriter(path+nombreFichero, true);
             BufferedWriter bWriter = new BufferedWriter(fileWriter);)
