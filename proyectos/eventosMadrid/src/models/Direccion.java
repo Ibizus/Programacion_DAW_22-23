@@ -17,7 +17,14 @@ public class Direccion {
     // METHODS:
     public String toString(){
 
-        return area.toString();
+        if(this.area!=null)
+        {
+            return area.toString();
+        }
+        else
+        {
+            return "";
+        }
     }
 
     // GETTERS & SETTERS:

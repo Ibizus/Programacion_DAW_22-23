@@ -10,7 +10,7 @@ public class Evento {
     // ATTRIBUTES:
     private String id;
     private String title;
-    private boolean free;
+    private String free;
     private Direccion address;
     private String link;
 
@@ -19,7 +19,7 @@ public class Evento {
 
     }
 
-    public Evento(String id, String title, boolean free, Direccion address, String link){
+    public Evento(String id, String title, String free, Direccion address, String link){
 
         this.id = id;
         this.title = title;
@@ -32,7 +32,11 @@ public class Evento {
     // METHODS:
     public String toString(){
 
-        return "\nid: " + id + " - Actividad: " + title + "\ngratis: " + ((free)? "SI" : "NO") + "\nCP: " + address.toString() + "\nEnlace: " + link;
+        String direccion = (address!=null)?address.toString():"no hay info";
+        String gratis = (free.equals("1")?"SI":"NO");
+        String enlace = (link.length()==0?"sin información":link.toString());
+
+        return "\n\nid: " + id + " - Actividad: " + title + "\ngratis: " + gratis + " - CP: " + direccion + "\nEnlace: " + enlace;
     }
 
 
@@ -53,14 +57,6 @@ public class Evento {
         this.title = title;
     }
 
-    public boolean isFree() {
-        return free;
-    }
-
-    public void setFree(boolean free) {
-        this.free = free;
-    }
-
     public Direccion getAddress() {
         return address;
     }
@@ -75,6 +71,14 @@ public class Evento {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getFree() {
+        return free;
+    }
+
+    public void setFree(String free) {
+        this.free = free;
     }
 
 }
