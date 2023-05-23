@@ -1,5 +1,5 @@
  - - - - - LISTA DE EVENTOS GRATIS EN CP: 28009 (JSON) - - - - - 
-número de eventos listados en el fichero: 59
+número de eventos listados en el fichero: 57
 [
 
 id: 11958859 - Actividad: 4 patas tiene un cuento
@@ -14,17 +14,9 @@ id: 11913908 - Actividad: Abriendo el corazón: amor, compasión
 gratis: SI - CP: 28009
 Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=78ba2ba513806810VgnVCM1000001d4a900aRCRD, 
 
-id: 11923139 - Actividad: Alaia Galtzagorria: cuentos de nuestra mitología - Ostomila Txotxongilo Taldea / Teatro de títeres Ostomila (Euskal Herria)
-gratis: NO - CP: 28009
-Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=c238b4cb42036810VgnVCM1000001d4a900aRCRD, 
-
 id: 11965041 - Actividad: Antonio Lo Riso
 gratis: SI - CP: 28009
 Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=deeadda6d2807810VgnVCM1000001d4a900aRCRD, 
-
-id: 11906354 - Actividad: Arbolito y la Abubilla
-gratis: NO - CP: 28009
-Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=c4c36d5a073e5810VgnVCM2000001f4a900aRCRD, 
 
 id: 11896733 - Actividad: Benín, la antigua Dahomey y la ruta de esclavos
 gratis: SI - CP: 28009

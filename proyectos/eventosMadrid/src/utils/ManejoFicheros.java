@@ -105,7 +105,7 @@ public class ManejoFicheros {
     {
 
         String nombreFichero = fileName + ".txt";
-        String path = "src/resources/";
+        String path = "src/output/";
         
         FileWriter fileWriter = null;
         BufferedWriter bWriter = null;

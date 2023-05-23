@@ -1,5 +1,5 @@
  - - - - - LISTA DE EVENTOS GRATIS EN CP: 28009 (CSV) - - - - - 
-número de eventos listados en el fichero: 61
+número de eventos listados en el fichero: 58
 [
 
 id: 11958859 - Actividad: 4 patas tiene un cuento
@@ -14,10 +14,6 @@ id: 11913908 - Actividad: Abriendo el coraz�n: amor, compasi�n
 gratis: SI - CP: 28009
 Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=2eeb02f785306810VgnVCM1000001d4a900aRCRD, 
 
-id: 11923139 - Actividad: Alaia Galtzagorria: cuentos de nuestra mitolog�a - Ostomila Txotxongilo Taldea / Teatro de t�teres Ostomila (Euskal Herria)
-gratis: NO - CP: 28009
-Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=f4b62dcd4ad26810VgnVCM2000001f4a900aRCRD, 
-
 id: 11965041 - Actividad: Antonio Lo Riso
 gratis: SI - CP: 28009
 Enlace:  Victoria Ru�z, 
@@ -25,10 +21,6 @@ Enlace:  Victoria Ru�z,
 id: 11724768 - Actividad: �rboles de El Retiro
 gratis: SI - CP: 28009
 Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=e7b01130a93b1810VgnVCM1000001d4a900aRCRD, 
-
-id: 11906354 - Actividad: Arbolito y la Abubilla
-gratis: NO - CP: 28009
-Enlace: 26/2/2023, 
 
 id: 11896733 - Actividad: Ben�n, la antigua Dahomey y la ruta de esclavos
 gratis: SI - CP: 28009
@@ -201,10 +193,6 @@ Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410Vgn
 id: 11907587 - Actividad: Torneo de Cat�n en la Biblioteca Eugenio Tr�as
 gratis: SI - CP: 28009
 Enlace: http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=16ec24b59b3e5810VgnVCM2000001f4a900aRCRD, 
-
-id: 11913917 - Actividad: Transformar las emociones
-gratis: NO - CP: 28009
-Enlace: Ciclo 'Una cita con el coraz�n: c�mo cultivar la paz interior', 
 
 id: 11964427 - Actividad: Trashumancia y c�as pecuarias: corredores vivos que conectan territorio.
 gratis: SI - CP: 28009

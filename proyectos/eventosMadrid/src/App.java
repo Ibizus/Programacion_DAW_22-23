@@ -24,20 +24,21 @@ public class App {
         salida1 += "\nnúmero de eventos listados en el fichero: " + listaEventosGratis.size() + "\n";
         salida1 += listaEventosGratis;
         // Borro el fichero de salida si existe y vuelco la salida en un .txt
-        ManejoFicheros.borraFichero("src/resources/Eventos_gratis_CSV.txt");
+        ManejoFicheros.borraFichero("src/output/Eventos_gratis_CSV.txt");
         // Lo vuelco en el fichero:
         ManejoFicheros.escribeEnFichero("Eventos_gratis_CSV", salida1);
 
 
         /**** LISTADO DE EVENTOS GRATIS POR CÓDIGO POSTAL: 28009 ****/
         ArrayList<Evento> listaEventosGratis28009 = extraeListaEventosPorCP(listaEventosCsv, "28009");
+        listaEventosGratis28009 = extraeListaEventosGratuitos(listaEventosGratis28009);
         // System.out.println(listaEventosGratis28009);
 
         String salida2 = " - - - - - LISTA DE EVENTOS GRATIS EN CP: 28009 (CSV) - - - - - ";
         salida2 += "\nnúmero de eventos listados en el fichero: " + listaEventosGratis28009.size() + "\n";
         salida2 += listaEventosGratis28009;
         // Borro el fichero de salida si existe y vuelco la salida en un .txt
-        ManejoFicheros.borraFichero("src/resources/Eventos_gratis_28009_CSV.txt");
+        ManejoFicheros.borraFichero("src/output/Eventos_gratis_28009_CSV.txt");
         // Lo vuelco en el fichero:
         ManejoFicheros.escribeEnFichero("Eventos_gratis_28009_CSV", salida2);
 
@@ -49,7 +50,7 @@ public class App {
         String salida3 = " - - - - - NÚMERO DE EVENTOS POR CÓDIGO POSTAL (CSV) - - - - - ";
         salida3 += imprimeMapaEventos(diccionarioNumEventos);
         // Borro el fichero de salida si existe y vuelco la salida en un .txt
-        ManejoFicheros.borraFichero("src/resources/Eventos_por_CP_CSV.txt");
+        ManejoFicheros.borraFichero("src/output/Eventos_por_CP_CSV.txt");
         // Lo vuelco en el fichero:
         ManejoFicheros.escribeEnFichero("Eventos_por_CP_CSV", salida3);
         
@@ -70,18 +71,19 @@ public class App {
         salida4 += "\nnúmero de eventos listados en el fichero: " + listaEventosGratisJSON.size() + "\n";
         salida4 += listaEventosGratisJSON;
 
-        ManejoFicheros.borraFichero("src/resources/Eventos_gratis_JSON.txt");
+        ManejoFicheros.borraFichero("src/output/Eventos_gratis_JSON.txt");
         ManejoFicheros.escribeEnFichero("Eventos_gratis_JSON", salida4);
 
 
         /**** LISTADO DE EVENTOS GRATIS POR CÓDIGO POSTAL: 28009 ****/
         ArrayList<Evento> listaEventosGratis28009JSON = extraeListaEventosPorCP(listaEventosJson.getGraph(), "28009");
+        listaEventosGratis28009JSON = extraeListaEventosGratuitos(listaEventosGratis28009JSON);
 
         String salida5 = " - - - - - LISTA DE EVENTOS GRATIS EN CP: 28009 (JSON) - - - - - ";
         salida5 += "\nnúmero de eventos listados en el fichero: " + listaEventosGratis28009JSON.size() + "\n";
         salida5 += listaEventosGratis28009JSON;
 
-        ManejoFicheros.borraFichero("src/resources/Eventos_gratis_28009_JSON.txt");
+        ManejoFicheros.borraFichero("src/output/Eventos_gratis_28009_JSON.txt");
         ManejoFicheros.escribeEnFichero("Eventos_gratis_28009_JSON", salida5);
 
 
@@ -91,7 +93,7 @@ public class App {
         String salida6 = " - - - - - NÚMERO DE EVENTOS POR CÓDIGO POSTAL (JSON) - - - - - ";
         salida6 += imprimeMapaEventos(diccionarioNumEventosJSON);
 
-        ManejoFicheros.borraFichero("src/resources/Eventos_por_CP_JSON.txt");
+        ManejoFicheros.borraFichero("src/output/Eventos_por_CP_JSON.txt");
         ManejoFicheros.escribeEnFichero("Eventos_por_CP_JSON", salida6);
 
 
