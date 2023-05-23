@@ -212,9 +212,14 @@ public class App {
 
             if(!diccionario.containsKey(cpBuscado))
             {
-                int cantidad = extraeListaEventosPorCP(lista, cpBuscado).size();
+                ArrayList<Evento> lista_Cp = extraeListaEventosPorCP(lista, cpBuscado);
 
-                diccionario.put(cpBuscado, cantidad);
+                if(lista_Cp != null) 
+                {
+                    int cantidad = lista_Cp.size();
+    
+                    diccionario.put(cpBuscado, cantidad);
+                }
             }
         }
 
