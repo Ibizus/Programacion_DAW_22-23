@@ -16,18 +16,15 @@ public class Area {
     public Area(){
 
     }
+    public Area(String postal_code){
 
+        this.post_code = postal_code;
+    }
 
     // METHODS:
     public String toString(){
 
         return post_code;
-    }
-
-    // GETTERS & SETTERS:
-    public Area(String postal_code){
-
-        this.post_code = postal_code;
     }
 
 
@@ -37,6 +34,7 @@ public class Area {
     }
 
     public void setPost_code(String postal_code) {
+        
         this.post_code = postal_code;
     }
    

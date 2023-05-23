@@ -7,8 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Area;
 import models.Direccion;
 import models.Evento;
+import models.ListaEventos;
 
 
 public class ManejoFicheros {
@@ -40,8 +39,8 @@ public class ManejoFicheros {
                 {
                     String[] trozosLinea = linea.split(";");
 
-                    listaEventos.add(new Evento(trozosLinea[0], trozosLinea[1], trozosLinea[3].equals("1"), 
-                                    new Direccion(new Area(trozosLinea[trozosLinea.length-7])), trozosLinea[13])); 
+                    listaEventos.add(new Evento(trozosLinea[0], trozosLinea[1].replace("\"",""), trozosLinea[3].replace("\"",""), 
+                                    new Direccion(new Area(trozosLinea[trozosLinea.length-7].replace("\"",""))), trozosLinea[13].replace("\"",""))); 
                 } 
                 catch (Exception ex) 
                 {
@@ -64,16 +63,16 @@ public class ManejoFicheros {
 
 
 
-	public static ArrayList<Evento> leeListaEventosJson(String relativePathFile)
+	public static ListaEventos leeListaEventosJson(String relativePathFile)
 	{
 		File fileEventos = new File("src/resources/" + relativePathFile);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 
-		ArrayList<Evento> listaEventos = null;
+		ListaEventos listaEventos = null;
 
 		try {
-            listaEventos = objectMapper.readValue(fileEventos, new TypeReference<ArrayList<Evento>>(){});
+            listaEventos = objectMapper.readValue(fileEventos, new TypeReference<ListaEventos>(){});
         } 
         catch (IOException e) {
             

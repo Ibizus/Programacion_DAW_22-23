@@ -2,47 +2,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import models.Evento;
+import models.ListaEventos;
 import utils.ManejoFicheros;
 
 public class App {
     public static void main(String[] args) throws Exception {
         
-        
         System.out.println("Eventos Madrid!");
 
+        // Leo los eventos de CSV, aplico los métodos y vuelco la salida en ficheros:
         ArrayList<Evento> listaEventosCsv = ManejoFicheros.leerFicheroEventos("206974-0-agenda-eventos-culturales-100.csv");
-         
-        System.out.println(listaEventosCsv);
-        System.out.println(listaEventosCsv.size());
         
-        ArrayList<Evento> listaEventosGratis = extraeListaEventosGratuitos(listaEventosCsv);
-        System.out.println(listaEventosGratis);
+        System.out.println(listaEventosCsv);
+        System.out.println("Número de eventos listados en el archivo CSV: " + listaEventosCsv.size());
 
-        ArrayList<Evento> listaEventosGratis28009 = extraeListaEventosPorCP(listaEventosCsv, "28009");
-        System.out.println(listaEventosGratis28009);
+        
+        
+        // ArrayList<Evento> listaEventosGratis = extraeListaEventosGratuitos(listaEventosCsv);
+        // System.out.println(listaEventosGratis);
+
+        // ArrayList<Evento> listaEventosGratis28009 = extraeListaEventosPorCP(listaEventosCsv, "28009");
+        // System.out.println(listaEventosGratis28009);
 
         HashMap<String, Integer> diccionarioNumEventos = diccionarioNumEventosPorCP(listaEventosCsv);
         System.out.println(diccionarioNumEventos);
 
-        /*
-        ArrayList<Evento> listaEventosJson = ManejoFicheros.leeListaEventosJson("206974-0-agenda-eventos-culturales-100.json");
+        
+        // ListaEventos listaEventosJson = ManejoFicheros.leeListaEventosJson("206974-0-agenda-eventos-culturales-100.json");
 
-        System.out.println(listaEventosJson);
-        System.out.println(listaEventosJson.size());
-        */
+        // System.out.println(listaEventosJson);
+        // System.out.println(listaEventosJson.getGraph().size());
+        
 
+        // System.out.println(" - - - - - - - - - - - - - ");
 
-        String uno = "1";
-        String cero = "0";
-
-        boolean verdadero = uno.equals("1");
-        boolean falso = cero.equals("1");
-
-        System.out.println("verdadero es: " + verdadero);
-        System.out.println("falso es: " + falso);
-
-        System.out.println(((verdadero)? "SI" : "NO"));
-        System.out.println(((falso)? "SI" : "NO"));
 
     }
 
@@ -61,7 +54,7 @@ public class App {
 
         for (Evento evento : lista) 
         {
-            if(evento.isFree())
+            if(evento.getFree().equals("1"))
             {
                 nuevaLista.add(evento);
             }
