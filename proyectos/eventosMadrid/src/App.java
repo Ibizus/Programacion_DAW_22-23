@@ -96,7 +96,6 @@ public class App {
         ManejoFicheros.borraFichero("src/output/Eventos_por_CP_JSON.txt");
         ManejoFicheros.escribeEnFichero("Eventos_por_CP_JSON", salida6);
 
-
     }
 
 

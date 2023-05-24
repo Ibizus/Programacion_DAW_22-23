@@ -44,8 +44,8 @@ public class ManejoFicheros {
                 } 
                 catch (Exception ex) 
                 {
-                    // System.out.println("Problema al leer la línea: " + linea);
-                    System.out.println(ex.getMessage());
+                    System.out.println("Problema al leer la línea: \"" + linea + "\"");
+                    // System.out.println(ex.getMessage());
                 }
 
                 //actualiza concidion bucle:
