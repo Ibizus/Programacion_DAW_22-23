@@ -6,56 +6,67 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+import models.Alumno;
+import models.Instituto;
 
 public class ManejoFicheros {
     
 
-    public static ArrayList<T> leerFichero_CSV(String nombreArchivo)
+	/**
+	 * Convierte un objeto en un Json
+	 */
+    public static void exportaComoJson(List<Alumno> array, String fileName)
+    {
+        try 
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        
+            File file = new File("src/output/" + fileName);
+            objectMapper.writeValue(file, array);
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex);
+        }
+    }
+
+
+    public static HashMap<String,Double> leerFicheroBecas(String nombreArchivo)
     {
         String nombreFichero = nombreArchivo;
         String path = "src/resources/";
         
-        ArrayList<T> listaT = new ArrayList<>();
+        HashMap<String,Double> listaT = new HashMap<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(path+nombreFichero)))
         {
             String linea = br.readLine();
-            // saltamos primera linea:
-            linea = br.readLine();
             
             while(linea!=null)
             {
                 try
                 {
-                    String[] trozosLinea = linea.split(",");
+                    String[] trozosLinea = linea.split("-");
 
                     // se sacan las variables necesarias:
-                    int stock = Integer.valueOf(trozosLinea[3]);
+                    String asignatura = trozosLinea[0];
+                    double notaBeca = Double.valueOf(trozosLinea[1]);
 
-                    // lanza excepcion personalizada:
-                    if (stock == 0)
-                    {
-                        throw new ExcepcionNueva("para1", "param2");
-                    }
-                    else
-                    {
-                        listaT.add(new T(trozosLinea[0], trozosLinea[1], trozosLinea[2], stock)); 
-                    }
-                }
-                catch (ExcepcionNueva e1) 
-                {
-                    System.out.println(e1.getMessage());
+                    listaT.put(asignatura, notaBeca);
                 }
                 catch (Exception ex) 
                 {
                     System.out.println("Error al leer la línea " + linea);
-                    // System.out.println(ex.getMessage());
+                    System.out.println(ex.getMessage());
                 }
                 //actualiza concidion bucle:
                 linea = br.readLine();
@@ -70,34 +81,16 @@ public class ManejoFicheros {
         return listaT;
     }
 
-	public static List<T> leeLista_Json(String relativePathFile)
-	{
-		List<T> lista = null;
-        
-		try {
-            File fileName = new File(relativePathFile);
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            lista = objectMapper.readValue(fileName, new TypeReference<List<T>>(){});
-        } 
-        catch (IOException e) {
-            
-
-            e.printStackTrace();
-        }
-        
-		return lista;
-	}
     
-    public static T lee_FromJson(String relativePathFile)
+    public static Instituto lee_FromJson(String relativePathFile)
     {
-        T listaNueva = null;
+        Instituto listaNueva = null;
         
         try {
             File fileName = new File(relativePathFile);
             ObjectMapper objectMapper = new ObjectMapper();
 
-            listaNueva = objectMapper.readValue(fileName, new TypeReference<T>(){});
+            listaNueva = objectMapper.readValue(fileName, new TypeReference<Instituto>(){});
         }
         catch (IOException e) {
             
@@ -125,8 +118,8 @@ public class ManejoFicheros {
 
     public static void escribeEnFichero(String fileName, String output) throws Exception
     {
-        String nombreFichero = fileName + ".txt";
-        String path = "src/resources/";
+        String nombreFichero = fileName;
+        String path = "src/output/";
         
         try(FileWriter fileWriter = new FileWriter(path+nombreFichero, true);
             BufferedWriter bWriter = new BufferedWriter(fileWriter);)
@@ -139,6 +132,5 @@ public class ManejoFicheros {
             System.out.println("Error al escribir el fichero " + fileName);
         }
     }
-
 
 }
