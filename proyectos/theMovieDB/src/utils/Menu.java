@@ -7,22 +7,31 @@ import models.ListaActores;
 import models.ListaPeliculas;
 import models.Pelicula;
 
+
 public class Menu {
-    
+
+    // CONSTANTES DE ESTILO:
     final static String ANSI_GREEN_BG = "\u001B[42m";
     final static String ANSI_RESET = "\u001B[0m";
+    
+    // SCANNER ESTÁTICO:
+    static LecturaTeclado lc = new LecturaTeclado();
 
+
+    /**
+     * Función que contiene el menú principal del programa y hace las llamadas
+     * al resto de funciones del menú
+     */
     static public void ejecutarMenu()
     {
         // VARIABLES:
         boolean salir = false;
         int opcion = 0;
-        LecturaTeclado lc = new LecturaTeclado();
         
-
         // BUCLE MENU
         while (!salir)
         {
+            
             imprimirMenuPrincipal();
             opcion = lc.leerInteger();
     
@@ -51,53 +60,67 @@ public class Menu {
                     break;
     
                 case 3:
-                
-                default:
                     salir = true;
                     System.out.println("Hasta pronto");
+                    break;
+                
+                default:
+                    System.out.println("Opción incorrecta");
             }
         }
-        lc.finalizarlectura();
     }
 
 
 
+    /**
+     * Función que muestra el menú que permite elegir una posición del array
+     * mostrado para acceder a ese objeto y mostrar su información completa
+     * @param array
+     */
     private static void submenuInformacionDetallada(ArrayList array)
     {
         // VARIABLES:
         boolean salir = false;
-        LecturaTeclado lc = new LecturaTeclado();
 
         // BUCLE MENU
         while (!salir)
         {
-            System.out.println("Introduce un número para ver la información completa ó pulsa 0 para volver al menú principal");
-            Integer numero = lc.leerInteger();
-    
-            if(numero > 0 && numero <= array.size())
-            {
-                var t = array.get(numero-1);
-    
-                muestraPelicula_o_Actor(t, true);
-                salir=true;
-            }
-            else if(numero == 0)
+            if(array.isEmpty()) // compruebo que no se ha pasado un array vacío para inciar el sub-menú
             {
                 salir=true;
             }
             else 
             {
-                System.out.println("El valor introducido no corresponde con niguna opción mostrada");
+                System.out.println("\nIntroduce un número para ver la información completa ó pulsa 0 para volver al menú principal");
+                Integer numero = lc.leerInteger();
+        
+                if(numero > 0 && numero <= array.size())
+                {
+                    var t = array.get(numero-1);
+        
+                    muestraPelicula_o_Actor(t, true);
+                    salir=true;
+                }
+                else if(numero == 0)
+                {
+                    salir=true;
+                }
+                else 
+                {
+                    System.out.println("El valor introducido no corresponde con niguna opción mostrada");
+                }
             }
         }
-        
-        lc.finalizarlectura();
     }
 
 
 
 
-
+    /**
+     * Función a la que se la pasa un arraylist (raw) e imprime sus 10 primeras 
+     * posiciones ó las que tenga si el tamaño es menor
+     * @param result
+     */
     private static void imprimeListaResultados(ArrayList result)
     {
         if(result.size() < 1)
@@ -128,7 +151,13 @@ public class Menu {
 
 
 
-
+    /**
+     * Función a la que se le pasa un objeto y comprueba si es de clase pelicula o Actor,
+     * lo castea e imprime sólo su nombre si se le pasa false como parámetro, o toda
+     * su información completa en caso de pasarle true.
+     * @param t
+     * @param completo
+     */
     private static void muestraPelicula_o_Actor(Object t, boolean completo)
     {
         if (t instanceof Pelicula)
@@ -143,7 +172,6 @@ public class Menu {
             {
                 System.out.println(peli.getTitulo());
             }
-        
         }
         else 
         {
@@ -162,8 +190,9 @@ public class Menu {
 
 
 
-
-
+    /**
+     * Función que imprime el menú inicial
+     */
     private static void imprimirMenuPrincipal()
     {
         System.out.println("\n"+ANSI_GREEN_BG + "BIENVENIDO A THE MOVIE DB" + ANSI_RESET+"\n");
