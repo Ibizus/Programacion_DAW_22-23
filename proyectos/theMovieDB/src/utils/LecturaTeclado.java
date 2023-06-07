@@ -52,12 +52,12 @@ public class LecturaTeclado {
             catch(NumberFormatException excepcionLeida)
             {
                 // System.out.println(excepcionLeida.getMessage());
-                System.out.println("Dato no válido….Introduzca un dado válido por favor");
+                System.out.println("Dato no válido. Introduzca un dado válido por favor");
             }
             catch(Exception problemaSc)
             {
                 // System.out.println(problemaSc.toString());
-                System.out.println("Dato no válido….Introduzca un dado válido por favor");
+                System.out.println("Dato no válido. Introduzca un dado válido por favor 2");
             }
         }
         return numero;

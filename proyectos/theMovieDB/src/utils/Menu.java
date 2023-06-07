@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.ArrayList;
+
 import models.Actor;
 import models.ListaActores;
 import models.ListaPeliculas;
@@ -21,7 +23,7 @@ public class Menu {
         // BUCLE MENU
         while (!salir)
         {
-            imprimir();
+            imprimirMenuPrincipal();
             opcion = lc.leerInteger();
     
             switch (opcion)
@@ -31,25 +33,10 @@ public class Menu {
                     String tituloBuscado = lc.leerCadena();
                     ListaPeliculas resultado = usoApi.leerPeliculasFromTMDB(tituloBuscado);
                     
-                    if(resultado.getListaPeliculas().size() < 1)
-                    {
-                        System.out.println("No se han obtenido resultados para esta búsqueda");
-                    }
-                    else if(resultado.getListaPeliculas().size() > 10)
-                    {
-                        for (int i = 0; i < 10; i++)
-                        {
-                            System.out.println((i+1) + " -> " + resultado.getListaPeliculas().get(i).getTitulo());    
-                        }
-                    }
-                    else 
-                    {
-                        for (Pelicula peli : resultado.getListaPeliculas())
-                        {
-                            System.out.println(resultado.getListaPeliculas().indexOf(peli)+1 + " -> " + peli.getTitulo());
-                        }
-                    }
+                    ArrayList resul = resultado.getListaPeliculas();
+                    imprimeListaResultados(resul);
 
+                    submenuInformacionDetallada(resul);
                     break;
     
                 case 2:
@@ -57,26 +44,10 @@ public class Menu {
                     String nombreBuscado = lc.leerCadena();
                     ListaActores resultado2 = usoApi.leerActoresFromTMDB(nombreBuscado);
                     
+                    ArrayList result = resultado2.getListaActores();
+                    imprimeListaResultados(result);
 
-                    if(resultado2.getListaActores().size() < 1)
-                    {
-                        System.out.println("No se han obtenido resultados para esta búsqueda");
-                    }
-                    else if(resultado2.getListaActores().size() > 10)
-                    {
-                        for (int i = 0; i < 10; i++)
-                        {
-                            System.out.println((i+1) + " -> " + resultado2.getListaActores().get(i).getNombre());    
-                        }
-                    }
-                    else 
-                    {
-                        for (Actor persona : resultado2.getListaActores())
-                        {
-                            System.out.println(resultado2.getListaActores().indexOf(persona)+1 + " -> " + persona.getNombre());
-                        }
-                    }
-
+                    submenuInformacionDetallada(result);
                     break;
     
                 case 3:
@@ -91,9 +62,109 @@ public class Menu {
 
 
 
+    private static void submenuInformacionDetallada(ArrayList array)
+    {
+        // VARIABLES:
+        boolean salir = false;
+        LecturaTeclado lc = new LecturaTeclado();
+
+        // BUCLE MENU
+        while (!salir)
+        {
+            System.out.println("Introduce un número para ver la información completa ó pulsa 0 para volver al menú principal");
+            Integer numero = lc.leerInteger();
+    
+            if(numero > 0 && numero <= array.size())
+            {
+                var t = array.get(numero-1);
+    
+                muestraPelicula_o_Actor(t, true);
+                salir=true;
+            }
+            else if(numero == 0)
+            {
+                salir=true;
+            }
+            else 
+            {
+                System.out.println("El valor introducido no corresponde con niguna opción mostrada");
+            }
+        }
+        
+        lc.finalizarlectura();
+    }
 
 
-    private static void imprimir()
+
+
+
+    private static void imprimeListaResultados(ArrayList result)
+    {
+        if(result.size() < 1)
+        {
+            System.out.println("No se han obtenido resultados para esta búsqueda");
+        }
+        else if(result.size() > 10)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                System.out.print((i+1) + " -> "); 
+                
+                var t = result.get(i);
+                
+                muestraPelicula_o_Actor(t, false);
+            }
+        }
+        else 
+        {
+            for (var t : result) 
+            {
+                System.out.print(result.indexOf(t)+1 + " -> ");
+
+                muestraPelicula_o_Actor(t, false);
+            }
+        }
+    }
+
+
+
+
+    private static void muestraPelicula_o_Actor(Object t, boolean completo)
+    {
+        if (t instanceof Pelicula)
+        {
+            Pelicula peli = (Pelicula)t;
+
+            if(completo)
+            {
+                System.out.println(peli);
+            }
+            else 
+            {
+                System.out.println(peli.getTitulo());
+            }
+        
+        }
+        else 
+        {
+            Actor actor = (Actor)t;
+
+            if(completo)
+            {
+                System.out.println(actor);
+            }
+            else 
+            {
+                System.out.println(actor.getNombre());
+            }
+        }
+    }
+
+
+
+
+
+    private static void imprimirMenuPrincipal()
     {
         System.out.println("\n"+ANSI_GREEN_BG + "BIENVENIDO A THE MOVIE DB" + ANSI_RESET+"\n");
     
@@ -102,8 +173,6 @@ public class Menu {
         System.out.println("\t2 -> Buscar Actor/director");
         System.out.println("\t3 -> para SALIR");
     }
-
-
 
 
 }
