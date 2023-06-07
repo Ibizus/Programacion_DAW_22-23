@@ -23,8 +23,8 @@ public class Actor {
     // METODOS:
     @Override
     public String toString() {
-        return "Actor [nombre=" + nombre + ", nombre_real=" + nombre_real + ", genero=" + genero + ", peliculas="
-                + peliculas + "]";
+        return "Personaje: " + nombre + "\nNombre real: " + nombre_real + "\nGénero: " + genero + "\nPeliculas:\n"
+                + peliculas + "\n";
     }
 
 

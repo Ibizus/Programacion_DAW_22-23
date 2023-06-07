@@ -23,8 +23,8 @@ public class Pelicula {
     // METODOS:
     @Override
     public String toString() {
-        return "Pelicula [titulo=" + titulo + ", titulo_original=" + titulo_original + ", sinopsis=" + sinopsis
-                + ", lanzamiento=" + lanzamiento + ", puntuacion=" + puntuacion + "]";
+        return "\tTÍTULO PELÍCULA: " + titulo + "\nTítulo original: " + titulo_original + "\nSinopsis: " + sinopsis
+                + "\nLanzamiento: " + lanzamiento + "\nPuntuación: " + puntuacion + "\n";
     }
     
     

@@ -16,7 +16,9 @@ public class ListaActores {
     // METODOS:
     @Override
     public String toString() {
+
         return listaActores.toString();
+
     }
 
     
