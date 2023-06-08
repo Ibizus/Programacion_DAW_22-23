@@ -31,20 +31,26 @@ public class usoApi {
         final static String buscaPeli = "https://api.themoviedb.org/3/search/movie?api_key=6fde46fa6eaf4001e82d718976f8f6b5&include_adult=false";
         final static String patronBusquedaPeli = "&page=1&query=";
         final static String ingles = "&language=en-US";
-        final static String español = "&language=es-ES";
+        final static String espanol = "&language=es-ES";
         // buscaActor + consulta + patron1Actor + IDIOMA + patron2Actor
         final static String buscaActor = "https://api.themoviedb.org/3/search/person?api_key=6fde46fa6eaf4001e82d718976f8f6b5&query=";
         final static String patron1Actor = "&include_adult=false";
         final static String patron2Actor = "&page=1";
 
-
-        public static ListaActores leerActoresFromTMDB(String consulta)
+        /**
+         * Función que recibe una cadena y construye la url necesaria para hacer la consula a la Api
+         * y devuelve un objeto de la clase ListaActores con el resultado obtenido
+         * @param consulta
+         * @param espanol
+         * @return
+         */
+        public static ListaActores leerActoresFromTMDB(String consulta, boolean espanol)
         {
             ListaActores actores = new ListaActores();
     
             try {
                 
-                URL url = new URL(buscaActor + consulta + patron1Actor + español + patron2Actor);
+                URL url = new URL(buscaActor + consulta + patron1Actor + idioma(espanol) + patron2Actor);
     
                 URLConnection connection = url.openConnection();
     
@@ -62,13 +68,20 @@ public class usoApi {
         }
 
 
-        public static ListaPeliculas leerPeliculasFromTMDB(String consulta)
+        /**
+         * Función que recibe una cadena y construye la url necesaria para hacer la consula a la Api
+         * y devuelve un objeto de la clase ListaPeliculas con el resultado obtenido
+         * @param consulta
+         * @param espanol
+         * @return
+         */
+        public static ListaPeliculas leerPeliculasFromTMDB(String consulta, boolean espanol)
         {
             ListaPeliculas peliculas = new ListaPeliculas();
     
             try {
                 
-                URL url = new URL(buscaPeli + español + patronBusquedaPeli + consulta);
+                URL url = new URL(buscaPeli + idioma(espanol) + patronBusquedaPeli + consulta);
     
                 URLConnection connection = url.openConnection();
     
@@ -83,6 +96,29 @@ public class usoApi {
             }
     
             return peliculas;
+        }
+
+
+        /**
+         * Función que según el booleano del idioma devuelve el string de busqueda en español
+         * para true, y el de busqueda en inglés para false
+         * @param buscarEnEspanol
+         * @return idioma
+         */
+        private static String idioma(boolean buscarEnEspanol)
+        {
+            String idioma = "";
+
+            if(buscarEnEspanol)
+            {
+                idioma = espanol;
+            }
+            else 
+            {
+                idioma = ingles;
+            }
+
+            return idioma;
         }
 
 
